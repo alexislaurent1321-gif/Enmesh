@@ -6,6 +6,8 @@
 #include <fstream>
 #include <sstream>
 #include <string>
+#define TINYOBJLOADER_IMPLEMENTATION
+#include <tiny_obj_loader.h>
 
 #include "point.h"
 
@@ -21,7 +23,7 @@ public:
     std::vector<Point> vertices;
     std::vector<Face> faces;
     
-    // Edge definedd by two vertex indices (v1, v2)
+    // Edge defined by two vertex indices (v1, v2)
     struct Edge {
         int v1, v2;
         bool operator==(const Edge& other) const {
@@ -69,30 +71,33 @@ public:
         std::cout << "Unique edges : " << countUniqueEdges() << std::endl;
     }
 
-    // Load mesh from OBJ file (only vertices and faces)
-    bool loadOBJ(const std::string& path) {
-        std::ifstream file(path);
-        if (!file.is_open()) return false;
+    // Load mesh from OBJ file using tinyobjloader
+    bool loadObj(const std::string& path, Mesh& myMesh) {
+        tinyobj::ObjReaderConfig reader_config;
+        tinyobj::ObjReader reader;
 
-        std::string line;
-        while (std::getline(file, line)) {
-            std::stringstream ss(line);
-            std::string type;
-            ss >> type;
+        if (!reader.ParseFromFile(path, reader_config)) return false;
 
-            if (type == "v") { // vertex
-                Point v;
-                ss >> v.x >> v.y >> v.z;
-                vertices.push_back(v);
-            } else if (type == "f") { // face
-                Face f;
-                for (int i = 0; i < 3; ++i) {
-                    std::string segment;
-                    ss >> segment;
-                   
-                    f.v[i] = std::stoi(segment.substr(0, segment.find('/'))) - 1;
-                }
-                faces.push_back(f);
+        auto& attrib = reader.GetAttrib();
+        auto& shapes = reader.GetShapes();
+
+        // Load vertices
+        for (size_t v = 0; v < attrib.vertices.size(); v += 3) {
+            myMesh.vertices.push_back({
+                attrib.vertices[v], 
+                attrib.vertices[v + 1], 
+                attrib.vertices[v + 2]
+            });
+        }
+
+        // Load faces (triangles)
+        for (const auto& shape : shapes) {
+            for (size_t f = 0; f < shape.mesh.indices.size(); f += 3) {
+                Face face;
+                face.v[0] = shape.mesh.indices[f].vertex_index;
+                face.v[1] = shape.mesh.indices[f+1].vertex_index;
+                face.v[2] = shape.mesh.indices[f+2].vertex_index;
+                myMesh.faces.push_back(face);
             }
         }
         return true;
