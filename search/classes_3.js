@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['d_0',['D',['../classD.html',1,'']]]
+  ['triangle_0',['Triangle',['../structTriangle.html',1,'']]]
 ];
