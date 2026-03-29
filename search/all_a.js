@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['vertices_0',['vertices',['../classMesh.html#a0ea7dea37924ad4fb3ac9682641df291',1,'Mesh']]]
+  ['point_0',['Point',['../structPoint.html',1,'Point'],['../structPoint.html#ad92f2337b839a94ce97dcdb439b4325a',1,'Point::Point()'],['../structPoint.html#ad56008741db728440b3d469e5fb5cc82',1,'Point::Point(float x_, float y_, float z_)']]]
 ];

@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['z_0',['z',['../structPoint.html#a9a666531e0e99adff132be93d2407d0c',1,'Point']]]
+  ['ratio_20formula_0',['Aspect ratio formula',['../index.html#autotoc_md2',1,'']]],
+  ['ratios_1',['ratios',['../classMesh.html#a08a97a2d8eaec882bfa11849646cb712',1,'Mesh']]]
 ];
