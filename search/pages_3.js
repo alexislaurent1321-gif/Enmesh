@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['execution_0',['Compilation and execution',['../index.html#autotoc_md5',1,'']]]
+  ['formula_0',['Aspect ratio formula',['../index.html#autotoc_md3',1,'']]]
 ];

@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['ratio_20formula_0',['Aspect ratio formula',['../index.html#autotoc_md2',1,'']]],
-  ['ratios_1',['ratios',['../classMesh.html#a08a97a2d8eaec882bfa11849646cb712',1,'Mesh']]]
+  ['triangle_0',['Triangle',['../structTriangle.html',1,'']]],
+  ['triangles_1',['triangles',['../classMesh.html#acd19d61e90f1e48905bf53b36ee229f2',1,'Mesh']]]
 ];

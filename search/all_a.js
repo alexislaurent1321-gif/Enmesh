@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['point_0',['Point',['../structPoint.html',1,'Point'],['../structPoint.html#ad92f2337b839a94ce97dcdb439b4325a',1,'Point::Point()'],['../structPoint.html#ad56008741db728440b3d469e5fb5cc82',1,'Point::Point(float x_, float y_, float z_)']]]
+  ['ratio_20formula_0',['Aspect ratio formula',['../index.html#autotoc_md3',1,'']]],
+  ['ratios_1',['ratios',['../classMesh.html#a08a97a2d8eaec882bfa11849646cb712',1,'Mesh']]]
 ];

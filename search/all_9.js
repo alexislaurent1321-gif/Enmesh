@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['operator_2d_0',['operator-',['../structPoint.html#a17b65599126120074e6295ddad1ca906',1,'Point']]],
-  ['operator_3c_3c_1',['operator&lt;&lt;',['../structPoint.html#ab322db2b5457c54c9b959c6336792d2d',1,'Point']]]
+  ['point_0',['Point',['../structPoint.html',1,'Point'],['../structPoint.html#ad92f2337b839a94ce97dcdb439b4325a',1,'Point::Point()'],['../structPoint.html#ad56008741db728440b3d469e5fb5cc82',1,'Point::Point(float x_, float y_, float z_)']]]
 ];

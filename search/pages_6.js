@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['installation_0',['Installation',['../index.html#autotoc_md3',1,'']]]
+  ['ratio_20formula_0',['Aspect ratio formula',['../index.html#autotoc_md3',1,'']]]
 ];
