@@ -1,32 +1,14 @@
 [![Documentation](https://img.shields.io/badge/docs-doxygen-blue.svg)](https://alexislaurent1321-gif.github.io/mesh_evaluation/)
 
 # Mesh analyzer
-
-## hashing
+Start of the mesh generation project. For now, it involves evaluating the quality of a 2D triangular mesh and edge detection. This project will evolve in the coming weeks to include 2D and eventually 3D mesh generation.
+## Mesh class
+### hashing
 
 ## Aspect ratio formula
+This is a 2D triangular mesh class. 
 
-
-# Installation
-
-## Dependencies
-The library uses the vcpkg package manager to load external libraries. To install, install **vcpkg** in the `C:/` folder.
-Then, install the libraries using the following instructions :
-
-```bash
-cd /
-cd vcpkg
-vcpkg install tinyobjloader:x64-windows
-```
-Use the following include paths in the `cpp_properties.json` : 
-```
-"includePath": [
-                "${workspaceFolder}/**",
-                "C:\\vcpkg\\installed\\x64-windows\\include",
-                "include/**"
-            ],
-```
 
 ## Compilation and execution
 
-Compilation on Windows, preferably with **MSVC**. Use the **VS Code** interface if possible.
+Compilation on Windows (preferably with **MSVC**) or Linux. Use the **VS Code** interface if possible.
