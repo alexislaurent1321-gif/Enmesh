@@ -7,7 +7,7 @@
 int main() {
     Mesh mesh;
 
-    if (!mesh.loadObj("models/cube_open.obj")) {
+    if (!mesh.loadObj("models/sphere_broken.obj")) {
         std::cerr << "Error loading OBJ file." << std::endl;
         return 1;
     }

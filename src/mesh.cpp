@@ -42,9 +42,7 @@ void Mesh::analyzeMesh() {
     std::cout << "min aspect ratio : " << *std::min_element(ratios.begin(), ratios.end()) << std::endl;
     std::cout << "max aspect ratio : " << *std::max_element(ratios.begin(), ratios.end()) << std::endl;
     std::cout << "mean aspect ratio : " << std::accumulate(ratios.begin(), ratios.end(), 0.f) / ratios.size() << std::endl;
-    std::cout << "valences : " << std::endl;
-    auto valences = getVertexValences();
-    for (size_t i = 0; i < valences.size(); ++i)        std::cout << "Vertex " << i << ": " << valences[i] << std::endl;
+
 }
 
 bool Mesh::loadObj(const std::string& path) {

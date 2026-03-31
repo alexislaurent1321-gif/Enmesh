@@ -6,6 +6,7 @@
 #include <iostream>
 #include <cmath>
 #include <unordered_set>
+#include <unordered_map>
 #include <fstream>
 #include <sstream>
 #include <string>
@@ -121,26 +122,17 @@ public:
         return boundaries;
     }
 
-    /** 
-     * @brief Get the valence of each vertex in the mesh
-     * @return A vector containing the valence of each vertex
-     */
-    std::vector<int> getVertexValences() const {
-        std::vector<int> valences(vertices.size(), 0);
-
-        std::unordered_set<Edge, EdgeHash> uniqueEdges;
+    // Get the valence of each edge (number of triangles sharing the edge)
+    std::unordered_map<Mesh::Edge, int, Mesh::EdgeHash> getEdgeValences() const {
+        std::unordered_map<Edge, int, EdgeHash> counts;
         for (const auto& t : triangles) {
-            uniqueEdges.insert({t.v[0], t.v[1]});
-            uniqueEdges.insert({t.v[1], t.v[2]});
-            uniqueEdges.insert({t.v[2], t.v[0]});
+            for (int i = 0; i < 3; ++i) {
+                Edge e = {std::min(t.v[i], t.v[(i + 1) % 3]), 
+                        std::max(t.v[i], t.v[(i + 1) % 3])};
+                counts[e]++;
+            }
         }
-
-        for (const auto& e : uniqueEdges) {
-            valences[e.v1]++;
-            valences[e.v2]++;
-        }
-
-        return valences;
+        return counts;
     }
 };
 
