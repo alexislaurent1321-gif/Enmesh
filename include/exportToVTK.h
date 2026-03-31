@@ -29,4 +29,7 @@ void exportToVTK(const std::string& filename, const Mesh& mesh) {
     file << "CELL_DATA " << mesh.triangles.size() << "\nSCALARS Quality float\nLOOKUP_TABLE default\n";
     for (float ratio : mesh.ratios) 
         file << ratio << "\n";
+
+    file.close();
+
 }

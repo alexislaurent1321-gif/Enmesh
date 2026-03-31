@@ -41,7 +41,9 @@ public:
         bool operator==(const Edge& other) const {
             return v1 == other.v1 && v2 == other.v2;
         }
+        int valence;
     };
+
 
     /**
      * @brief A hash function for the Edge struct to allow it to be used in an unordered_set
@@ -53,12 +55,14 @@ public:
         }
     };
 
+
     /**
      * @brief Count the number of unique edges in the mesh by iterating through all triangles and adding their edges to an unordered_set
      * 
      * @return number of unique edges in the mesh 
      */
     size_t countUniqueEdges() const;
+
 
     // Geometry
 
@@ -70,27 +74,74 @@ public:
      */
     float calculateAspectRatio(const Triangle& t) const;
 
+
     /**
      * @brief  Calculate the aspect ratio for all triangles in the mesh and store them in the ratios vector
      * 
      */
     void calculateAspectRatios();
     
+
     /**
      * @brief  Analyze the mesh by printing out the number of vertices, triangles, and unique edges. Optionally, it could also calculate and print the aspect ratio of each triangle for quality analysis.
      * 
      */
     void analyzeMesh();
 
+
     /**
      * @brief  Load a mesh from an OBJ file using tinyobjloader
      * 
-     * @param path 
-     * @param myMesh 
+     * @param path Path to the OBJ file to load 
      * @return true 
      * @return false 
      */
-    bool loadObj(const std::string& path, Mesh& myMesh);
+    bool loadObj(const std::string& path);
+
+
+    /** 
+     * @brief Get the boundary edges of the mesh
+     * @return A vector containing the boundary edges
+     */
+    std::vector<Edge> getBoundaryEdges() const {
+        std::unordered_set<Edge, EdgeHash> counts;
+        for (const auto& t : triangles) {
+            for (int i = 0; i < 3; ++i) {
+                int v1 = t.v[i];
+                int v2 = t.v[(i + 1) % 3];
+                counts.insert({std::min(v1, v2), std::max(v1, v2)});
+            }
+        }
+
+        // Edges that appear only once are boundary edges
+        std::vector<Edge> boundaries;
+        for (auto const& edge : counts) 
+            boundaries.push_back(edge);
+
+        return boundaries;
+    }
+
+    /** 
+     * @brief Get the valence of each vertex in the mesh
+     * @return A vector containing the valence of each vertex
+     */
+    std::vector<int> getVertexValences() const {
+        std::vector<int> valences(vertices.size(), 0);
+
+        std::unordered_set<Edge, EdgeHash> uniqueEdges;
+        for (const auto& t : triangles) {
+            uniqueEdges.insert({t.v[0], t.v[1]});
+            uniqueEdges.insert({t.v[1], t.v[2]});
+            uniqueEdges.insert({t.v[2], t.v[0]});
+        }
+
+        for (const auto& e : uniqueEdges) {
+            valences[e.v1]++;
+            valences[e.v2]++;
+        }
+
+        return valences;
+    }
 };
 
 #endif

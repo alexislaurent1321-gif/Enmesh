@@ -42,9 +42,12 @@ void Mesh::analyzeMesh() {
     std::cout << "min aspect ratio : " << *std::min_element(ratios.begin(), ratios.end()) << std::endl;
     std::cout << "max aspect ratio : " << *std::max_element(ratios.begin(), ratios.end()) << std::endl;
     std::cout << "mean aspect ratio : " << std::accumulate(ratios.begin(), ratios.end(), 0.f) / ratios.size() << std::endl;
+    std::cout << "valences : " << std::endl;
+    auto valences = getVertexValences();
+    for (size_t i = 0; i < valences.size(); ++i)        std::cout << "Vertex " << i << ": " << valences[i] << std::endl;
 }
 
-bool Mesh::loadObj(const std::string& path, Mesh& myMesh) {
+bool Mesh::loadObj(const std::string& path) {
     tinyobj::ObjReaderConfig reader_config;
     tinyobj::ObjReader reader;
 
@@ -55,7 +58,7 @@ bool Mesh::loadObj(const std::string& path, Mesh& myMesh) {
 
     // Load vertices
     for (size_t v = 0; v < attrib.vertices.size(); v += 3) {
-        myMesh.vertices.push_back({
+        vertices.push_back({
             attrib.vertices[v], 
             attrib.vertices[v + 1], 
             attrib.vertices[v + 2]
@@ -73,7 +76,7 @@ bool Mesh::loadObj(const std::string& path, Mesh& myMesh) {
             for (size_t v = 0; v < fv; ++v) {
                 triangle.v[v] = shape.mesh.indices[index_offset + v].vertex_index;
             }
-            myMesh.triangles.push_back(triangle);
+            triangles.push_back(triangle);
             index_offset += fv;
         }
     }

@@ -7,13 +7,14 @@
 int main() {
     Mesh mesh;
 
-    if (!mesh.loadObj("models/cube_tri.obj", mesh)) {
+    if (!mesh.loadObj("models/cube_open.obj")) {
         std::cerr << "Error loading OBJ file." << std::endl;
         return 1;
     }
 
     mesh.analyzeMesh();
 
+    std::cout << "Exporting mesh to VTK format..." << std::endl;
     exportToVTK("output.vtk", mesh);    
     
     return 0;
