@@ -19,10 +19,32 @@ A result of 1 corresponds to an equilateral triangle and it is greater than 1 by
 
 # Results
 ## Cube
-### cube
 To assess the quality of the triangles, we simply try the experiment on a cube and then on a stretched cube.
+
+### cube
+First, we check that the number of vertices, triangles, and edges matches the expected result
+```bash
+Vertices : 8
+Triangles : 12
+Unique edges : 18
+```
+These numbers are correct, particularly the number of vertices, which shows that the hashing worked. Next, we look at the quality of the triangles. We simply expect to get the same ratio for each of them : 
+
+```bash
+min aspect ratio : 1.20711
+max aspect ratio : 1.20711
+mean aspect ratio : 1.20711
+```
 <img width="600" height="300" alt="cube_ratios" src="https://github.com/user-attachments/assets/aeea27de-0dd5-40a6-b300-3f0f8b586e1b" />
+
 ### stretched cube
+In this configuration, the height along the z-axis is doubled : 
+```bash
+min aspect ratio : 1.20711
+max aspect ratio : 1.46353
+mean aspect ratio : 1.37805
+```
+We make sure that we get a higher value on the side faces, since the triangles are more stretched : 
 <img width="600" height="300" alt="cube2_ratios" src="https://github.com/user-attachments/assets/75ffb92b-da42-4868-8ef9-5d5246ebd412" />
 
 
