@@ -14,8 +14,27 @@ To ensure optimal search performance within the graph and avoid duplicate edges,
 ## Aspect ratio formula
 Let there be a triangle with sides a, b, and c. The formula is
 $$ \frac{abc}{(b+c-a)(c+a-b)(a+b-c)} $$
+A result of 1 corresponds to an equilateral triangle and it is greater than 1 by the amount that the triangle is distorted.
+
 
 # Results
+## Cube
+### cube
+To assess the quality of the triangles, we simply try the experiment on a cube and then on a stretched cube.
+<img width="600" height="300" alt="cube_ratios" src="https://github.com/user-attachments/assets/aeea27de-0dd5-40a6-b300-3f0f8b586e1b" />
+### stretched cube
+<img width="600" height="300" alt="cube2_ratios" src="https://github.com/user-attachments/assets/75ffb92b-da42-4868-8ef9-5d5246ebd412" />
+
+
+# Upcoming changes
+### in the coming days
+- support for quad meshes
+- domain boundary detection
+### in the short term
+- implementation of triangulation methods (starting with Delaunay)
+### in the longer term
+- 
+- support for 3D meshes
 
 
 ## Compilation and execution
