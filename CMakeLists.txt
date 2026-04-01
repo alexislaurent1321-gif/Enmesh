@@ -7,7 +7,7 @@ add_executable(mesh_analyzer
     src/main.cpp 
     src/point.cpp
     src/mesh.cpp
-    src/mesh_exportToVTK.cpp
+    src/exportToVTK.cpp
 )
 
 target_include_directories(mesh_analyzer PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/include)
