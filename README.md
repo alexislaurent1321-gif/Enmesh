@@ -1,4 +1,4 @@
-[![Documentation](https://img.shields.io/badge/docs-doxygen-blue.svg)](https://alexislaurent1321-gif.github.io/mesh_evaluation/)
+[![Documentation](https://img.shields.io/badge/docs-doxygen-blue.svg)](https://alexislaurent1321-gif.github.io/mesh_analyzer/)
 
 # Mesh analyzer
 Start of the mesh generation project. For now, it involves evaluating the quality of a 2D triangular mesh and edge detection. This project will evolve in the coming weeks to include 2D and eventually 3D mesh generation.
@@ -9,16 +9,15 @@ This is a 2D triangular mesh class. It contains:
 - an `EdgeHash` structure that combines the hashes of the vertices to form a hash for the edge
 
 #### hashing
-To ensure optimal search performance within the graph and avoid duplicate edges, we construct a hash table. For now, it is simply used to count the number of edges in the graph.
-
-
+To ensure optimal search performance within the graph and avoid duplicate edges, we construct a hash table. This method involves using a `std::unordered_set` structure with a custom hash function to identify unique edges with an average time complexity of $O(1)$.
 
 ## Aspect ratio formula
 Let there be a triangle with sides a, b, and c. The formula is
 
 $$\frac{abc}{(b+c-a)(c+a-b)(a+b-c)}$$
 
-A result of 1 corresponds to an equilateral triangle and it is greater than 1 by the amount that the triangle is distorted.
+- A ratio of 1 corresponds to a perfect equilateral triangle.
+- The higher the ratio, the more distorted the triangle becomes, which can hinder the convergence of the solvers.
 
 ## Boundaries detection
 Another function of this project is to detect the edges of the mesh if it is open. To do this, we select the edges along the boundary. An edge is considered to belong to the boundary of the region if it belongs to exactly one triangle. 
@@ -41,6 +40,7 @@ min aspect ratio : 1.20711
 max aspect ratio : 1.20711
 mean aspect ratio : 1.20711
 ```
+
 <img width="600" height="300" alt="cube_ratios" src="https://github.com/user-attachments/assets/aeea27de-0dd5-40a6-b300-3f0f8b586e1b" />
 
 ### stretched cube
@@ -51,16 +51,21 @@ max aspect ratio : 1.46353
 mean aspect ratio : 1.37805
 ```
 We make sure that we get a higher value on the side faces, since the triangles are more stretched : 
+
 <img width="600" height="300" alt="cube2_ratios" src="https://github.com/user-attachments/assets/75ffb92b-da42-4868-8ef9-5d5246ebd412" />
 
+On the stretched cube, the tool correctly detects the increase in the aspect ratio on the side faces (1.463).
+
 ## Boudaries detection
-The example used here is a hemisphere with some missing faces. Part of the edge, as well as two triangles sharing a common vertex, have been removed. \
-<img width="600" height="400" alt="demi_sphere_boundaries" src="https://github.com/user-attachments/assets/171883d1-4b31-4704-8ced-66f49e6d964d" /> \
+The example used here is a hemisphere with some missing faces. Part of the edge, as well as two triangles sharing a common vertex, have been removed. 
+
+<img width="600" height="400" alt="demi_sphere_boundaries" src="https://github.com/user-attachments/assets/171883d1-4b31-4704-8ced-66f49e6d964d" /> 
+
 The results show that all edges are detected.
 
 # Upcoming changes
 ### in the coming days
-- **smoothing :** use of a smoothing technique (likely Laplacian) to improve the overall aspect ratio of the mesh
+- **smoothing :** Implementation of Laplacian smoothing to improve mesh uniformity
 - support for quad meshes (maybe)
 ### in the short term
 - **mesh simplification :** edge collapse
