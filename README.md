@@ -58,7 +58,7 @@ We make sure that we get a higher value on the side faces, since the triangles a
 
 On the stretched cube, the tool correctly detects the increase in the aspect ratio on the side faces (1.463).
 
-## Boudaries detection
+## Boundaries detection
 The example used here is a hemisphere with some missing faces. Part of the edge, as well as two triangles sharing a common vertex, have been removed. 
 
 <img width="600" height="400" alt="demi_sphere_boundaries" src="https://github.com/user-attachments/assets/171883d1-4b31-4704-8ced-66f49e6d964d" /> 
