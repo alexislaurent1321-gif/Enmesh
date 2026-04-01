@@ -112,6 +112,14 @@ public:
      * @return std::unordered_map<Mesh::Edge, int, Mesh::EdgeHash> 
      */
     std::unordered_map<Mesh::Edge, int, Mesh::EdgeHash> getEdgeValences() const;
+
+
+    /**
+     * @brief Convertion to VTK format for visualization in Paraview
+     * 
+     * @param filename 
+     */
+    void exportToVTK(const std::string& filename) const;
     
 };
 

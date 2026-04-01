@@ -7,6 +7,7 @@ add_executable(mesh_analyzer
     src/main.cpp 
     src/point.cpp
     src/mesh.cpp
+    src/mesh_exportToVTK.cpp
 )
 
 # Il suffit de dire à CMake d'aller voir dans /include
