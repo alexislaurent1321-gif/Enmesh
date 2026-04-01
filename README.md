@@ -56,12 +56,12 @@ The results show that all edges are detected.
 
 # Upcoming changes
 ### in the coming days
-- support for quad meshes
-- domain boundary detection
+- **smoothing :** use of a smoothing technique (likely Laplacian) to improve the overall aspect ratio of the mesh
+- support for quad meshes (maybe)
 ### in the short term
-- implementation of triangulation methods (starting with Delaunay)
+- **edge collapse :** 
+- implementation of simple triangulation method (starting with Delaunay)
 ### in the longer term
-- 
 - support for 3D meshes
 
 
