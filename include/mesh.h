@@ -27,11 +27,13 @@ struct Triangle {
  * 
  */
 class Mesh {
+    
 public:
     // Datas
     std::vector<Point> vertices;        ///< List of vertices in the mesh
     std::vector<Triangle> triangles;    ///< List of triangles defined by vertex indices
     std::vector<float> ratios;          ///< aspect ratios of triangles (for quality analysis)
+
 
     /**
      * @brief A struct representing an edge in the mesh
@@ -105,6 +107,7 @@ public:
      * @return A vector containing the boundary edges
      */
     std::vector<Edge> getBoundaryEdges() const;
+
 
     /**
      * @brief Get the Edge Valences object  

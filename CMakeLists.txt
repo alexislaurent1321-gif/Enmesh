@@ -10,5 +10,4 @@ add_executable(mesh_analyzer
     src/mesh_exportToVTK.cpp
 )
 
-# Il suffit de dire à CMake d'aller voir dans /include
 target_include_directories(mesh_analyzer PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/include)
