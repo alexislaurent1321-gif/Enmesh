@@ -104,36 +104,15 @@ public:
      * @brief Get the boundary edges of the mesh
      * @return A vector containing the boundary edges
      */
-    std::vector<Edge> getBoundaryEdges() const {
-        std::unordered_set<Edge, EdgeHash> counts;
-        for (const auto& t : triangles) {
-            for (int i = 0; i < 3; ++i) {
-                int v1 = t.v[i];
-                int v2 = t.v[(i + 1) % 3];
-                counts.insert({std::min(v1, v2), std::max(v1, v2)});
-            }
-        }
+    std::vector<Edge> getBoundaryEdges() const;
 
-        // Edges that appear only once are boundary edges
-        std::vector<Edge> boundaries;
-        for (auto const& edge : counts) 
-            boundaries.push_back(edge);
-
-        return boundaries;
-    }
-
-    // Get the valence of each edge (number of triangles sharing the edge)
-    std::unordered_map<Mesh::Edge, int, Mesh::EdgeHash> getEdgeValences() const {
-        std::unordered_map<Edge, int, EdgeHash> counts;
-        for (const auto& t : triangles) {
-            for (int i = 0; i < 3; ++i) {
-                Edge e = {std::min(t.v[i], t.v[(i + 1) % 3]), 
-                        std::max(t.v[i], t.v[(i + 1) % 3])};
-                counts[e]++;
-            }
-        }
-        return counts;
-    }
+    /**
+     * @brief Get the Edge Valences object  
+     * 
+     * @return std::unordered_map<Mesh::Edge, int, Mesh::EdgeHash> 
+     */
+    std::unordered_map<Mesh::Edge, int, Mesh::EdgeHash> getEdgeValences() const;
+    
 };
 
 #endif

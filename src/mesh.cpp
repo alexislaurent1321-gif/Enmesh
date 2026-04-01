@@ -18,6 +18,7 @@ size_t Mesh::countUniqueEdges() const {
     return uniqueEdges.size();
 }
 
+
 float Mesh::calculateAspectRatio(const Triangle& t) const {
     float a = vertices[t.v[0]].distance(vertices[t.v[1]]);
     float b = vertices[t.v[1]].distance(vertices[t.v[2]]);
@@ -27,12 +28,14 @@ float Mesh::calculateAspectRatio(const Triangle& t) const {
     return num / denom;
 }
 
+
 void Mesh::calculateAspectRatios() {
     ratios.clear();
     for (const auto& t : triangles) {
         ratios.push_back(calculateAspectRatio(t));
     }
 }
+
 
 void Mesh::analyzeMesh() {
     std::cout << "Vertices : " << vertices.size() << std::endl;
@@ -44,6 +47,7 @@ void Mesh::analyzeMesh() {
     std::cout << "mean aspect ratio : " << std::accumulate(ratios.begin(), ratios.end(), 0.f) / ratios.size() << std::endl;
 
 }
+
 
 bool Mesh::loadObj(const std::string& path) {
     tinyobj::ObjReaderConfig reader_config;
@@ -80,4 +84,36 @@ bool Mesh::loadObj(const std::string& path) {
     }
 
     return true;
+}
+
+
+std::vector<Mesh::Edge> Mesh::getBoundaryEdges() const {
+    std::unordered_set<Edge, EdgeHash> counts;
+    for (const auto& t : triangles) {
+        for (int i = 0; i < 3; ++i) {
+            int v1 = t.v[i];
+            int v2 = t.v[(i + 1) % 3];
+            counts.insert({std::min(v1, v2), std::max(v1, v2)});
+        }
+    }
+
+    // Edges that appear only once are boundary edges
+    std::vector<Edge> boundaries;
+    for (auto const& edge : counts) 
+        boundaries.push_back(edge);
+
+    return boundaries;
+}
+
+
+std::unordered_map<Mesh::Edge, int, Mesh::EdgeHash> Mesh::getEdgeValences() const {
+    std::unordered_map<Edge, int, EdgeHash> counts;
+    for (const auto& t : triangles) {
+        for (int i = 0; i < 3; ++i) {
+            Edge e = {std::min(t.v[i], t.v[(i + 1) % 3]), 
+                    std::max(t.v[i], t.v[(i + 1) % 3])};
+            counts[e]++;
+        }
+    }
+    return counts;
 }
