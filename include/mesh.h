@@ -27,7 +27,6 @@ struct Triangle {
  * 
  */
 class Mesh {
-    
 public:
     // Datas
     std::vector<Point> vertices;        ///< List of vertices in the mesh
@@ -44,7 +43,6 @@ public:
         bool operator==(const Edge& other) const {
             return v1 == other.v1 && v2 == other.v2;
         }
-        int valence;
     };
 
 
@@ -54,7 +52,7 @@ public:
      */
     struct EdgeHash {
         size_t operator()(const Edge& e) const {
-            return std::hash<int>{}(e.v1) ^ (std::hash<int>{}(e.v2) << 1);
+            return std::hash<int>{}(e.v1) ^ (std::hash<int>{}(e.v2) << 1); // Combine hashes of v1 and v2
         }
     };
 
@@ -102,13 +100,6 @@ public:
     bool loadObj(const std::string& path);
 
 
-    /** 
-     * @brief Get the boundary edges of the mesh
-     * @return A vector containing the boundary edges
-     */
-    std::vector<Edge> getBoundaryEdges() const;
-
-
     /**
      * @brief Get the Edge Valences object  
      * 
@@ -117,13 +108,19 @@ public:
     std::unordered_map<Mesh::Edge, int, Mesh::EdgeHash> getEdgeValences() const;
 
 
+    /** 
+     * @brief Get the boundary edges of the mesh
+     * @return A vector containing the boundary edges
+     */
+    std::vector<Edge> getBoundaryEdges() const;
+
+
     /**
      * @brief Convertion to VTK format for visualization in Paraview
      * 
      * @param filename 
      */
-    void exportToVTK(const std::string& filename) const;
-    
+    void exportToVTK(const std::string& filename) const;   
 };
 
 #endif

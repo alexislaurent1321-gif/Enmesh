@@ -7,12 +7,16 @@
 
 
 size_t Mesh::countUniqueEdges() const {
-    std::unordered_set<Edge, EdgeHash> uniqueEdges;
+    std::unordered_set<Edge, EdgeHash> uniqueEdges; // Use an unordered_set to store unique edges
+    
+    // Iterate through all triangles and add their edges to the set
     for (const auto& t : triangles) {
         for (int i = 0; i < 3; ++i) {
-            int a = t.v[i];
-            int b = t.v[(i + 1) % 3];
-            uniqueEdges.insert({std::min(a, b), std::max(a, b)});
+            int u = t.v[i];
+            int v = t.v[(i + 1) % 3];
+
+            // Store edges in a consistent order to avoid duplicates
+            uniqueEdges.insert({std::min(u, v), std::max(u, v)}); 
         }
     }
     return uniqueEdges.size();
@@ -20,9 +24,12 @@ size_t Mesh::countUniqueEdges() const {
 
 
 float Mesh::calculateAspectRatio(const Triangle& t) const {
+    // triangle lengths
     float a = vertices[t.v[0]].distance(vertices[t.v[1]]);
     float b = vertices[t.v[1]].distance(vertices[t.v[2]]);
     float c = vertices[t.v[2]].distance(vertices[t.v[0]]);
+
+    // aspect ratio formula: (abc) / ((b+c-a)(c+a-b)(a+b-c))
     float num = a * b * c;
     float denom = (b+c - a) * (c+a - b) * (a+b - c);
     return num / denom;
@@ -31,6 +38,8 @@ float Mesh::calculateAspectRatio(const Triangle& t) const {
 
 void Mesh::calculateAspectRatios() {
     ratios.clear();
+
+    // Calculate aspect ratio for each triangle and store in the ratios vector
     for (const auto& t : triangles) {
         ratios.push_back(calculateAspectRatio(t));
     }
@@ -38,20 +47,22 @@ void Mesh::calculateAspectRatios() {
 
 
 void Mesh::analyzeMesh() {
+    // Basic info
     std::cout << "Vertices : " << vertices.size() << std::endl;
     std::cout << "Triangles : " << triangles.size() << std::endl;
     std::cout << "Unique edges : " << countUniqueEdges() << std::endl;
+
+    // Aspect ratio analysis
     calculateAspectRatios();
     std::cout << "min aspect ratio : " << *std::min_element(ratios.begin(), ratios.end()) << std::endl;
     std::cout << "max aspect ratio : " << *std::max_element(ratios.begin(), ratios.end()) << std::endl;
     std::cout << "mean aspect ratio : " << std::accumulate(ratios.begin(), ratios.end(), 0.f) / ratios.size() << std::endl;
-
 }
 
 
 bool Mesh::loadObj(const std::string& path) {
-    tinyobj::ObjReaderConfig reader_config;
-    tinyobj::ObjReader reader;
+    tinyobj::ObjReaderConfig reader_config; // Create a reader configuration object (optional)
+    tinyobj::ObjReader reader;              // Create an ObjReader object to read the OBJ file
 
     if (!reader.ParseFromFile(path, reader_config)) return false;
 
@@ -67,19 +78,22 @@ bool Mesh::loadObj(const std::string& path) {
         });
     }
 
+    
     // Load triangles
     for (const auto& shape : shapes) {
         size_t index_offset = 0;
         for (size_t f = 0; f < shape.mesh.num_face_vertices.size(); ++f) {
-            int fv = shape.mesh.num_face_vertices[f];
-            if (fv != 3) continue; // Only support triangles
+            int fv = shape.mesh.num_face_vertices[f];   // Get the number of vertices for this face
+            if (fv != 3) continue;                      // Only support triangles
 
+            // Create a Triangle object and fill its vertex indices
             Triangle triangle;
             for (size_t v = 0; v < fv; ++v) {
                 triangle.v[v] = shape.mesh.indices[index_offset + v].vertex_index;
             }
             triangles.push_back(triangle);
-            index_offset += fv;
+
+            index_offset += fv; // Move to the next face
         }
     }
 
@@ -87,33 +101,30 @@ bool Mesh::loadObj(const std::string& path) {
 }
 
 
-std::vector<Mesh::Edge> Mesh::getBoundaryEdges() const {
-    std::unordered_set<Edge, EdgeHash> counts;
-    for (const auto& t : triangles) {
-        for (int i = 0; i < 3; ++i) {
-            int v1 = t.v[i];
-            int v2 = t.v[(i + 1) % 3];
-            counts.insert({std::min(v1, v2), std::max(v1, v2)});
-        }
-    }
-
-    // Edges that appear only once are boundary edges
-    std::vector<Edge> boundaries;
-    for (auto const& edge : counts) 
-        boundaries.push_back(edge);
-
-    return boundaries;
-}
-
-
 std::unordered_map<Mesh::Edge, int, Mesh::EdgeHash> Mesh::getEdgeValences() const {
-    std::unordered_map<Edge, int, EdgeHash> counts;
+    std::unordered_map<Edge, int, EdgeHash> counts;     // Use an unordered_map to count occurrences of each edge
+    
     for (const auto& t : triangles) {
         for (int i = 0; i < 3; ++i) {
-            Edge e = {std::min(t.v[i], t.v[(i + 1) % 3]), 
-                    std::max(t.v[i], t.v[(i + 1) % 3])};
+            int u = t.v[i];
+            int v = t.v[(i + 1) % 3];
+
+            Edge e = {std::min(u, v), std::max(u, v)};  // Store edges in a consistent order
             counts[e]++;
         }
     }
+    
     return counts;
+}
+
+
+std::vector<Mesh::Edge> Mesh::getBoundaryEdges() const {
+    auto edgeCounts = getEdgeValences();    // Get the valence counts for all edges
+    std::vector<Edge> boundaryEdges;        // Collect edges that belong to only one triangle (valence = 1)
+    
+    for (auto const& [edge, count] : edgeCounts) {
+        if (count == 1) boundaryEdges.push_back(edge);
+    }
+    
+    return boundaryEdges;
 }

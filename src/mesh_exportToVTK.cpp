@@ -5,11 +5,8 @@ void Mesh::exportToVTK(const std::string& filename) const {
     if (!file.is_open()) return;
 
     // Identify boundary edges (edges that belong to only one triangle)
-    auto edgeCounts = getEdgeValences();
-    std::vector<Mesh::Edge> boundaryEdges;
-    for (auto const& [edge, count] : edgeCounts) {
-        if (count == 1) boundaryEdges.push_back(edge);
-    }
+    std::vector<Mesh::Edge> boundaryEdges = getBoundaryEdges();
+
 
 
     file << "# vtk DataFile Version 3.0\n";
@@ -42,7 +39,6 @@ void Mesh::exportToVTK(const std::string& filename) const {
     file << "SCALARS Quality_Ratio float\nLOOKUP_TABLE default\n";
     for (float r : ratios) file << r << "\n";
     for (size_t i = 0; i < nB; ++i) file << "0.\n"; 
-
 
 
     // Boundary representation: 0 for triangles, 1 for boundary edges 
