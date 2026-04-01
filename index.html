@@ -80,13 +80,18 @@ Mesh analyzer</h1>
 <p>Start of the mesh generation project. For now, it involves evaluating the quality of a 2D triangular mesh and edge detection. This project will evolve in the coming weeks to include 2D and eventually 3D mesh generation.</p>
 <h2 class="doxsection"><a class="anchor" id="autotoc_md1"></a>
 Mesh class</h2>
-<p>This is a 2D triangular mesh class.</p>
-<h3 class="doxsection"><a class="anchor" id="autotoc_md2"></a>
-hash function</h3>
+<p>This is a 2D triangular mesh class. It contains:</p><ul>
+<li>an <span class="tt">Edge</span> structure that checks for equality to prevent duplicates</li>
+<li>an <span class="tt">EdgeHash</span> structure that combines the hashes of the vertices to form a hash for the edge</li>
+</ul>
+<h4 class="doxsection"><a class="anchor" id="autotoc_md2"></a>
+hashing</h4>
 <p>To ensure optimal search performance within the graph and avoid duplicate edges, we construct a hash table. For now, it is simply used to count the number of edges in the graph.</p>
 <h2 class="doxsection"><a class="anchor" id="autotoc_md3"></a>
 Aspect ratio formula</h2>
-<p>Let there be a triangle with sides a, b, and c. The formula is $$ \frac{abc}{(b+c-a)(c+a-b)(a+b-c)} $$ A result of 1 corresponds to an equilateral triangle and it is greater than 1 by the amount that the triangle is distorted.</p>
+<p>Let there be a triangle with sides a, b, and c. The formula is</p>
+<p>$$\frac{abc}{(b+c-a)(c+a-b)(a+b-c)}$$</p>
+<p>A result of 1 corresponds to an equilateral triangle and it is greater than 1 by the amount that the triangle is distorted.</p>
 <h2 class="doxsection"><a class="anchor" id="autotoc_md4"></a>
 Boundaries detection</h2>
 <p>Another function of this project is to detect the edges of the mesh if it is open. To do this, we select the edges along the boundary. An edge is considered to belong to the boundary of the region if it belongs to exactly one triangle.</p>
@@ -119,6 +124,7 @@ Upcoming changes</h1>
 <h3 class="doxsection"><a class="anchor" id="autotoc_md11"></a>
 in the coming days</h3>
 <ul>
+<li>improvement of code structure</li>
 <li><b>smoothing :</b> use of a smoothing technique (likely Laplacian) to improve the overall aspect ratio of the mesh</li>
 <li>support for quad meshes (maybe) </li>
 </ul>
@@ -134,8 +140,8 @@ in the longer term</h3>
 <li>retopology</li>
 <li>support for 3D meshes</li>
 </ul>
-<h2 class="doxsection"><a class="anchor" id="autotoc_md14"></a>
-Compilation and execution</h2>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md14"></a>
+Compilation and execution</h1>
 <p>Compilation on Windows (preferably with <b>MSVC</b>) or Linux. Use the <b>VS Code</b> interface if possible. </p>
 </div></div><!-- PageDoc -->
 <a href="doxygen_crawl.html"></a>
