@@ -37,13 +37,35 @@ struct Point {
     float length() const;
 
 
-    /**
-     * @brief Subtract another point from this point to get the vector between them
-     * 
-     * @param other 
-     * @return Point resulting vector from the subtraction
-     */
-    Point operator-(const Point& other) const;
+    Point operator-(const Point& other) const{
+        return Point(x - other.x, y - other.y, z - other.z);
+    }
+
+    Point operator+(const Point& other) const{
+        return Point(x + other.x, y + other.y, z + other.z);
+    }
+
+    Point operator*(float scalar) const {
+        return Point(x * scalar, y * scalar, z * scalar);
+    }
+
+    void operator+=(const Point& other) {
+        x += other.x;
+        y += other.y;
+        z += other.z;
+    }
+
+    void operator/=(float scalar) {
+        x /= scalar;
+        y /= scalar;
+        z /= scalar;
+    }
+
+    void operator*=(float scalar) {
+        x *= scalar;
+        y *= scalar;
+        z *= scalar;
+    }
 
 
     /**
