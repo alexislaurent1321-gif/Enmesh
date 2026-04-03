@@ -25,6 +25,10 @@ This is a basic finite element formula :
 Another function of this project is to detect the edges of the mesh if it is open. To do this, we select the edges along the boundary. An edge is considered to belong to the boundary of the region if it belongs to exactly one triangle. 
 To evaluate the valence of the edges (the number of triangles they belong to), we create a `std::unordered_map` that stores integers as values and edges as keys. We iterate through the edges of each triangle and increment the value corresponding to the evaluated edge by 1.
 
+## Smoothing
+A useful method for improving the regularity of a mesh is to apply smoothing. ...
+
+
 # Results
 ## Cube
 To verify that the quality of the triangles is accurately assessed, we simply try the experiment on a cube and then on a stretched cube.
@@ -71,7 +75,8 @@ The results show that all edges are detected.
 - **smoothing :** Implementation of Laplacian smoothing to improve mesh uniformity
 - support for quad meshes (maybe)
 ### in the short term
-- **mesh simplification :** edge collapse
+- **mesh simplification :** edge collapse ([A Comprehensive Guide to Mesh Simplification
+using Edge Collapse](https://arxiv.org/pdf/2512.19959))
 - implementation of simple triangulation method (starting with Delaunay)
 ### in the longer term
 - retopology
