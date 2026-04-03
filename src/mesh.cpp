@@ -139,18 +139,20 @@ void Mesh::smooth(int iterations, float lambda){
         adjacency[triangle.v[2]].insert({triangle.v[0], triangle.v[1]});
     }
 
-    std::vector<Point> nextPositions = vertices;
-    for (int i = 0; i < vertices.size(); ++i) {
+    for(int iter = 0; iter < iterations; ++iter) {
+        std::vector<Point> nextPositions = vertices;
+        for (int i = 0; i < vertices.size(); ++i) {
 
-        Point centroid = {0, 0, 0};
-        for (int neighborIdx : adjacency[i]) {
-            centroid += vertices[neighborIdx];
+            Point centroid = {0, 0, 0};
+            for (int neighborIdx : adjacency[i]) {
+                centroid += vertices[neighborIdx];
+            }
+            centroid /= adjacency[i].size();
+            
+            // Update the vertex position by moving it towards the centroid of its neighbors
+            nextPositions[i] = vertices[i] + (centroid - vertices[i]) * lambda;
         }
-        centroid /= adjacency[i].size();
-        
-        // Update the vertex position by moving it towards the centroid of its neighbors
-        nextPositions[i] = vertices[i] + (centroid - vertices[i]) * lambda;
-    }
 
-    vertices = nextPositions; // Update the vertex positions after smoothing
+        vertices = nextPositions; // Update the vertex positions after smoothing
+    }
 }
