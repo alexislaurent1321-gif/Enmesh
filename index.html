@@ -100,7 +100,10 @@ Boundaries detection</h2>
 <p>Another function of this project is to detect the edges of the mesh if it is open. To do this, we select the edges along the boundary. An edge is considered to belong to the boundary of the region if it belongs to exactly one triangle. To evaluate the valence of the edges (the number of triangles they belong to), we create a <span class="tt">std::unordered_map</span> that stores integers as values and edges as keys. We iterate through the edges of each triangle and increment the value corresponding to the evaluated edge by 1.</p>
 <h2 class="doxsection"><a class="anchor" id="autotoc_md5"></a>
 Smoothing</h2>
-<p>A useful method for improving the regularity of a mesh is to apply smoothing. ...</p>
+<p>A useful method for improving the regularity of a mesh is to apply smoothing. The function depends here on the number of iterations and a factor $\lambda$.</p>
+<p>$$v_i \longleftarrow v_i + \lambda \left( \frac{1}{N_i}\sum_{j=1}^{N_i} v_j - v_i \right)$$</p>
+<p>if $\lambda = 1$, the new position corresponds simply to the mean of neighbourghs' positions :</p>
+<p>$$v_i \longleftarrow \frac{1}{N_i}\sum_{j=1}^{N_i} v_j$$</p>
 <h1 class="doxsection"><a class="anchor" id="autotoc_md6"></a>
 Results</h1>
 <h2 class="doxsection"><a class="anchor" id="autotoc_md7"></a>
@@ -155,8 +158,8 @@ Compilation and execution</h1>
 <h3 class="doxsection"><a class="anchor" id="autotoc_md16"></a>
 Dependencies</h3>
 <ul>
-<li><span class="tt">tinyobjloader</span> (included in the code)</li>
-<li><span class="tt">ParaView</span> </li>
+<li><a href="https://github.com/tinyobjloader/tinyobjloader">tinyobjloader</a> (included in the code)</li>
+<li><a href="https://www.paraview.org/">ParaView</a> </li>
 </ul>
 </div></div><!-- PageDoc -->
 <a href="doxygen_crawl.html"></a>
