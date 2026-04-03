@@ -98,12 +98,15 @@ Aspect ratio formula</h2>
 <h2 class="doxsection"><a class="anchor" id="autotoc_md4"></a>
 Boundaries detection</h2>
 <p>Another function of this project is to detect the edges of the mesh if it is open. To do this, we select the edges along the boundary. An edge is considered to belong to the boundary of the region if it belongs to exactly one triangle. To evaluate the valence of the edges (the number of triangles they belong to), we create a <span class="tt">std::unordered_map</span> that stores integers as values and edges as keys. We iterate through the edges of each triangle and increment the value corresponding to the evaluated edge by 1.</p>
-<h1 class="doxsection"><a class="anchor" id="autotoc_md5"></a>
+<h2 class="doxsection"><a class="anchor" id="autotoc_md5"></a>
+Smoothing</h2>
+<p>A useful method for improving the regularity of a mesh is to apply smoothing. ...</p>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md6"></a>
 Results</h1>
-<h2 class="doxsection"><a class="anchor" id="autotoc_md6"></a>
+<h2 class="doxsection"><a class="anchor" id="autotoc_md7"></a>
 Cube</h2>
 <p>To verify that the quality of the triangles is accurately assessed, we simply try the experiment on a cube and then on a stretched cube.</p>
-<h3 class="doxsection"><a class="anchor" id="autotoc_md7"></a>
+<h3 class="doxsection"><a class="anchor" id="autotoc_md8"></a>
 cube</h3>
 <p>First, we check that the number of vertices, triangles, and edges matches the expected result </p><div class="fragment"><div class="line">Vertices : 8</div>
 <div class="line">Triangles : 12</div>
@@ -113,7 +116,7 @@ cube</h3>
 <div class="line">max aspect ratio : 1.20711</div>
 <div class="line">mean aspect ratio : 1.20711</div>
 </div><!-- fragment --><p><img src="https://github.com/user-attachments/assets/aeea27de-0dd5-40a6-b300-3f0f8b586e1b" alt="cube_ratios" width="600" height="300" class="inline"/></p>
-<h3 class="doxsection"><a class="anchor" id="autotoc_md8"></a>
+<h3 class="doxsection"><a class="anchor" id="autotoc_md9"></a>
 stretched cube</h3>
 <p>In this configuration, the height along the z-axis is doubled : </p><div class="fragment"><div class="line">min aspect ratio : 1.20711</div>
 <div class="line">max aspect ratio : 1.46353</div>
@@ -121,35 +124,35 @@ stretched cube</h3>
 </div><!-- fragment --><p> We make sure that we get a higher value on the side faces, since the triangles are more stretched :</p>
 <p><img src="https://github.com/user-attachments/assets/75ffb92b-da42-4868-8ef9-5d5246ebd412" alt="cube2_ratios" width="600" height="300" class="inline"/></p>
 <p>On the stretched cube, the tool correctly detects the increase in the aspect ratio on the side faces (1.463).</p>
-<h2 class="doxsection"><a class="anchor" id="autotoc_md9"></a>
+<h2 class="doxsection"><a class="anchor" id="autotoc_md10"></a>
 Boundaries detection</h2>
 <p>The example used here is a hemisphere with some missing faces. Part of the edge, as well as two triangles sharing a common vertex, have been removed.</p>
 <p><img src="https://github.com/user-attachments/assets/171883d1-4b31-4704-8ced-66f49e6d964d" alt="demi_sphere_boundaries" width="600" height="400" class="inline"/></p>
 <p>The results show that all edges are detected.</p>
-<h1 class="doxsection"><a class="anchor" id="autotoc_md10"></a>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md11"></a>
 Upcoming changes</h1>
-<h3 class="doxsection"><a class="anchor" id="autotoc_md11"></a>
+<h3 class="doxsection"><a class="anchor" id="autotoc_md12"></a>
 in the coming days</h3>
 <ul>
 <li><b>smoothing :</b> Implementation of Laplacian smoothing to improve mesh uniformity</li>
 <li>support for quad meshes (maybe) </li>
 </ul>
-<h3 class="doxsection"><a class="anchor" id="autotoc_md12"></a>
+<h3 class="doxsection"><a class="anchor" id="autotoc_md13"></a>
 in the short term</h3>
 <ul>
-<li><b>mesh simplification :</b> edge collapse</li>
+<li><b>mesh simplification :</b> edge collapse (<a href="https://arxiv.org/pdf/2512.19959">A Comprehensive Guide to Mesh Simplification using Edge Collapse</a>)</li>
 <li>implementation of simple triangulation method (starting with Delaunay) </li>
 </ul>
-<h3 class="doxsection"><a class="anchor" id="autotoc_md13"></a>
+<h3 class="doxsection"><a class="anchor" id="autotoc_md14"></a>
 in the longer term</h3>
 <ul>
 <li>retopology</li>
 <li>support for 3D meshes</li>
 </ul>
-<h1 class="doxsection"><a class="anchor" id="autotoc_md14"></a>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md15"></a>
 Compilation and execution</h1>
 <p>Compilation on Windows (preferably with <b>MSVC</b>) or Linux. Use the <b>VS Code</b> interface if possible.</p>
-<h3 class="doxsection"><a class="anchor" id="autotoc_md15"></a>
+<h3 class="doxsection"><a class="anchor" id="autotoc_md16"></a>
 Dependencies</h3>
 <ul>
 <li><span class="tt">tinyobjloader</span> (included in the code)</li>
