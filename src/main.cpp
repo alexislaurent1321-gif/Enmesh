@@ -1,8 +1,8 @@
 #include <iostream>
 
 #include "geometry/mesh.h"
-#include "exportToVTK.h"
-#include "triangulation.h"
+#include "visualization/exportToVTK.h"
+#include "mesh_generation/triangulation.h"
 
 // Main function to load a mesh from an OBJ file, analyze it, and print out basic statistics about the mesh quality
 int main() {

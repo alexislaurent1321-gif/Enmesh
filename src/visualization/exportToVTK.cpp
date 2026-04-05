@@ -1,4 +1,4 @@
-#include "geometry/mesh.h"
+#include "visualization/exportToVTK.h"
 
 void exportToVTK(const std::string& filename, const Mesh& mesh) {
     std::ofstream file(filename);

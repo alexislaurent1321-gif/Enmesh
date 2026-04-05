@@ -7,7 +7,7 @@ add_executable(mesh_analyzer
     src/geometry/triangle.cpp
     src/geometry/point.cpp
     src/geometry/mesh.cpp
-    src/exportToVTK.cpp
+    src/visualization/exportToVTK.cpp
     src/main.cpp
 )
 
