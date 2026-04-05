@@ -15,11 +15,40 @@
 #include "point.h"
 
 /**
+ * @brief A struct representing an edge in the mesh
+ * 
+ */
+struct Edge {
+    int v1, v2;
+    bool operator==(const Edge& other) const {
+        return v1 == other.v1 && v2 == other.v2;
+    }
+};
+
+
+/**
  * @brief A struct representing a triangle in the mesh
  * 
  */
 struct Triangle {
     std::array<int, 3> v; 
+    bool isBad = false; // Flag used in Delaunay triangulation to mark triangles that need to be removed
+    bool containsEdge(int v1, int v2) const {
+        return (v[0] == v1 && v[1] == v2) || (v[1] == v1 && v[0] == v2) ||
+               (v[1] == v1 && v[2] == v2) || (v[2] == v1 && v[1] == v2) ||
+               (v[2] == v1 && v[0] == v2) || (v[0] == v1 && v[2] == v2);
+    }
+
+};
+
+ /**
+ * @brief A hash function for the Edge struct to allow it to be used in an unordered_set
+ * 
+ */
+struct EdgeHash {
+    size_t operator()(const Edge& e) const {
+        return std::hash<int>{}(e.v1) ^ (std::hash<int>{}(e.v2) << 1); // Combine hashes of v1 and v2
+    }
 };
 
 /**
@@ -33,28 +62,7 @@ public:
     std::vector<Triangle> triangles;    ///< List of triangles defined by vertex indices
     std::vector<float> ratios;          ///< aspect ratios of triangles (for quality analysis)
 
-
-    /**
-     * @brief A struct representing an edge in the mesh
-     * 
-     */
-    struct Edge {
-        int v1, v2;
-        bool operator==(const Edge& other) const {
-            return v1 == other.v1 && v2 == other.v2;
-        }
-    };
-
-
-    /**
-     * @brief A hash function for the Edge struct to allow it to be used in an unordered_set
-     * 
-     */
-    struct EdgeHash {
-        size_t operator()(const Edge& e) const {
-            return std::hash<int>{}(e.v1) ^ (std::hash<int>{}(e.v2) << 1); // Combine hashes of v1 and v2
-        }
-    };
+   
 
 
     /**
@@ -103,9 +111,9 @@ public:
     /**
      * @brief Get the Edge Valences object  
      * 
-     * @return std::unordered_map<Mesh::Edge, int, Mesh::EdgeHash> 
+     * @return std::unordered_map<Edge, int, EdgeHash> 
      */
-    std::unordered_map<Mesh::Edge, int, Mesh::EdgeHash> getEdgeValences() const;
+    std::unordered_map<Edge, int, EdgeHash> getEdgeValences() const;
 
 
     /** 

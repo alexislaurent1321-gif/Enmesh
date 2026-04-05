@@ -20,6 +20,15 @@ struct Point {
 
 
     /**
+     * @brief Construct a new Point object at the specified coordinates (z defaults to 0)
+     * 
+     * @param x_ 
+     * @param y_ 
+     */
+    Point(float x_, float y_) : x(x_), y(y_), z(0) {}
+
+
+    /**
      * @brief Construct a new Point object at the specified coordinates
      * 
      * @param x_ 

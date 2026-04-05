@@ -101,7 +101,7 @@ bool Mesh::loadObj(const std::string& path) {
 }
 
 
-std::unordered_map<Mesh::Edge, int, Mesh::EdgeHash> Mesh::getEdgeValences() const {
+std::unordered_map<Edge, int, EdgeHash> Mesh::getEdgeValences() const {
     std::unordered_map<Edge, int, EdgeHash> counts;     // Use an unordered_map to count occurrences of each edge
     
     for (const auto& t : triangles) {
@@ -118,7 +118,7 @@ std::unordered_map<Mesh::Edge, int, Mesh::EdgeHash> Mesh::getEdgeValences() cons
 }
 
 
-std::vector<Mesh::Edge> Mesh::getBoundaryEdges() const {
+std::vector<Edge> Mesh::getBoundaryEdges() const {
     auto edgeCounts = getEdgeValences();    // Get the valence counts for all edges
     std::vector<Edge> boundaryEdges;        // Collect edges that belong to only one triangle (valence = 1)
     
