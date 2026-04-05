@@ -1,9 +1,9 @@
 #include <numeric>
 #include <algorithm>
 #define TINYOBJLOADER_IMPLEMENTATION
-#include <tiny_obj_loader.h>
+#include <extern/tiny_obj_loader.h>
 
-#include "mesh.h"
+#include "geometry/mesh.h"
 
 
 size_t Mesh::countUniqueEdges() const {

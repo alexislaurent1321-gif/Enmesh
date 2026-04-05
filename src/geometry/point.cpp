@@ -1,4 +1,4 @@
-#include "point.h"
+#include "geometry/point.h"
 
 float Point::length() const { 
     return std::sqrt(x*x + y*y + z*z); 

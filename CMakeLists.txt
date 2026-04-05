@@ -4,10 +4,11 @@ project(meshAnalyzer LANGUAGES CXX)
 set(CMAKE_CXX_STANDARD 17)
 
 add_executable(mesh_analyzer 
-    src/main.cpp 
-    src/point.cpp
-    src/mesh.cpp
+    src/geometry/triangle.cpp
+    src/geometry/point.cpp
+    src/geometry/mesh.cpp
     src/exportToVTK.cpp
+    src/main.cpp
 )
 
 target_include_directories(mesh_analyzer PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/include)
