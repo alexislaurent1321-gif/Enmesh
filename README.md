@@ -74,14 +74,15 @@ Here is an example of a cube with $\lambda=1$ and $10$ iterations :
 
 # Upcoming changes
 ### as soon as possible
-- for viewing triangulated shapes
+- Replace the main file with demos to test various cases and features of the project separately. Add an error handler.
+- fix bug of the VTK export
 - Testing triangulation on an irregular set of points
 ### in the short term
 - **mesh refinement :** division of triangles with an incorrect aspect ratio
-- **local mesh adjustments :** remove triangles from the mesh, especially if the mesh contains a hole or is not convex
+- **local mesh adjustments :** remove triangles from the mesh, especially if the model contains a hole or is not convex.
 ### in the longer term
-- retopology
 - support for 3D meshes
+- retopology
 - **mesh simplification :** edge collapse ([A Comprehensive Guide to Mesh Simplification
 using Edge Collapse](https://arxiv.org/pdf/2512.19959)) (maybe)
 
