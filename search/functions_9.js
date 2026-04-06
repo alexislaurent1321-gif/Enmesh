@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['triangulate_0',['triangulate',['../classDelaunay.html#abef0bcb6a7d3cd478299a88faf6af767',1,'Delaunay']]]
+  ['valid_0',['Valid',['../classtinyobj_1_1ObjReader.html#ac4c689535db68c233dd063e7c726139d',1,'tinyobj::ObjReader']]]
 ];

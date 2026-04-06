@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['smooth_0',['smooth',['../classMesh.html#a16a4868079b9a5bc5a3755484b48d267',1,'Mesh']]]
+  ['triangulate_0',['triangulate',['../classDelaunay.html#abef0bcb6a7d3cd478299a88faf6af767',1,'Delaunay']]]
 ];
