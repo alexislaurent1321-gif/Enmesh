@@ -104,6 +104,7 @@ Aspect ratio formula</h2>
 <li>a ratio of 1 corresponds to a perfect equilateral triangle.</li>
 <li>the higher the ratio, the more distorted the triangle becomes, which can hinder the convergence of the solvers.</li>
 </ul>
+<p>Here is an example with a cube and a stretched cube. Since the side faces are stretched, the result is larger :</p>
 <table class="doxtable">
 <tr>
 <td><img src="https://github.com/user-attachments/assets/aeea27de-0dd5-40a6-b300-3f0f8b586e1b" alt="cube_ratios" width="600" height="300" class="inline"/> </td><td><img src="https://github.com/user-attachments/assets/75ffb92b-da42-4868-8ef9-5d5246ebd412" alt="cube2_ratios" width="600" height="300" class="inline"/> </td></tr>
@@ -120,27 +121,30 @@ Smoothing</h2>
 <p>$$v_i \longleftarrow v_i + \lambda \left( \frac{1}{N_i}\sum_{j=1}^{N_i} v_j - v_i \right)$$</p>
 <p>if $\lambda = 1$, the new position corresponds simply to the mean of neighbourghs' positions :</p>
 <p>$$v_i \longleftarrow \frac{1}{N_i}\sum_{j=1}^{N_i} v_j$$</p>
+<p>Here is an example of a cube with $\lambda=1$ and $10$ iterations :</p>
+<p><img src="https://github.com/user-attachments/assets/aac01706-2f8b-4704-a0aa-ee5772952bb7" alt="cube_smooth" width="1209" height="600" style="width:50%;" class="inline"/></p>
 <h2 class="doxsection"><a class="anchor" id="autotoc_md7"></a>
 Delaunay triangulation</h2>
 <h1 class="doxsection"><a class="anchor" id="autotoc_md8"></a>
 Upcoming changes</h1>
 <h3 class="doxsection"><a class="anchor" id="autotoc_md9"></a>
-in the coming days</h3>
+as soon as possible</h3>
 <ul>
-<li><b>smoothing :</b> Implementation of Laplacian smoothing to improve mesh uniformity</li>
-<li>support for quad meshes (maybe) </li>
+<li>for viewing triangulated shapes</li>
+<li>Testing triangulation on an irregular set of points </li>
 </ul>
 <h3 class="doxsection"><a class="anchor" id="autotoc_md10"></a>
 in the short term</h3>
 <ul>
-<li><b>mesh simplification :</b> edge collapse (<a href="https://arxiv.org/pdf/2512.19959">A Comprehensive Guide to Mesh Simplification using Edge Collapse</a>)</li>
-<li>implementation of simple triangulation method (starting with Delaunay) </li>
+<li><b>mesh refinement :</b> division of triangles with an incorrect aspect ratio</li>
+<li><b>local mesh adjustments :</b> remove triangles from the mesh, especially if the mesh contains a hole or is not convex </li>
 </ul>
 <h3 class="doxsection"><a class="anchor" id="autotoc_md11"></a>
 in the longer term</h3>
 <ul>
 <li>retopology</li>
 <li>support for 3D meshes</li>
+<li><b>mesh simplification :</b> edge collapse (<a href="https://arxiv.org/pdf/2512.19959">A Comprehensive Guide to Mesh Simplification using Edge Collapse</a>) (maybe)</li>
 </ul>
 <h1 class="doxsection"><a class="anchor" id="autotoc_md12"></a>
 Compilation and execution</h1>
