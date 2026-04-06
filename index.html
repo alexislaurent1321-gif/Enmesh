@@ -76,8 +76,8 @@ $(function() {
 <div class="contents">
 <div class="textblock"><p><a class="anchor" id="md_README"></a> <a href="https://alexislaurent1321-gif.github.io/mesh_analyzer/"><img src="https://img.shields.io/badge/docs-doxygen-blue.svg" alt="Documentation" style="pointer-events: none;" class="inline"/></a></p>
 <h1 class="doxsection"><a class="anchor" id="autotoc_md0"></a>
-Mesh analyzer</h1>
-<p>Start of the mesh generation project. For now, it involves evaluating the quality of a 2D triangular mesh and edge detection. This project will evolve in the coming weeks to include 2D and eventually 3D mesh generation.</p>
+Mesh generation</h1>
+<p>Start of a project to analyze a mesh and triangulate a 2D space.</p>
 <h1 class="doxsection"><a class="anchor" id="autotoc_md1"></a>
 Project structure</h1>
 <p>The project is organized into the following folders:</p><ul>
@@ -89,6 +89,7 @@ Project structure</h1>
 Features</h1>
 <h2 class="doxsection"><a class="anchor" id="autotoc_md3"></a>
 Mesh analyzer</h2>
+<p>The mesh analysis section allows you to view its attributes and detect/highlight edges.</p>
 <h4 class="doxsection"><a class="anchor" id="autotoc_md4"></a>
 hashing</h4>
 <p>To ensure optimal search performance within the graph and avoid duplicate edges, we construct a hash table. This method involves using a <span class="tt">std::unordered_set</span> structure with a custom hash function to identify unique edges with an average time complexity of $O(1)$.</p>
@@ -139,15 +140,15 @@ Test on a regular grid</h3>
 <div class="line">min aspect ratio : 1.20711</div>
 <div class="line">max aspect ratio : 1.20711</div>
 <div class="line">mean aspect ratio : 1.20711</div>
-</div><!-- fragment --><p> The results are correct</p>
+</div><!-- fragment --><p> The results are correct. </p><dl class="section warning"><dt>Warning</dt><dd>The VTK export isn't working for this part of the project at the moment. I'll fix it as soon as possible.</dd></dl>
 <h1 class="doxsection"><a class="anchor" id="autotoc_md11"></a>
 Upcoming changes</h1>
 <h3 class="doxsection"><a class="anchor" id="autotoc_md12"></a>
 as soon as possible</h3>
 <ul>
-<li>Replace the main file with demos to test various cases and features of the project separately. Add an error handler.</li>
+<li><b>Replace the main file with demos</b> to test various cases and features of the project separately. Add an error handler.</li>
 <li>fix bug of the VTK export</li>
-<li>Testing triangulation on an irregular set of points </li>
+<li>Test triangulation on an irregular set of points </li>
 </ul>
 <h3 class="doxsection"><a class="anchor" id="autotoc_md13"></a>
 in the short term</h3>
