@@ -1,7 +1,7 @@
 [![Documentation](https://img.shields.io/badge/docs-doxygen-blue.svg)](https://alexislaurent1321-gif.github.io/mesh_analyzer/)
 
 # Mesh generation
-Start of a project to analyze a mesh and triangulate a 2D space.
+Start of a project to analyze a triangular mesh or create one using using Delaunay. 
 
 # Project structure
 The project is organized into the following folders: 
@@ -82,7 +82,7 @@ Here is an example of a cube with $\lambda=1$ and $10$ iterations :
 ## Delaunay triangulation
 The final feature, which will be at the heart of the project, involves triangulating a set of points using the Delaunay method. The algorithm used here is the Bowyer-Watson algorithm. 
 ### Test on a regular grid
-To validate the triangulation, we count the number of triangles and edges and check the ratio. Since the mesh is a grid, we expect a constant ratio of $\simeq 1.2$. Here are the results for a $4\times 4$ grid : 
+To validate the triangulation, we count the number of triangles and edges and check the ratio. Since the mesh is a grid, we expect a constant ratio of $\simeq 1.2$. Here are the results for a $4\times 4$ cells ($5 \times 5$ points) grid : 
 ```
 Vertices : 25
 Triangles : 32
