@@ -27,7 +27,7 @@ int main() {
 
     
 
-    // Triangulation test on a grid (for now, without ParaView)
+    // Triangulation test on a grid (for now, without ParaView) // !!! The project will be structured into demos starting tomorrow
 
     // // Example of generating a grid mesh and exporting it
     // Mesh gridMesh;
