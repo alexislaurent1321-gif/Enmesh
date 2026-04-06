@@ -78,26 +78,31 @@ $(function() {
 <h1 class="doxsection"><a class="anchor" id="autotoc_md0"></a>
 Mesh analyzer</h1>
 <p>Start of the mesh generation project. For now, it involves evaluating the quality of a 2D triangular mesh and edge detection. This project will evolve in the coming weeks to include 2D and eventually 3D mesh generation.</p>
-<h2 class="doxsection"><a class="anchor" id="autotoc_md1"></a>
-Mesh class</h2>
-<p>This is a 2D triangular mesh class. It contains:</p><ul>
-<li>an <span class="tt">Edge</span> structure that checks for equality to prevent duplicates</li>
-<li>an <span class="tt">EdgeHash</span> structure that combines the hashes of the vertices to form a hash for the edge The mesh is loaded using the <span class="tt">tinyobjloader</span> library (included in this project).</li>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md1"></a>
+Project structure</h1>
+<p>The project is organized into the following folders:</p><ul>
+<li><b>geometry :</b> contains classes for Point, Triangle, Mesh</li>
+<li><b>mesh_generation :</b> contains classes for generating grids or triangulate a set of vertices</li>
+<li><b>visualization :</b> contains the export in VTK format for ParaView</li>
 </ul>
-<h4 class="doxsection"><a class="anchor" id="autotoc_md2"></a>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md2"></a>
+Features</h1>
+<h2 class="doxsection"><a class="anchor" id="autotoc_md3"></a>
+Mesh analyzer</h2>
+<h4 class="doxsection"><a class="anchor" id="autotoc_md4"></a>
 hashing</h4>
 <p>To ensure optimal search performance within the graph and avoid duplicate edges, we construct a hash table. This method involves using a <span class="tt">std::unordered_set</span> structure with a custom hash function to identify unique edges with an average time complexity of $O(1)$.</p>
-<h4 class="doxsection"><a class="anchor" id="autotoc_md3"></a>
+<h4 class="doxsection"><a class="anchor" id="autotoc_md5"></a>
 Exemple</h4>
 <p>Here, an exemple for a cube : </p><div class="fragment"><div class="line">Vertices : 8</div>
 <div class="line">Triangles : 12</div>
 <div class="line">Unique edges : 18</div>
-<div class="line">min aspect ratio : 1.20711</div>
+</div><!-- fragment --><h4 class="doxsection"><a class="anchor" id="autotoc_md6"></a>
+Aspect ratio</h4>
+<p>The analyzer computes also the aspects ratio of triangles : </p><div class="fragment"><div class="line">min aspect ratio : 1.20711</div>
 <div class="line">max aspect ratio : 1.20711</div>
 <div class="line">mean aspect ratio : 1.20711</div>
-</div><!-- fragment --><p> The triangles that make up a cube are isosceles-right triangles, which corresponds to an aspect ratio of $\simeq 1.2$.</p>
-<h2 class="doxsection"><a class="anchor" id="autotoc_md4"></a>
-Aspect ratio formula</h2>
+</div><!-- fragment --><p>The triangles that make up a cube are isosceles-right triangles, which corresponds to an aspect ratio of $\simeq 1.2$.</p>
 <p>Let there be a triangle with sides a, b, and c. The formula is</p>
 <p>$$\frac{abc}{(b+c-a)(c+a-b)(a+b-c)}$$</p>
 <p>This is a basic finite element formula :</p><ul>
@@ -109,13 +114,13 @@ Aspect ratio formula</h2>
 <tr>
 <td><img src="https://github.com/user-attachments/assets/aeea27de-0dd5-40a6-b300-3f0f8b586e1b" alt="cube_ratios" width="600" height="300" class="inline"/> </td><td><img src="https://github.com/user-attachments/assets/75ffb92b-da42-4868-8ef9-5d5246ebd412" alt="cube2_ratios" width="600" height="300" class="inline"/> </td></tr>
 </table>
-<h2 class="doxsection"><a class="anchor" id="autotoc_md5"></a>
+<h2 class="doxsection"><a class="anchor" id="autotoc_md7"></a>
 Boundaries detection</h2>
 <p>Another function of this project is to detect the edges of the mesh if it is open. To do this, we select the edges along the boundary. An edge is considered to belong to the boundary of the region if it belongs to exactly one triangle. To evaluate the valence of the edges (the number of triangles they belong to), we create a <span class="tt">std::unordered_map</span> that stores integers as values and edges as keys. We iterate through the edges of each triangle and increment the value corresponding to the evaluated edge by 1.</p>
 <p>The example used here is a hemisphere with some missing faces. Part of the edge, as well as two triangles sharing a common vertex, have been removed.</p>
 <p><img src="https://github.com/user-attachments/assets/171883d1-4b31-4704-8ced-66f49e6d964d" alt="demi_sphere_boundaries" width="600" height="400" style="width:50%;" class="inline"/></p>
 <p>The results show that all edges are detected.</p>
-<h2 class="doxsection"><a class="anchor" id="autotoc_md6"></a>
+<h2 class="doxsection"><a class="anchor" id="autotoc_md8"></a>
 Smoothing</h2>
 <p>A useful method for improving the regularity of a mesh is to apply smoothing. The function depends here on the number of iterations and a factor $\lambda$.</p>
 <p>$$v_i \longleftarrow v_i + \lambda \left( \frac{1}{N_i}\sum_{j=1}^{N_i} v_j - v_i \right)$$</p>
@@ -123,34 +128,44 @@ Smoothing</h2>
 <p>$$v_i \longleftarrow \frac{1}{N_i}\sum_{j=1}^{N_i} v_j$$</p>
 <p>Here is an example of a cube with $\lambda=1$ and $10$ iterations :</p>
 <p><img src="https://github.com/user-attachments/assets/aac01706-2f8b-4704-a0aa-ee5772952bb7" alt="cube_smooth" width="1209" height="600" style="width:50%;" class="inline"/></p>
-<h2 class="doxsection"><a class="anchor" id="autotoc_md7"></a>
+<h2 class="doxsection"><a class="anchor" id="autotoc_md9"></a>
 Delaunay triangulation</h2>
-<h1 class="doxsection"><a class="anchor" id="autotoc_md8"></a>
+<p>The final feature, which will be at the heart of the project, involves triangulating a set of points using the Delaunay method. The algorithm used here is the Bowyer-Watson algorithm. </p>
+<h3 class="doxsection"><a class="anchor" id="autotoc_md10"></a>
+Test on a regular grid</h3>
+<p>To validate the triangulation, we count the number of triangles and edges and check the ratio. Since the mesh is a grid, we expect a constant ratio of $\simeq 1.2$. Here are the results for a $4\times 4$ grid : </p><div class="fragment"><div class="line">Vertices : 25</div>
+<div class="line">Triangles : 32</div>
+<div class="line">Unique edges : 56</div>
+<div class="line">min aspect ratio : 1.20711</div>
+<div class="line">max aspect ratio : 1.20711</div>
+<div class="line">mean aspect ratio : 1.20711</div>
+</div><!-- fragment --><p> The results are correct</p>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md11"></a>
 Upcoming changes</h1>
-<h3 class="doxsection"><a class="anchor" id="autotoc_md9"></a>
+<h3 class="doxsection"><a class="anchor" id="autotoc_md12"></a>
 as soon as possible</h3>
 <ul>
 <li>Replace the main file with demos to test various cases and features of the project separately. Add an error handler.</li>
 <li>fix bug of the VTK export</li>
 <li>Testing triangulation on an irregular set of points </li>
 </ul>
-<h3 class="doxsection"><a class="anchor" id="autotoc_md10"></a>
+<h3 class="doxsection"><a class="anchor" id="autotoc_md13"></a>
 in the short term</h3>
 <ul>
 <li><b>mesh refinement :</b> division of triangles with an incorrect aspect ratio</li>
 <li><b>local mesh adjustments :</b> remove triangles from the mesh, especially if the model contains a hole or is not convex. </li>
 </ul>
-<h3 class="doxsection"><a class="anchor" id="autotoc_md11"></a>
+<h3 class="doxsection"><a class="anchor" id="autotoc_md14"></a>
 in the longer term</h3>
 <ul>
 <li>support for 3D meshes</li>
 <li>retopology</li>
 <li><b>mesh simplification :</b> edge collapse (<a href="https://arxiv.org/pdf/2512.19959">A Comprehensive Guide to Mesh Simplification using Edge Collapse</a>) (maybe)</li>
 </ul>
-<h1 class="doxsection"><a class="anchor" id="autotoc_md12"></a>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md15"></a>
 Compilation and execution</h1>
 <p>Compilation on Windows (preferably with <b>MSVC</b>) or Linux. Use the <b>VS Code</b> interface if possible.</p>
-<h3 class="doxsection"><a class="anchor" id="autotoc_md13"></a>
+<h3 class="doxsection"><a class="anchor" id="autotoc_md16"></a>
 Dependencies</h3>
 <ul>
 <li><a href="https://github.com/tinyobjloader/tinyobjloader">tinyobjloader</a> (included in the code)</li>

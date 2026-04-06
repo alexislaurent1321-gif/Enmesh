@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['hashing_0',['hashing',['../index.html#autotoc_md2',1,'']]]
+  ['grid_0',['Test on a regular grid',['../index.html#autotoc_md10',1,'']]]
 ];
