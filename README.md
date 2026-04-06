@@ -32,6 +32,8 @@ $$\frac{abc}{(b+c-a)(c+a-b)(a+b-c)}$$
 This is a basic finite element formula : 
 - a ratio of 1 corresponds to a perfect equilateral triangle.
 - the higher the ratio, the more distorted the triangle becomes, which can hinder the convergence of the solvers.
+  
+Here is an example with a cube and a stretched cube. Since the side faces are stretched, the result is larger : 
 
 <table>
   <tr>
@@ -61,22 +63,27 @@ if $\lambda = 1$, the new position corresponds simply to the mean of neighbourgh
 
 $$v_i \longleftarrow \frac{1}{N_i}\sum_{j=1}^{N_i} v_j$$
 
+Here is an example of a cube with $\lambda=1$ and $10$ iterations : 
+
+<img width="1209" height="600" alt="cube_smooth" src="https://github.com/user-attachments/assets/aac01706-2f8b-4704-a0aa-ee5772952bb7" style="width:50%;" />
+
 ## Delaunay triangulation
 
 
 
 
 # Upcoming changes
-### in the coming days
-- **smoothing :** Implementation of Laplacian smoothing to improve mesh uniformity
-- support for quad meshes (maybe)
+### as soon as possible
+- for viewing triangulated shapes
+- Testing triangulation on an irregular set of points
 ### in the short term
-- **mesh simplification :** edge collapse ([A Comprehensive Guide to Mesh Simplification
-using Edge Collapse](https://arxiv.org/pdf/2512.19959))
-- implementation of simple triangulation method (starting with Delaunay)
+- **mesh refinement :** division of triangles with an incorrect aspect ratio
+- **local mesh adjustments :** remove triangles from the mesh, especially if the mesh contains a hole or is not convex
 ### in the longer term
 - retopology
 - support for 3D meshes
+- **mesh simplification :** edge collapse ([A Comprehensive Guide to Mesh Simplification
+using Edge Collapse](https://arxiv.org/pdf/2512.19959)) (maybe)
 
 
 # Compilation and execution
