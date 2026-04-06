@@ -12,6 +12,18 @@ The mesh is loaded using the `tinyobjloader` library (included in this project).
 #### hashing
 To ensure optimal search performance within the graph and avoid duplicate edges, we construct a hash table. This method involves using a `std::unordered_set` structure with a custom hash function to identify unique edges with an average time complexity of $O(1)$.
 
+#### Exemple
+Here, an exemple for a cube : 
+```bash
+Vertices : 8
+Triangles : 12
+Unique edges : 18
+min aspect ratio : 1.20711
+max aspect ratio : 1.20711
+mean aspect ratio : 1.20711
+```
+The triangles that make up a cube are isosceles-right triangles, which corresponds to an aspect ratio of $\simeq 1.2$.
+
 ## Aspect ratio formula
 Let there be a triangle with sides a, b, and c. The formula is
 
@@ -21,9 +33,24 @@ This is a basic finite element formula :
 - a ratio of 1 corresponds to a perfect equilateral triangle.
 - the higher the ratio, the more distorted the triangle becomes, which can hinder the convergence of the solvers.
 
+<table>
+  <tr>
+    <td><img width="600" height="300" alt="cube_ratios" src="https://github.com/user-attachments/assets/aeea27de-0dd5-40a6-b300-3f0f8b586e1b" />
+    <td><img width="600" height="300" alt="cube2_ratios" src="https://github.com/user-attachments/assets/75ffb92b-da42-4868-8ef9-5d5246ebd412" />
+  </tr>
+</table>
+
 ## Boundaries detection
 Another function of this project is to detect the edges of the mesh if it is open. To do this, we select the edges along the boundary. An edge is considered to belong to the boundary of the region if it belongs to exactly one triangle. 
 To evaluate the valence of the edges (the number of triangles they belong to), we create a `std::unordered_map` that stores integers as values and edges as keys. We iterate through the edges of each triangle and increment the value corresponding to the evaluated edge by 1.
+
+The example used here is a hemisphere with some missing faces. Part of the edge, as well as two triangles sharing a common vertex, have been removed. 
+
+<img width="600" height="400" alt="demi_sphere_boundaries" src="https://github.com/user-attachments/assets/171883d1-4b31-4704-8ced-66f49e6d964d" style="width:50%;" /> 
+
+
+
+The results show that all edges are detected.
 
 ## Smoothing
 A useful method for improving the regularity of a mesh is to apply smoothing. The function depends here on the number of iterations and a factor $\lambda$. 
@@ -34,47 +61,10 @@ if $\lambda = 1$, the new position corresponds simply to the mean of neighbourgh
 
 $$v_i \longleftarrow \frac{1}{N_i}\sum_{j=1}^{N_i} v_j$$
 
+## Delaunay triangulation
 
-# Results
-## Cube
-To verify that the quality of the triangles is accurately assessed, we simply try the experiment on a cube and then on a stretched cube.
 
-### cube
-First, we check that the number of vertices, triangles, and edges matches the expected result
-```bash
-Vertices : 8
-Triangles : 12
-Unique edges : 18
-```
-These numbers are correct, particularly the number of vertices, which shows that the hashing worked. Next, we look at the quality of the triangles. We simply expect to get the same ratio for each of them : 
 
-```bash
-min aspect ratio : 1.20711
-max aspect ratio : 1.20711
-mean aspect ratio : 1.20711
-```
-
-<img width="600" height="300" alt="cube_ratios" src="https://github.com/user-attachments/assets/aeea27de-0dd5-40a6-b300-3f0f8b586e1b" />
-
-### stretched cube
-In this configuration, the height along the z-axis is doubled : 
-```bash
-min aspect ratio : 1.20711
-max aspect ratio : 1.46353
-mean aspect ratio : 1.37805
-```
-We make sure that we get a higher value on the side faces, since the triangles are more stretched : 
-
-<img width="600" height="300" alt="cube2_ratios" src="https://github.com/user-attachments/assets/75ffb92b-da42-4868-8ef9-5d5246ebd412" />
-
-On the stretched cube, the tool correctly detects the increase in the aspect ratio on the side faces (1.463).
-
-## Boundaries detection
-The example used here is a hemisphere with some missing faces. Part of the edge, as well as two triangles sharing a common vertex, have been removed. 
-
-<img width="600" height="400" alt="demi_sphere_boundaries" src="https://github.com/user-attachments/assets/171883d1-4b31-4704-8ced-66f49e6d964d" /> 
-
-The results show that all edges are detected.
 
 # Upcoming changes
 ### in the coming days
