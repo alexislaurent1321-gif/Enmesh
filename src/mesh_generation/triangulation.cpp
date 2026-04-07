@@ -98,8 +98,16 @@ void Delaunay::cleanup(Triangle superTriangle) {
                     triangle.v[2] == superTriangle.v[0] || triangle.v[2] == superTriangle.v[1] || triangle.v[2] == superTriangle.v[2]);
         }), mesh.triangles.end());
 
+
+    // Adjust vertex indices in the remaining triangles to account for the removed super-triangle vertices
+    for(auto& triangle : mesh.triangles) {
+        for (int i = 0; i < 3; ++i) {
+            triangle.v[i] = triangle.v[i] - 3; 
+        }
+    }
+
     // Remove the super-triangle vertices from the mesh
-    mesh.vertices.erase(mesh.vertices.end() - 3, mesh.vertices.end());
+    mesh.vertices.erase(mesh.vertices.begin(), mesh.vertices.begin() + 3);   
 }
 
 
