@@ -5,7 +5,7 @@ Start of a project to analyze a triangular mesh or create one using Delaunay.
 
 # Project structure
 The project is organized into the following folders: 
-- **geometry :** contains classes for Point, Triangle, Mesh
+- **geometry :** contains classes for points, triangles, meshes and edges
 - **mesh_generation :** contains classes for generating grids or triangulate a set of vertices
 - **visualization :** contains the export in VTK format for ParaView
 
@@ -116,6 +116,8 @@ using Edge Collapse](https://arxiv.org/pdf/2512.19959)) (maybe)
 # Compilation and execution
 
 Compilation on Windows (preferably with **MSVC**) or Linux. Use the **VS Code** interface if possible.
+
+The demos can be run in the `scripts` folder. Scripts are named as follows : `run_{demo}.sh` for Linux or `run_{demo}.bat` for Windows.
 
 ### Dependencies
 - [tinyobjloader](https://github.com/tinyobjloader/tinyobjloader) (included in the code)
