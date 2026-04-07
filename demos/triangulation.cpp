@@ -8,8 +8,7 @@
 // Main function to load a mesh from an OBJ file, analyze it, and print out basic statistics about the mesh quality
 int main() {
     
-
-    // Triangulation test on a grid (for now, without ParaView) // !!! The project will be structured into demos starting tomorrow
+    // Triangulation test on a grid
 
     // Example of generating a grid mesh and exporting it
     Mesh gridMesh;

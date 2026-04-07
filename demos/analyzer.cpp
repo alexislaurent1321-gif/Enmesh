@@ -15,8 +15,6 @@ int main() {
         std::cerr << "Error loading OBJ file." << std::endl;
         return 1;
     }
-
-    mesh.smooth(10, 1.f);   // Optional: Smooth 
     
     mesh.analyzeMesh();
 
