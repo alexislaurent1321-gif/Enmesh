@@ -23,7 +23,7 @@ struct Triangle {
     
 
     /**
-     * @brief  Check if the circumcircle of the triangle contains a specific edge defined by two vertex indices
+     * @brief  Check if the triangle contains a specific edge defined by two vertex indices
      * @param v1 index of the first vertex of the edge
      * @param v2 index of the second vertex of the edge
      */
@@ -31,10 +31,10 @@ struct Triangle {
 
 
     /** 
-     * @brief Check if the triangle contains a specific point
+     * @brief Check if the circum circle of the triangle contains a specific point
      * @param vertices The list of vertices in the mesh
      * @param P The point to check
-     * @return true if P is inside the triangle, false otherwise
+     * @return true if P is inside the circum circle, false otherwise
      */
     bool containsPoint(const std::vector<Point>& vertices, const Point& P);
 
