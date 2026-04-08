@@ -144,7 +144,7 @@ Smoothing (<span class="tt">demo/smoothing.cpp</span>)</h2>
 <h3 class="doxsection"><a class="anchor" id="autotoc_md11"></a>
 Boundaries conditions</h3>
 <p>Using smoothing can improve the quality of a mesh, particularly that of flat 2D meshes. These meshes are always open, which poses a problem because all the vertices quickly converge toward the center to the point where the mesh may eventually disappear. The idea, therefore, is to avoid applying smoothing to the edge edges.</p>
-<p>Here, we take the example of a random set of points that we triangulate and then apply smoothing to:</p>
+<p>Here, we take the example of a random set of points that we triangulate and then apply smoothing (until the result stops changing) to:</p>
 <p><img src="https://github.com/user-attachments/assets/bb634cbb-85b9-46c1-9f07-0cf98881b850" alt="smooth_before" width="1209" height="600" style="width:50%;" class="inline"/></p>
 <div class="fragment"><div class="line">min aspect ratio : 1.00325</div>
 <div class="line">max aspect ratio : 104.116</div>
