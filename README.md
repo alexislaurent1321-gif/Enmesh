@@ -66,18 +66,7 @@ The example used here is a hemisphere with some missing faces. Part of the edge,
 
 The results show that all edges are detected.
 
-## Smoothing (`demo/smoothing.cpp`)
-A useful method for improving the regularity of a mesh is to apply smoothing. The function depends here on the number of iterations and a factor $\lambda$. 
 
-$$v_i \longleftarrow v_i + \lambda \left( \frac{1}{N_i}\sum_{j=1}^{N_i} v_j - v_i \right)$$
-
-if $\lambda = 1$, the new position corresponds simply to the mean of neighbourghs' positions : 
-
-$$v_i \longleftarrow \frac{1}{N_i}\sum_{j=1}^{N_i} v_j$$
-
-Here is an example of a cube with $\lambda=1$ and $10$ iterations : 
-
-<img width="1209" height="600" alt="cube_smooth" src="https://github.com/user-attachments/assets/aac01706-2f8b-4704-a0aa-ee5772952bb7" style="width:50%;" />
 
 ## Delaunay triangulation (`demo/triangulation.cpp`)
 The final feature, which will be at the heart of the project, involves triangulating a set of points using the Delaunay method. The algorithm used here is the Bowyer-Watson algorithm. 
@@ -96,6 +85,37 @@ mean aspect ratio : 1.20711
 
 The results are correct.
 
+
+## Smoothing (`demo/smoothing.cpp`)
+A useful method for improving the regularity of a mesh is to apply smoothing. The function depends here on the number of iterations and a factor $\lambda$. 
+
+$$v_i \longleftarrow v_i + \lambda \left( \frac{1}{N_i}\sum_{j=1}^{N_i} v_j - v_i \right)$$
+
+if $\lambda = 1$, the new position corresponds simply to the mean of neighbourghs' positions :  
+
+$$v_i \longleftarrow \frac{1}{N_i}\sum_{j=1}^{N_i} v_j$$
+
+### Boundaries conditions
+Using smoothing can improve the quality of a mesh, particularly that of flat 2D meshes. These meshes are always open, which poses a problem because all the vertices quickly converge toward the center to the point where the mesh may eventually disappear. The idea, therefore, is to avoid applying smoothing to the edge edges. 
+
+Here, we take the example of a random set of points that we triangulate and then apply smoothing to: 
+
+<img width="1209" height="600" alt="smooth_before" src="https://github.com/user-attachments/assets/bb634cbb-85b9-46c1-9f07-0cf98881b850" style="width:50%;"/>
+
+```bash
+min aspect ratio : 1.00325
+max aspect ratio : 104.116
+mean aspect ratio : 4.64866
+```
+
+<img width="1209" height="600" alt="smooth_after" src="https://github.com/user-attachments/assets/c4aead62-9d83-4d45-9e70-0a6459ec679d" style="width:50%;"/>
+
+```bash
+min aspect ratio : 1.0123
+max aspect ratio : 3.65891
+mean aspect ratio : 1.50397
+```
+We observe a better average aspect ratio. However, this result can be further improved by refining certain triangles, which will be the next step in the project.
 
 
 # Upcoming changes
