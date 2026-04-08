@@ -9,3 +9,19 @@
  * @param Ly The length of the grid in the y-direction
  */
 void generateGrid(Mesh& mesh, int Nx, int Ny, float Lx, float Ly);
+
+
+/** 
+ * @brief Generate random points within a bounding box
+ * @param mesh The mesh to populate with vertices
+ * @param N The number of random points to generate
+ * @param Lx The width of the bounding box
+ * @param Ly The height of the bounding box
+ */
+void generateRandomPoints(Mesh& mesh, int N, float Lx, float Ly) {
+    for (int i = 0; i < N; ++i) {
+        float x = static_cast<float>(rand()) / RAND_MAX * Lx;
+        float y = static_cast<float>(rand()) / RAND_MAX * Ly;
+        mesh.vertices.push_back({x, y});
+    }
+}
