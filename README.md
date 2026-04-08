@@ -126,9 +126,11 @@ We observe a better average aspect ratio. However, this result can be further im
 - **local mesh adjustments :** remove triangles from the mesh, especially if the model contains a hole or is not convex.
 - **mesh refinement :** division of triangles with an incorrect aspect ratio
 ---> I could use these features to create a small project based on an irregular grid. The first step would be to refine the triangles with poor aspect ratios and then apply the smoothing function to improve the overall regularity of the mesh.
+- see Constrained Delaunay triangulation
 ### in the longer term
-- support for 3D meshes **(tetrahedral)**
-- retopology (maybe)
+- see advancing front method ([Advancing Front Grid
+Generation](http://ebrary.free.fr/Mesh%20Generation/Handbook_of_Grid_%20Generation,1999/chap17.pdf))
+- support for 3D meshes **(tetrahedral)** : analyzer, boundaries detection, Delaunay, advancing front method, eventually octree meshing
 - **mesh simplification :** edge collapse ([A Comprehensive Guide to Mesh Simplification
 using Edge Collapse](https://arxiv.org/pdf/2512.19959)) (maybe)
 
