@@ -2,7 +2,7 @@
 #define BASIC_SHAPES_H
 
 
-#include "geometry/mesh.h"
+#include "mesh.h"
 
 /** 
  * @brief Generate a grid of vertices

@@ -1,6 +1,6 @@
 #include <iostream>
 
-#include "geometry/mesh.h"
+#include "mesh.h"
 #include "visualization/exportToVTK.h"
 #include "mesh_generation/triangulation.h"
 
@@ -21,7 +21,7 @@ int main() {
     delaunay.mesh = gridMesh;
     delaunay.mesh.triangles = delaunay.triangulate();
 
-    // delaunay.mesh.smooth(100, 1.f); // Apply smoothing to improve triangle quality
+    delaunay.mesh.smooth(100, 1.f); // Apply smoothing to improve triangle quality
 
     delaunay.mesh.analyzeMesh();
     exportToVTK("output.vtk", delaunay.mesh);

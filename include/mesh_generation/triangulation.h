@@ -5,7 +5,7 @@
 #include <iostream>
 #include <string_view>
  
-#include "geometry/mesh.h"
+#include "mesh.h"
 #include "mesh_generation/basic_shapes.h"
 
 

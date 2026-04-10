@@ -1,4 +1,4 @@
-#include "geometry/mesh.h"
+#include "mesh.h"
 
 /** 
  * @brief Exports the mesh data to a VTK file for visualization in Paraview

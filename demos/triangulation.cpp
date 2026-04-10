@@ -1,6 +1,6 @@
 #include <iostream>
 
-#include "geometry/mesh.h"
+#include "mesh.h"
 #include "visualization/exportToVTK.h"
 #include "mesh_generation/triangulation.h"
 

@@ -3,7 +3,7 @@
 #define TINYOBJLOADER_IMPLEMENTATION
 #include <extern/tiny_obj_loader.h>
 
-#include "geometry/mesh.h"
+#include "mesh.h"
 
 
 size_t Mesh::countUniqueEdges() const {

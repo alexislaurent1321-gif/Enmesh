@@ -7,7 +7,7 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 add_library(mesh_analyzer 
     src/geometry/triangle.cpp
     src/geometry/point.cpp
-    src/geometry/mesh.cpp
+    src/mesh.cpp
     src/visualization/exportToVTK.cpp
     src/mesh_generation/basic_shapes.cpp
     src/mesh_generation/triangulation.cpp
