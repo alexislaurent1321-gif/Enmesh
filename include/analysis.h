@@ -46,6 +46,7 @@ std::unordered_map<Edge, int, EdgeHash> getEdgeValences(const Mesh& mesh);
  */
 std::vector<Edge> getBoundaryEdges(const Mesh& mesh);
 
+
  /**
  * @brief Count the number of unique edges in the mesh by iterating through all triangles and adding their edges to an unordered_set
  * 

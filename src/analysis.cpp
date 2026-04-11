@@ -54,3 +54,32 @@ void analyzeMesh(Mesh& mesh) {
     std::cout << "max aspect ratio : " << *std::max_element(mesh.ratios.begin(), mesh.ratios.end()) << std::endl;
     std::cout << "mean aspect ratio : " << std::accumulate(mesh.ratios.begin(), mesh.ratios.end(), 0.f) / mesh.ratios.size() << std::endl;
 }
+
+
+std::unordered_map<Edge, int, EdgeHash> getEdgeValences(const Mesh& mesh) {
+    std::unordered_map<Edge, int, EdgeHash> counts;     // Use an unordered_map to count occurrences of each edge
+    
+    for (const auto& t : mesh.triangles) {
+        for (int i = 0; i < 3; ++i) {
+            int v1 = t.v[i];
+            int v2 = t.v[(i + 1) % 3];
+
+            Edge e = {std::min(v1, v2), std::max(v1, v2)};  // Store edges in a consistent order
+            counts[e]++;
+        }
+    }
+    
+    return counts;
+}
+
+
+std::vector<Edge> getBoundaryEdges(const Mesh& mesh) {
+    auto edgeCounts = getEdgeValences(mesh);    // Get the valence counts for all edges
+    std::vector<Edge> boundaryEdges;        // Collect edges that belong to only one triangle (valence = 1)
+    
+    for (auto const& [edge, count] : edgeCounts) {
+        if (count == 1) boundaryEdges.push_back(edge);
+    }
+    
+    return boundaryEdges;
+}
