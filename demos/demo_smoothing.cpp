@@ -22,9 +22,12 @@ int main() {
 
     triangulate(irregularMesh); // Perform Delaunay triangulation on the grid mesh
 
+    // smooth(irregularMesh, 100, 1.f); // Apply smoothing to improve triangle quality
+
+    refine(irregularMesh, 2); // Refine the mesh to further improve quality
+
     smooth(irregularMesh, 100, 1.f); // Apply smoothing to improve triangle quality
 
-    // refine(irregularMesh, 2); // Refine the mesh to further improve quality
 
     analyzeMesh(irregularMesh);
     exportToVTK("output.vtk", irregularMesh);

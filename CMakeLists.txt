@@ -24,11 +24,11 @@ target_include_directories(mesh_analyzer PUBLIC include)
 
 # Demos
 
-add_executable(analyzer demos/analyzer.cpp)
+add_executable(analyzer demos/demo_analyzer.cpp)
 target_link_libraries(analyzer PRIVATE mesh_analyzer)
 
-add_executable(smoothing demos/smoothing.cpp)
+add_executable(smoothing demos/demo_smoothing.cpp)
 target_link_libraries(smoothing PRIVATE mesh_analyzer)
 
-add_executable(triangulation demos/triangulation.cpp)
+add_executable(triangulation demos/demo_triangulation.cpp)
 target_link_libraries(triangulation PRIVATE mesh_analyzer)

@@ -5,6 +5,7 @@
 #include "mesh/mesh_smoothing.h"
 #include "io/exportToVTK.h"
 #include "mesh/mesh_triangulation.h"
+#include "mesh/mesh_refine.h"
 
 
 /** @file triangulation.cpp
@@ -20,6 +21,7 @@ int main() {
     generateGrid(gridMesh, 5, 5, 1.f, 1.f);
 
     triangulate(gridMesh); // Perform Delaunay triangulation on the grid mesh
+    refine(gridMesh, 2); // Refine the mesh to further improve quality
 
     analyzeMesh(gridMesh);
     exportToVTK("output.vtk", gridMesh);

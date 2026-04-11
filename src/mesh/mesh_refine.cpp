@@ -36,7 +36,8 @@ void refine(Mesh& mesh, int iterations){
             newTriangles.push_back({m01Index, m12Index, m20Index});
         }
 
-        // Replace the old triangles with the new ones
-        mesh.triangles = std::move(newTriangles);
+        for(const auto& triangle : newTriangles) {
+            mesh.triangles.push_back(triangle);
+        }
     }
 }
