@@ -13,6 +13,7 @@ add_library(mesh_analyzer
     src/visualization/exportToVTK.cpp
     src/processing/basic_shapes.cpp
     src/processing/triangulation.cpp
+    src/loadObj.cpp
 )
 
 target_include_directories(mesh_analyzer PUBLIC include)

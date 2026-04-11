@@ -4,6 +4,7 @@
 #include "visualization/exportToVTK.h"
 #include "processing/triangulation.h"
 #include "analysis.h"
+#include "loadObj.h"
 
 
 /** @file analyzer.cpp
@@ -14,7 +15,7 @@ int main() {
     
     Mesh mesh;
 
-    if (!mesh.loadObj("models/demi_sphere_broken.obj")) {
+    if (!loadObj(mesh, "models/demi_sphere_broken.obj")) {
         std::cerr << "Error loading OBJ file." << std::endl;
         return 1;
     }
