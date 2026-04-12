@@ -8,10 +8,21 @@ This project is currently in the process of integrating 3D mesh management (crea
 The next step will be to implement more complex methods, such as constrained Delaunay. For more information, see the [Upcoming changes](#upcoming-changes) section.
 
 # Project structure
-The project is organized into the following folders: 
-- **geometry :** contains classes for points, triangles, meshes and edges
-- **processing :** contains classes for generating grids or triangulate a set of vertices
-- **visualization :** contains the export in VTK format for ParaView
+
+```bash
++---demos               
++---include
+|   +---extern      # extern libraries to parse files
+|   +---geometry    # geomatrical elements of a mesh
+|   +---io          # input/output : functions to load and export meshes
+|   \---mesh        # mesh class and function to process (smoothing, refining, trianglation)
++---models
++---scripts
+\---src
+    +---geometry
+    +---io
+    \---mesh
+```
 
 
 # Features
