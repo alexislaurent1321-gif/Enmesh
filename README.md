@@ -1,7 +1,11 @@
 [![Documentation](https://img.shields.io/badge/docs-doxygen-blue.svg)](https://alexislaurent1321-gif.github.io/mesh_analyzer/)
 
 # Mesh generation
-Start of a project to analyze a triangular mesh or create one using Delaunay. This project is currently in the process of integrating 3D mesh management (created on **Gmsh**). The next step will be to implement more complex methods, such as constrained Delaunay. For more information, see the “Upcoming changes” section.
+Start of a project to analyze a triangular mesh or create one using Delaunay. 
+
+This project is currently in the process of integrating 3D mesh management (created on **Gmsh**). 
+
+The next step will be to implement more complex methods, such as constrained Delaunay. For more information, see the [Upcoming changes](#upcoming-changes) section.
 
 # Project structure
 The project is organized into the following folders: 
@@ -118,7 +122,7 @@ mean aspect ratio : 1.50397
 We observe a better average aspect ratio. However, this result can be further improved by refining certain triangles, which will be the next step in the project.
 
 
-# Upcoming changes
+# Upcoming changes {#upcoming-changes}
 ### as soon as possible
 - **tetrahedral mesh analysis :** for now, the `mesh` class has been converted to a template class, and the `tetrahedron` class has been created. The next step will be to add a parser for `.msh` files (to import meshes from **Gmsh**) and adapt the functions in `mesh_analyze` for the tetrahedral version.
 - manually generate and triangulate basic shapes (grid, cylinder, disc) in the `basic_shapes` file
@@ -131,7 +135,7 @@ We observe a better average aspect ratio. However, this result can be further im
 ### in the longer term
 - see advancing front method ([Advancing Front Grid
 Generation](http://ebrary.free.fr/Mesh%20Generation/Handbook_of_Grid_%20Generation,1999/chap17.pdf))
-- support for 3D meshes **(tetrahedral)** : analyzer, boundaries detection, Delaunay, advancing front method
+- implement Delaunay for tetrhedral meshes
 - **mesh simplification :** edge collapse ([A Comprehensive Guide to Mesh Simplification
 using Edge Collapse](https://arxiv.org/pdf/2512.19959)) (maybe)
 
