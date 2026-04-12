@@ -120,7 +120,7 @@ We observe a better average aspect ratio. However, this result can be further im
 
 # Upcoming changes
 ### as soon as possible
-- Refactoring the code (SRP)
+- **tetrahedral mesh analysis :** for now, the `mesh` class has been converted to a template class, and the `tetrahedron` class has been created. The next step will be to add a parser for `.msh` files (to import meshes from **Gmsh**) and adapt the functions in `mesh_analyze` for the tetrahedral version.
 - manually generate and triangulate basic shapes (grid, cylinder, disc) in the `basic_shapes` file
 - **mesh refinement :** division of triangles with an incorrect aspect ratio
 ---> I could use these features to create a small project based on an irregular grid. The first step would be to refine the triangles with poor aspect ratios and then apply the smoothing function to improve the overall regularity of the mesh.
