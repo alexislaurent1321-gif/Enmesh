@@ -122,7 +122,7 @@ mean aspect ratio : 1.50397
 We observe a better average aspect ratio. However, this result can be further improved by refining certain triangles, which will be the next step in the project.
 
 
-# Upcoming changes {#upcoming-changes}
+# Upcoming changes
 ### as soon as possible
 - **tetrahedral mesh analysis :** for now, the `mesh` class has been converted to a template class, and the `tetrahedron` class has been created. The next step will be to add a parser for `.msh` files (to import meshes from **Gmsh**) and adapt the functions in `mesh_analyze` for the tetrahedral version.
 - manually generate and triangulate basic shapes (grid, cylinder, disc) in the `basic_shapes` file
