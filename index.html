@@ -77,7 +77,7 @@ $(function() {
 <div class="textblock"><p><a class="anchor" id="md_README"></a> <a href="https://alexislaurent1321-gif.github.io/mesh_analyzer/"><img src="https://img.shields.io/badge/docs-doxygen-blue.svg" alt="Documentation" style="pointer-events: none;" class="inline"/></a></p>
 <h1 class="doxsection"><a class="anchor" id="autotoc_md0"></a>
 Mesh generation</h1>
-<p>Start of a project to analyze a triangular mesh or create one using Delaunay.</p>
+<p>Start of a project to analyze a triangular mesh or create one using Delaunay. This project is currently in the process of integrating 3D mesh management (created on <b>Gmsh</b>). The next step will be to implement more complex methods, such as constrained Delaunay. For more information, see the “Upcoming changes” section.</p>
 <h1 class="doxsection"><a class="anchor" id="autotoc_md1"></a>
 Project structure</h1>
 <p>The project is organized into the following folders:</p><ul>
@@ -88,7 +88,7 @@ Project structure</h1>
 <h1 class="doxsection"><a class="anchor" id="autotoc_md2"></a>
 Features</h1>
 <h2 class="doxsection"><a class="anchor" id="autotoc_md3"></a>
-Mesh analyzer (<span class="tt">demo/analyzer.cpp</span>)</h2>
+Mesh analyzer (<span class="tt">demo/demo_analyzer.cpp</span>)</h2>
 <p>The mesh analysis section allows you to view its attributes and detect/highlight edges.</p>
 <h4 class="doxsection"><a class="anchor" id="autotoc_md4"></a>
 hashing</h4>
@@ -122,7 +122,7 @@ Boundaries detection</h4>
 <p><img src="https://github.com/user-attachments/assets/171883d1-4b31-4704-8ced-66f49e6d964d" alt="demi_sphere_boundaries" width="600" height="400" style="width:50%;" class="inline"/></p>
 <p>The results show that all edges are detected.</p>
 <h2 class="doxsection"><a class="anchor" id="autotoc_md8"></a>
-Delaunay triangulation (<span class="tt">demo/triangulation.cpp</span>)</h2>
+Delaunay triangulation (<span class="tt">demo/demo_triangulation.cpp</span>)</h2>
 <p>The final feature, which will be at the heart of the project, involves triangulating a set of points using the Delaunay method. The algorithm used here is the Bowyer-Watson algorithm. </p>
 <h3 class="doxsection"><a class="anchor" id="autotoc_md9"></a>
 Test on a regular grid</h3>
@@ -135,7 +135,7 @@ Test on a regular grid</h3>
 </div><!-- fragment --><p><img src="https://github.com/user-attachments/assets/53eee18e-3077-4b87-9eea-634a993a1e06" alt="grid_triangulated" width="1209" height="600" style="width:50%;" class="inline"/></p>
 <p>The results are correct.</p>
 <h2 class="doxsection"><a class="anchor" id="autotoc_md10"></a>
-Smoothing (<span class="tt">demo/smoothing.cpp</span>)</h2>
+Smoothing (<span class="tt">demo/demo_smoothing.cpp</span>)</h2>
 <p>A useful method for improving the regularity of a mesh is to apply smoothing. The function depends here on the number of iterations and a factor $\lambda$.</p>
 <p>$$v_i \longleftarrow v_i + \lambda \left( \frac{1}{N_i}\sum_{j=1}^{N_i} v_j - v_i \right)$$</p>
 <p>if $\lambda = 1$, the new position corresponds simply to the mean of neighbourghs' positions : <br  />
