@@ -4,6 +4,14 @@ project(meshAnalyzer LANGUAGES CXX)
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
+include(FetchContent)
+FetchContent_Declare(
+  meshio
+  GIT_REPOSITORY https://github.com/qnzhou/MshIO.git
+  GIT_TAG        main
+)
+FetchContent_MakeAvailable(meshio)
+
 add_library(mesh_analyzer 
     src/geometry/triangle.cpp
     src/geometry/point.cpp
@@ -21,8 +29,10 @@ add_library(mesh_analyzer
 
 target_include_directories(mesh_analyzer PUBLIC include)
 
+target_link_libraries(mesh_analyzer PUBLIC mshio::mshio)
 
 # Demos
+
 
 add_executable(analyzer demos/demo_analyzer.cpp)
 target_link_libraries(analyzer PRIVATE mesh_analyzer)
