@@ -1,3 +1,6 @@
+#ifndef LOAD_MSH_H
+#define LOAD_MSH_H
+
 #include "mesh/mesh.h"
 
 /**
@@ -8,4 +11,6 @@
  * @return true 
  * @return false 
  */
-bool load_msh(Mesh<Tetrahedron>& mesh, const std::string& path);
+bool loadMsh(Mesh<Tetrahedron>& mesh, const std::string& path);
+
+#endif 

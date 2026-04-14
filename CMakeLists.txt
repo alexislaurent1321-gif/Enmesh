@@ -24,6 +24,7 @@ add_library(mesh_analyzer
     src/mesh/mesh_refine.cpp
 
     src/io/exportToVTK.cpp
+    src/io/loadMsh.cpp
     src/io/loadObj.cpp
 )
 
@@ -36,6 +37,9 @@ target_link_libraries(mesh_analyzer PUBLIC mshio::mshio)
 
 add_executable(analyzer demos/demo_analyzer.cpp)
 target_link_libraries(analyzer PRIVATE mesh_analyzer)
+
+add_executable(analyzer3D demos/demo_analyzer3D.cpp)
+target_link_libraries(analyzer3D PRIVATE mesh_analyzer)
 
 add_executable(smoothing demos/demo_smoothing.cpp)
 target_link_libraries(smoothing PRIVATE mesh_analyzer)
