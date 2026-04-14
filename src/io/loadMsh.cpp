@@ -56,6 +56,15 @@ bool loadMsh(Mesh<Tetrahedron>& mesh, const std::string& path) {
         }
     }
 
+    for (const auto& tetra : mesh.elements) {
+        for (int i = 0; i < 4; ++i) {
+            if (tetra.v[i] >= mesh.vertices.size()) {
+                std::cerr << "ERREUR : Index de sommet " << tetra.v[i] 
+                        << " hors limites (max: " << mesh.vertices.size() - 1 << ")" << std::endl;
+            }
+        }
+    }
+
     return !mesh.elements.empty();
 }
 
