@@ -47,3 +47,29 @@ void exportToVTK(const std::string& filename, const Mesh<Triangle>& mesh) {
 
     file.close();
 }
+
+
+void exportToVTK(const std::string& filename, const Mesh<Tetrahedron>& mesh){
+    std::ofstream file(filename);
+    if (!file.is_open()) return;
+
+    file << "# vtk DataFile Version 3.0\n";
+    file << "Mesh Analysis Combo\nASCII\nDATASET UNSTRUCTURED_GRID\n";
+
+    // Write vertices
+    file << "POINTS " << mesh.vertices.size() << " float\n";
+    for (const auto& v : mesh.vertices) 
+        file << v.x << " " << v.y << " " << v.z << "\n";
+
+    // Write cells (tetrahedra)
+    size_t nT = mesh.elements.size();
+    file << "CELLS " << nT << " " << (nT * 5) << "\n";
+    for (const auto& tetra : mesh.elements)
+        file << "4 " << tetra.v[0] << " " << tetra.v[1] << " " << tetra.v[2] << " " << tetra.v[3] << "\n";
+    file << "CELL_TYPES " << nT << "\n";
+    for (size_t i = 0; i < nT; ++i) file << "10\n"; // Tetrahedra
+
+    file.close();
+
+
+}

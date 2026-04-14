@@ -7,7 +7,8 @@
  */
 
  int main() {
-     Mesh<Tetrahedron> mesh;
-     loadMsh(mesh, "models/sphere.msh");
-
+    Mesh<Tetrahedron> mesh;
+    loadMsh(mesh, "models/sphere.msh");
+    exportToVTK("output.vtk", mesh);
+    return 0;
  }
