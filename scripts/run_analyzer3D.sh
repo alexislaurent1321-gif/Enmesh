@@ -3,7 +3,7 @@ cd "$(dirname "$0")/.."
 echo "Compilation in progress..."
 
 cmake -B build
-cmake --build build --target analyzer --config Release
+cmake --build build --target analyzer3D --config Release
 
 if [ -f "./build/analyzer3D" ]; then
     ./build/analyzer3D
