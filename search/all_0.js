@@ -5,6 +5,5 @@ var searchData=
   ['and_20execution_2',['Compilation and execution',['../index.html#autotoc_md16',1,'']]],
   ['as_20possible_3',['as soon as possible',['../index.html#autotoc_md13',1,'']]],
   ['as_20soon_20as_20possible_4',['as soon as possible',['../index.html#autotoc_md13',1,'']]],
-  ['aspect_20ratio_5',['Aspect ratio',['../index.html#autotoc_md6',1,'']]],
-  ['attrib_5ft_6',['attrib_t',['../structtinyobj_1_1attrib__t.html',1,'tinyobj']]]
+  ['aspect_20ratio_5',['Aspect ratio',['../index.html#autotoc_md6',1,'']]]
 ];

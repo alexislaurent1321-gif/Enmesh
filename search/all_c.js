@@ -1,7 +1,6 @@
 var searchData=
 [
-  ['objreader_0',['ObjReader',['../classtinyobj_1_1ObjReader.html',1,'tinyobj']]],
-  ['objreaderconfig_1',['ObjReaderConfig',['../structtinyobj_1_1ObjReaderConfig.html',1,'tinyobj']]],
-  ['on_20a_20regular_20grid_2',['Test on a regular grid',['../index.html#autotoc_md9',1,'']]],
-  ['operator_3c_3c_3',['operator&lt;&lt;',['../structPoint.html#ab322db2b5457c54c9b959c6336792d2d',1,'Point']]]
+  ['point_0',['Point',['../structPoint.html',1,'Point'],['../structPoint.html#ad92f2337b839a94ce97dcdb439b4325a',1,'Point::Point()'],['../structPoint.html#abfb275991b6f0f8864ad406ba3c8b3ce',1,'Point::Point(float x_, float y_)'],['../structPoint.html#ad56008741db728440b3d469e5fb5cc82',1,'Point::Point(float x_, float y_, float z_)']]],
+  ['possible_1',['as soon as possible',['../index.html#autotoc_md13',1,'']]],
+  ['project_20structure_2',['Project structure',['../index.html#autotoc_md1',1,'']]]
 ];
