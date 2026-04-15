@@ -1,7 +1,7 @@
 #include <numeric>
 #include <algorithm>
 #define TINYOBJLOADER_IMPLEMENTATION
-#include <extern/tiny_obj_loader.h>
+#include <tiny_obj_loader.h>
 
 #include "io/loadObj.h"
 
