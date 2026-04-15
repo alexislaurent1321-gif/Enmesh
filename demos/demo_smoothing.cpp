@@ -5,6 +5,7 @@
 #include "mesh/mesh_smoothing.h"
 #include "io/exportToVTK.h"
 #include "mesh/mesh_triangulation.h"
+#include "mesh/mesh_refine.h"
 
 
 /** @file triangulation.cpp
@@ -16,7 +17,7 @@ int main() {
     // Triangulation test on a grid
 
     // Example of generating a grid mesh and exporting it
-    Mesh irregularMesh;
+    Mesh<Triangle> irregularMesh;
     generateRandomPoints(irregularMesh, 25, 1.f, 1.f);
 
     triangulate(irregularMesh); // Perform Delaunay triangulation on the grid mesh

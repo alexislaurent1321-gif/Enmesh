@@ -15,6 +15,7 @@
 #include "geometry/point.h"
 #include "geometry/edge.h"
 #include "geometry/triangle.h"
+#include "geometry/tetrahedron.h"
 
 
 
@@ -22,12 +23,13 @@
  * @brief A class representing a 3D mesh
  * 
  */
+template <typename ElementType>
 class Mesh {
 public:
     // Datas
-    std::vector<Point> vertices;        ///< List of vertices in the mesh
-    std::vector<Triangle> triangles;    ///< List of triangles defined by vertex indices
-    std::vector<float> ratios;          ///< aspect ratios of triangles (for quality analysis)
+    std::vector<Point> vertices;            ///< List of vertices in the mesh
+    std::vector<ElementType> elements;      ///< List of elements defined by vertex indices
+    std::vector<float> ratios;              ///< aspect ratios of elements (for quality analysis)
 };
 
 #endif

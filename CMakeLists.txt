@@ -4,6 +4,14 @@ project(meshAnalyzer LANGUAGES CXX)
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
+include(FetchContent)
+FetchContent_Declare(
+  meshio
+  GIT_REPOSITORY https://github.com/qnzhou/MshIO.git
+  GIT_TAG        main
+)
+FetchContent_MakeAvailable(meshio)
+
 add_library(mesh_analyzer 
     src/geometry/triangle.cpp
     src/geometry/point.cpp
@@ -13,21 +21,28 @@ add_library(mesh_analyzer
     src/mesh/mesh_smoothing.cpp
     src/mesh/mesh_basic_shapes.cpp
     src/mesh/mesh_triangulation.cpp
+    src/mesh/mesh_refine.cpp
 
     src/io/exportToVTK.cpp
+    src/io/loadMsh.cpp
     src/io/loadObj.cpp
 )
 
 target_include_directories(mesh_analyzer PUBLIC include)
 
+target_link_libraries(mesh_analyzer PUBLIC mshio::mshio)
 
 # Demos
 
-add_executable(analyzer demos/analyzer.cpp)
+
+add_executable(analyzer demos/demo_analyzer.cpp)
 target_link_libraries(analyzer PRIVATE mesh_analyzer)
 
-add_executable(smoothing demos/smoothing.cpp)
+add_executable(analyzer3D demos/demo_analyzer3D.cpp)
+target_link_libraries(analyzer3D PRIVATE mesh_analyzer)
+
+add_executable(smoothing demos/demo_smoothing.cpp)
 target_link_libraries(smoothing PRIVATE mesh_analyzer)
 
-add_executable(triangulation demos/triangulation.cpp)
+add_executable(triangulation demos/demo_triangulation.cpp)
 target_link_libraries(triangulation PRIVATE mesh_analyzer)
