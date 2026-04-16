@@ -4,54 +4,46 @@
 
 
 bool loadMsh(Mesh<Triangle>& mesh, const std::string& path) {
-    // Create a Mshio object to read the MSH file
-    mshio::MshSpec data;
-    try {
-        data = mshio::load_msh(path);
-    } catch (const std::exception& e) {
-        std::cerr << "Error reading .msh file : " << e.what() << std::endl;
-        return false;
-    }
-
+    mshio::MshSpec spec = mshio::load_msh(path);
+    
     mesh.vertices.clear();
     mesh.elements.clear();
 
-    std::map<size_t, size_t> node_tag_to_index;
+    // create a mapping from node tags to vertex indices in the mesh
+    std::map<size_t, int> tagToIndex;
 
-    for (const auto& node_block : data.nodes.entity_blocks) {
+    // Load nodes
+    for (const auto& node_block : spec.nodes.entity_blocks) {
         for (size_t i = 0; i < node_block.num_nodes_in_block; ++i) {
-            size_t tag = node_block.tags[i];
-            node_tag_to_index[tag] = mesh.vertices.size();
 
-            // Add the vertex to the mesh's vertex list
+            size_t tag = node_block.tags[i];                            // Get the tag for the current node
+            tagToIndex[tag] = static_cast<int>(mesh.vertices.size());   // Map the node tag to the current vertex index in the mesh
+            
             mesh.vertices.push_back({
-                static_cast<float>(node_block.data[i * 3]),     // x
-                static_cast<float>(node_block.data[i * 3 + 1]), // y
-                static_cast<float>(node_block.data[i * 3 + 2])  // z
+                static_cast<float>(node_block.data[i * 3]),
+                static_cast<float>(node_block.data[i * 3 + 1]),
+                static_cast<float>(node_block.data[i * 3 + 2])
             });
         }
     }
 
-    int target_gmsh_type = 0;
-    size_t nodes_per_element = 0;   // Gmsh type 2 corresponds to 3-node triangles
+    // Load elements (triangles)
+    for (const auto& entity_block : spec.elements.entity_blocks) {
+        // We are only interested in triangles, which have an element type of 2 in Gmsh.
+        if (entity_block.element_type != 2) continue; 
 
-    target_gmsh_type = 2;
-    nodes_per_element = 3;  
+        // Each element block has a specific format: the first value is the element tag, followed by the node tags that define the element.
+        const size_t nodesPerElem = 3;
+        const size_t stride = 1 + nodesPerElem; 
 
-    // Iterate through the element blocks and extract triangular elements
-    for (const auto& element_block : data.elements.entity_blocks) {
-        // Check if the element block corresponds to the target Gmsh type (e.g., 2 for 3-node triangles)
-        if (element_block.element_type == target_gmsh_type) {
-            for (size_t i = 0; i < element_block.num_elements_in_block; ++i) {
-                Triangle element;
-                
-                // For each vertex of the element, get the corresponding node tag and convert it to a vertex index
-                for (size_t v_idx = 0; v_idx < nodes_per_element; ++v_idx) {
-                    size_t node_tag = element_block.data[i * nodes_per_element + v_idx];
-                    element.v[v_idx] = node_tag_to_index[node_tag];
-                }
-                mesh.elements.push_back(element); 
-            }
+        for (size_t i = 0; i < entity_block.num_elements_in_block; ++i) {
+
+            // Add the triangle to the mesh using the vertex indices from the tagToIndex mapping
+            mesh.elements.push_back({
+                tagToIndex[entity_block.data[i * stride + 1]],
+                tagToIndex[entity_block.data[i * stride + 2]],
+                tagToIndex[entity_block.data[i * stride + 3]]
+            });
         }
     }
 
@@ -60,60 +52,51 @@ bool loadMsh(Mesh<Triangle>& mesh, const std::string& path) {
 
 
 bool loadMsh(Mesh<Tetrahedron>& mesh, const std::string& path) {
+    mshio::MshSpec spec = mshio::load_msh(path);
     
-    // Create a Mshio object to read the MSH file
-    mshio::MshSpec data;
-    try {
-        data = mshio::load_msh(path);
-    } catch (const std::exception& e) {
-        std::cerr << "Error reading .msh file : " << e.what() << std::endl;
-        return false;
-    }
-
     mesh.vertices.clear();
     mesh.elements.clear();
 
-    std::map<size_t, size_t> node_tag_to_index;
+    // create a mapping from node tags to vertex indices in the mesh
+    std::map<size_t, int> tagToIndex;
 
-    for (const auto& node_block : data.nodes.entity_blocks) {
+    // Load nodes
+    for (const auto& node_block : spec.nodes.entity_blocks) {
         for (size_t i = 0; i < node_block.num_nodes_in_block; ++i) {
             size_t tag = node_block.tags[i];
-            node_tag_to_index[tag] = mesh.vertices.size();
-
-            // Add the vertex to the mesh's vertex list
+            tagToIndex[tag] = static_cast<int>(mesh.vertices.size());
+            
             mesh.vertices.push_back({
-                static_cast<float>(node_block.data[i * 3]),     // x
-                static_cast<float>(node_block.data[i * 3 + 1]), // y
-                static_cast<float>(node_block.data[i * 3 + 2])  // z
+                static_cast<float>(node_block.data[i * 3]),
+                static_cast<float>(node_block.data[i * 3 + 1]),
+                static_cast<float>(node_block.data[i * 3 + 2])
             });
         }
     }
 
-    int target_gmsh_type = 0;
-    size_t nodes_per_element = 0;   // Gmsh type 4 corresponds to 4-node tetrahedra
+    // Load elements (tetrahedrons)
+    for (const auto& entity_block : spec.elements.entity_blocks) {
+        // We are only interested in tetrahedrons, which have an element type of 4 in Gmsh.
+        if (entity_block.element_type != 4) continue; 
 
-    target_gmsh_type = 4;
-    nodes_per_element = 4;
+        // Each element block has a specific format: the first value is the element tag, followed by the node tags that define the element.
+        const size_t nodesPerElem = 4;
+        const size_t stride = 1 + nodesPerElem; 
 
-    // Iterate through the element blocks and extract tetrahedral elements
-    for (const auto& element_block : data.elements.entity_blocks) {
-
-        // Check if the element block corresponds to the target Gmsh type (e.g., 4 for 4-node tetrahedra)
-        if (element_block.element_type == target_gmsh_type) {
-            for (size_t i = 0; i < element_block.num_elements_in_block; ++i) {
-                Tetrahedron element;
-                
-                // For each vertex of the element, get the corresponding node tag and convert it to a vertex index
-                for (size_t v_idx = 0; v_idx < nodes_per_element; ++v_idx) {
-                    size_t node_tag = element_block.data[i * nodes_per_element + v_idx];
-                    element.v[v_idx] = node_tag_to_index[node_tag];
-                }
-                mesh.elements.push_back(element); 
-            }
+        for (size_t i = 0; i < entity_block.num_elements_in_block; ++i) {
+            // Add the tetrahedron to the mesh using the vertex indices from the tagToIndex mapping
+            mesh.elements.push_back({
+                tagToIndex[entity_block.data[i * stride + 1]],
+                tagToIndex[entity_block.data[i * stride + 2]],
+                tagToIndex[entity_block.data[i * stride + 3]],
+                tagToIndex[entity_block.data[i * stride + 4]]
+            });
         }
     }
 
     return !mesh.elements.empty();
 }
+
+
 
   
