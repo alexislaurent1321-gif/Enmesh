@@ -13,6 +13,7 @@ add_library(mesh_analyzer
 
     src/mesh/mesh.cpp
     src/mesh/mesh_analysis.cpp
+    src/mesh/mesh_analysis.tpp
     src/mesh/mesh_smoothing.cpp
     src/mesh/mesh_basic_shapes.cpp
     src/mesh/mesh_triangulation.cpp

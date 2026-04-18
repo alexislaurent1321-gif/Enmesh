@@ -48,6 +48,18 @@ void Point::operator*=(float scalar) {
     z *= scalar;
 }
 
+float Point::dot(const Point& other) const {
+    return x * other.x + y * other.y + z * other.z;
+}
+
+Point Point::cross(const Point& other) const {
+    return Point(
+        y * other.z - z * other.y,
+        z * other.x - x * other.z,
+        x * other.y - y * other.x
+    );
+}
+
 
 std::ostream& operator<<(std::ostream& os, const Point& p) {
     os << "(" << p.x << ", " << p.y << ", " << p.z << ")";

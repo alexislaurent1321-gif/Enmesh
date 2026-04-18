@@ -19,14 +19,16 @@
  * @param t 
  * @return float 
  */
-float calculateAspectRatio(const Mesh<Triangle>& mesh, const Triangle& t);
+template <typename T>
+float calculateAspectRatio(const Mesh<T>& mesh, const T& t);
 
 
 /**
  * @brief  Calculate the aspect ratio for all triangles in the mesh and store them in the ratios vector
  * 
  */
-void calculateAspectRatios(Mesh<Triangle>& mesh);
+template <typename T>
+void calculateAspectRatios(Mesh<T>& mesh);
 
 
 
@@ -52,7 +54,11 @@ std::vector<Edge> getBoundaryEdges(const Mesh<Triangle>& mesh);
  * 
  * @return number of unique edges in the mesh 
  */
-size_t countUniqueEdges(const Mesh<Triangle>& mesh);
+template <typename T>
+size_t countUniqueEdges(const Mesh<T>& mesh);
+
+
+
 
 
 
@@ -62,7 +68,11 @@ size_t countUniqueEdges(const Mesh<Triangle>& mesh);
  * @brief  Analyze the mesh by printing out the number of vertices, triangles, and unique edges. Optionally, it could also calculate and print the aspect ratio of each triangle for quality analysis.
  * 
  */
-void analyzeMesh(Mesh<Triangle>& mesh);
+template <typename T>
+void analyzeMesh(Mesh<T>& mesh);
+
+
+#include "../src/mesh/mesh_analysis.tpp" 
 
 
 #endif  

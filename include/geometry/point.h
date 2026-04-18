@@ -61,10 +61,14 @@ struct Point {
     Point operator+(const Point& other) const;
     Point operator*(float scalar) const;
     Point operator/(float scalar) const;
+
     bool operator==(const Point& other) const;
     void operator+=(const Point& other);
     void operator/=(float scalar);
     void operator*=(float scalar);
+
+    float dot(const Point& other) const;
+    Point cross(const Point& other) const;
 
     
     /**
