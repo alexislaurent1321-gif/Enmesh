@@ -35,9 +35,9 @@ void calculateAspectRatios(Mesh<Triangle>& mesh);
  /**
  * @brief Get the Edge Valences object  
  * 
- * @return std::unordered_map<Edge, int, EdgeHash> 
+ * @return std::unordered_map<Edge, size_t, EdgeHash> 
  */
-std::unordered_map<Edge, int, EdgeHash> getEdgeValences(const Mesh<Triangle>& mesh);
+std::unordered_map<Edge, size_t, EdgeHash> getEdgeValences(const Mesh<Triangle>& mesh);
 
 
  /** 

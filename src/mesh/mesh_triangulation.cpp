@@ -25,9 +25,9 @@ Triangle createSuperTriangle(Mesh<Triangle>& mesh) {
     Point v2 = {maxX + dx * 3, minY - dy};
 
     // Store the super-triangle vertices in the mesh and return the triangle defined by their indices
-    int index1 = mesh.vertices.size();
-    int index2 = mesh.vertices.size() + 1;
-    int index3 = mesh.vertices.size() + 2;
+    const size_t index1 = mesh.vertices.size();
+    const size_t index2 = mesh.vertices.size() + 1;
+    const size_t index3 = mesh.vertices.size() + 2;
 
     // superTriangleVertices = {v0, v1, v2} // Store the super-triangle vertices for later cleanup
     mesh.vertices.push_back(v0);
@@ -41,7 +41,7 @@ Triangle createSuperTriangle(Mesh<Triangle>& mesh) {
  void addPoint(Mesh<Triangle>& mesh, const Point& point) {
 
     // Add the new point to the mesh and get its index
-    int pointIndex = mesh.vertices.size();
+    size_t pointIndex = mesh.vertices.size();
     mesh.vertices.push_back(point);
 
     // Find all triangles whose circumcircle contains the new point

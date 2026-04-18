@@ -4,8 +4,8 @@
 void smooth(Mesh<Triangle>& mesh, int iterations, float lambda){
         
     // Build an adjacency list for the vertices based on the triangles
-    std::unordered_map<int, std::unordered_set<int>> adjacency; 
-    std::unordered_set<int> boundaryVertices; // Keep track of boundary vertices to avoid moving them during smoothing
+    std::unordered_map<size_t, std::unordered_set<size_t>> adjacency; 
+    std::unordered_set<size_t> boundaryVertices; // Keep track of boundary vertices to avoid moving them during smoothing
 
     // Get boundary vertices from boundary edges
     std::vector<Edge> boundaryEdges = getBoundaryEdges(mesh);

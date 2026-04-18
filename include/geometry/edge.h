@@ -19,7 +19,7 @@
  * 
  */
 struct Edge {
-    int v1, v2;
+    size_t v1, v2;
     bool operator==(const Edge& other) const {
         return (v1 == other.v1 && v2 == other.v2) || (v1 == other.v2 && v2 == other.v1);
     }

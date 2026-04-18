@@ -5,24 +5,16 @@
 
 
 /**
- * @brief   Load a triangular mesh from a .msh file in Gmsh format
+ * @brief   Load a mesh from a .msh file in Gmsh format
  * 
  * @param mesh 
  * @param path 
  * @return true 
  * @return false 
  */
-bool loadMsh(Mesh<Triangle>& mesh, const std::string& path);
+template <typename T>
+bool loadMsh(Mesh<T>& mesh, const std::string& path);
 
-
-/**
- * @brief   Load a tetrahedral mesh from a .msh file in Gmsh format
- * 
- * @param mesh 
- * @param path 
- * @return true 
- * @return false 
- */
-bool loadMsh(Mesh<Tetrahedron>& mesh, const std::string& path);
+#include "../src/io/loadMsh.tpp"
 
 #endif 

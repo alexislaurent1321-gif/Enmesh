@@ -18,7 +18,10 @@
  */
 struct Triangle {
 
-    std::array<int, 3> v;   ///< Indices of the vertices that form the triangle
+    static constexpr size_t elementType = 2; ///< Gmsh element type for triangles 
+    static constexpr size_t numVertices = 3; ///< Number of vertices in a triangle
+
+    std::array<size_t, 3> v;   ///< Indices of the vertices that form the triangle
     bool isBad = false;     ///< Flag used in Delaunay triangulation to mark triangles that need to be removed
     
 
@@ -27,7 +30,7 @@ struct Triangle {
      * @param v1 index of the first vertex of the edge
      * @param v2 index of the second vertex of the edge
      */
-    bool containsEdge(int v1, int v2) const;
+    bool containsEdge(size_t v1, size_t v2) const;
 
 
     /** 

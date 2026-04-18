@@ -16,7 +16,11 @@
 #include "geometry/edge.h"
 
 struct Tetrahedron {
-    std::array<int, 4> v;   ///< Indices of the vertices that form the tetrahedron
+
+    static constexpr size_t elementType = 4; ///< Gmsh element type for tetrahedra 
+    static constexpr size_t numVertices = 4; ///< Number of vertices in a tetrahedron
+
+    std::array<size_t, 4> v;   ///< Indices of the vertices that form the tetrahedron
     bool isBad = false;     ///< Flag used in Delaunay triangulation to mark tetrahedra that need to be removed
 
     /**
