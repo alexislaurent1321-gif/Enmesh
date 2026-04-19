@@ -153,7 +153,7 @@ We observe a better average aspect ratio. However, this result can be further im
 
 # Upcoming changes
 ### as soon as possible
-- Finish the demo for 3D mesh analysis
+- Finish the demo for 3D mesh analysis (display boundaries on ParaView)
 - manually generate and triangulate basic shapes (grid, cylinder, disc) in the `basic_shapes` file
 ### in the short term
 - **local mesh adjustments :** remove triangles from the mesh, especially if the model contains a hole or is not convex.
@@ -172,9 +172,10 @@ To clone the project :
 git clone --recurse-submodules https://github.com/alexislaurent1321-gif/mesh_analyzer.git
 ```
 
-Compilation on Windows (preferably with **MSVC**) or Linux. Use the **VS Code** interface if possible.
-
+Compilation on Windows (preferably with **MSVC**) or Linux. Use the **VS Code** interface if possible. On Windows, to run ParaView from the command line, add the ParaView bin folder (e.g., C:\Program Files\ParaView 6.1.0\bin) to the PATH in the environment variables.
 The demos can be run in the `scripts` folder. Scripts are named as follows : `run_{demo}.sh` for Linux or `run_{demo}.bat` for Windows.
+
+
 
 ### Dependencies
 - [mshio](https://github.com/qnzhou/MshIO.git)
