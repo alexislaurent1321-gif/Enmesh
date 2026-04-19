@@ -87,7 +87,7 @@ Project structure</h1>
 <div class="line">+---include </div>
 <div class="line">|   +---geometry    # geometrical elements of a mesh</div>
 <div class="line">|   +---io          # input/output : functions to load and export meshes</div>
-<div class="line">|   \---mesh        # mesh class and processing functions (smoothing, refining, trianglation)</div>
+<div class="line">|   \---mesh        # mesh class and processing functions (smoothing, triangulation, quality analysis)</div>
 <div class="line">+---models</div>
 <div class="line">+---scripts         # .bat and .sh files to compile and execute demos   </div>
 <div class="line">\---src</div>
@@ -132,8 +132,17 @@ Boundaries detection</h4>
 <p>The results show that all edges are detected.</p>
 <h3 class="doxsection"><a class="anchor" id="autotoc_md8"></a>
 3D version : <span class="tt">demo_analyzer3D</span> (in progress ...) :</h3>
-<p>This demo will involve doing the same thing on a tetrahedral mesh. For now, it allows you to load an .msh file (modern format 4.1) and export it to ParaView. The parser was chosen based on the library <a href="https://github.com/qnzhou/MshIO.git">mshio</a> by qnzhou. Gmsh's Modern Format requires manually converting the format's tags into element indices.</p>
-<p><img src="https://github.com/user-attachments/assets/c2b71c88-b882-428e-9f35-eb5f816d0186" alt="sphere" width="1209" height="600" style="width:50%;" class="inline"/></p>
+<p>The demo allows you to do the same thing for a tetrahedral mesh. The missing step is to highlight the edge faces in ParaView. The selected format is .msh (version 4.1), the parser was chosen based on the library <a href="https://github.com/qnzhou/MshIO.git">mshio</a> by qnzhou. Gmsh's Modern Format requires manually converting the format's tags into element indices. Here, we use the example of a sphere to calculate its statistics :</p>
+<p><img src="https://github.com/user-attachments/assets/a96b2674-fec8-4692-9468-3a9b2451bd7b" alt="sphere" width="2193" height="1131" style="width:50%;" class="inline"/></p>
+<div class="fragment"><div class="line">Vertices : 211</div>
+<div class="line">Elements : 709</div>
+<div class="line">Unique triangles : 1580</div>
+<div class="line">min aspect ratio : 1.0151</div>
+<div class="line">max aspect ratio : 4.0086</div>
+<div class="line">mean aspect ratio : 1.60255</div>
+<div class="line">boundaries triangles : 324</div>
+</div><!-- fragment --><p> The statistics match those of Gmsh : <img src="https://github.com/user-attachments/assets/7aa8f484-0913-4807-8609-b646647547c9" alt="statistics" width="361" height="268" class="inline"/></p>
+<p>The aspect ratio is calculated using this formula: (<a href="https://docs.salome-platform.org/latest/gui/SMESH/aspect_ratio_3d.html">https://docs.salome-platform.org/latest/gui/SMESH/aspect_ratio_3d.html</a>)</p>
 <h2 class="doxsection"><a class="anchor" id="autotoc_md9"></a>
 Delaunay triangulation (<span class="tt">demo/demo_triangulation.cpp</span>)</h2>
 <p>The final feature, which will be at the heart of the project, involves triangulating a set of points using the Delaunay method. The algorithm used here is the <a href="https://www.gorillasun.de/blog/bowyer-watson-algorithm-for-delaunay-triangulation/">Bowyer-Watson</a> algorithm. </p>
