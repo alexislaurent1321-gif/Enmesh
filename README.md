@@ -15,7 +15,7 @@ The next step will be to implement more complex methods, such as constrained Del
 +---include 
 |   +---geometry    # geometrical elements of a mesh
 |   +---io          # input/output : functions to load and export meshes
-|   \---mesh        # mesh class and processing functions (smoothing, refining, trianglation)
+|   \---mesh        # mesh class and processing functions (smoothing, triangulation, quality analysis)
 +---models
 +---scripts         # .bat and .sh files to compile and execute demos   
 \---src
@@ -85,9 +85,24 @@ The example used here is a hemisphere with some missing faces. Part of the edge,
 The results show that all edges are detected.
 
 ### 3D version : `demo_analyzer3D` (in progress ...) : 
-This demo will involve doing the same thing on a tetrahedral mesh. For now, it allows you to load an .msh file (modern format 4.1) and export it to ParaView. The parser was chosen based on the library [mshio](https://github.com/qnzhou/MshIO.git) by qnzhou. Gmsh's Modern Format requires manually converting the format's tags into element indices.
+The demo allows you to do the same thing for a tetrahedral mesh. The missing step is to highlight the edge faces in ParaView. The selected format is .msh (version 4.1), the parser was chosen based on the library [mshio](https://github.com/qnzhou/MshIO.git) by qnzhou. Gmsh's Modern Format requires manually converting the format's tags into element indices. Here, we use the example of a sphere to calculate its statistics :
 
-<img width="1209" height="600" alt="sphere" src="https://github.com/user-attachments/assets/c2b71c88-b882-428e-9f35-eb5f816d0186" style="width:50%;"/>
+<img width="2193" height="1131" alt="sphere" src="https://github.com/user-attachments/assets/a96b2674-fec8-4692-9468-3a9b2451bd7b" style="width:50%;" />
+
+
+```bash
+Vertices : 211
+Elements : 709
+Unique triangles : 1580
+min aspect ratio : 1.0151
+max aspect ratio : 4.0086
+mean aspect ratio : 1.60255
+boundaries triangles : 324
+```
+The statistics match those of Gmsh :
+<img width="361" height="268" alt="statistics" src="https://github.com/user-attachments/assets/7aa8f484-0913-4807-8609-b646647547c9" />
+
+The aspect ratio is calculated using this formula: (https://docs.salome-platform.org/latest/gui/SMESH/aspect_ratio_3d.html)
 
 
 ## Delaunay triangulation (`demo/demo_triangulation.cpp`)
