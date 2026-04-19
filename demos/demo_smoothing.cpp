@@ -24,7 +24,7 @@ int main() {
 
     smooth(irregularMesh, 100, 1.f); // Apply smoothing to improve triangle quality
 
-    analyzeMesh(irregularMesh);
+    analyzeMesh<Triangle>(irregularMesh);
     exportToVTK("output.vtk", irregularMesh);
 
     return 0;

@@ -10,9 +10,10 @@
  int main() {
     Mesh<Tetrahedron> mesh;
     loadMsh<Tetrahedron>(mesh, "models/sphere.msh");
-    exportToVTK("output.vtk", mesh);
   
     analyzeMesh<Tetrahedron>(mesh);
+    // exportToVTK("output.vtk", mesh);
+
 
    return 0;
  }

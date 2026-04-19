@@ -22,7 +22,7 @@ int main() {
 
     triangulate(gridMesh); // Perform Delaunay triangulation on the grid mesh
 
-    analyzeMesh(gridMesh);
+    analyzeMesh<Triangle>(gridMesh);
     exportToVTK("output.vtk", gridMesh);
 
     return 0;

@@ -1,5 +1,5 @@
-#ifndef QUALITY_H
-#define QUALITY_H
+#ifndef ANALYSIS_H
+#define ANALYSIS_H
 
 #include <vector>
 #include <array>

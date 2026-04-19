@@ -20,7 +20,7 @@ int main() {
         return 1;
     }
     
-    analyzeMesh(mesh);
+    analyzeMesh<Triangle>(mesh);
 
     std::cout << "Exporting mesh to VTK format..." << std::endl;
     exportToVTK("output.vtk", mesh);
