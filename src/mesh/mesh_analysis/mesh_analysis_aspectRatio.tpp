@@ -7,11 +7,11 @@
 // Quality analysis
 
 template <>
-inline float calculateAspectRatio(const Mesh<Triangle>& mesh, const Triangle& t)  {
+inline float calculateAspectRatio(const Mesh<Triangle>& mesh, const Triangle& element)  {
     // triangle lengths
-    float a = mesh.vertices[t.v[0]].distance(mesh.vertices[t.v[1]]);
-    float b = mesh.vertices[t.v[1]].distance(mesh.vertices[t.v[2]]);
-    float c = mesh.vertices[t.v[2]].distance(mesh.vertices[t.v[0]]);
+    float a = mesh.vertices[element.v[0]].distance(mesh.vertices[element.v[1]]);
+    float b = mesh.vertices[element.v[1]].distance(mesh.vertices[element.v[2]]);
+    float c = mesh.vertices[element.v[2]].distance(mesh.vertices[element.v[0]]);
 
     // aspect ratio formula: (abc) / ((b+c-a)(c+a-b)(a+b-c))
     float num = a * b * c;
@@ -21,12 +21,12 @@ inline float calculateAspectRatio(const Mesh<Triangle>& mesh, const Triangle& t)
 
 
 template <>
-inline float calculateAspectRatio(const Mesh<Tetrahedron>& mesh, const Tetrahedron& t)  {
+inline float calculateAspectRatio(const Mesh<Tetrahedron>& mesh, const Tetrahedron& element)  {
 
-    Point A = mesh.vertices[t.v[0]];
-    Point B = mesh.vertices[t.v[1]];
-    Point C = mesh.vertices[t.v[2]];
-    Point D = mesh.vertices[t.v[3]];
+    Point A = mesh.vertices[element.v[0]];
+    Point B = mesh.vertices[element.v[1]];
+    Point C = mesh.vertices[element.v[2]];
+    Point D = mesh.vertices[element.v[3]];
 
     // triangle lengths
     float ab = A.distance(B);

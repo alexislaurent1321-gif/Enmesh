@@ -7,10 +7,10 @@
 std::unordered_map<Edge, size_t, EdgeHash> getEdgeValences(const Mesh<Triangle>& mesh) {
     std::unordered_map<Edge, size_t, EdgeHash> counts;     // Use an unordered_map to count occurrences of each edge
     
-    for (const auto& t : mesh.elements) {
+    for (const auto& element : mesh.elements) {
         for (size_t i = 0; i < 3; ++i) {
-            size_t v1 = t.v[i];
-            size_t v2 = t.v[(i + 1) % 3];
+            size_t v1 = element.v[i];
+            size_t v2 = element.v[(i + 1) % 3];
 
             Edge e = {std::min(v1, v2), std::max(v1, v2)};  // Store edges in a consistent order
             counts[e]++;
@@ -36,11 +36,11 @@ std::vector<Edge> getBoundaryEdges(const Mesh<Triangle>& mesh) {
 std::unordered_map<Triangle, size_t, TriangleHash> getTriangleValences(const Mesh<Tetrahedron>& mesh) {
     std::unordered_map<Triangle, size_t, TriangleHash> counts;     // Use an unordered_map to count occurrences of each triangle
     
-    for (const auto& t : mesh.elements) {
+    for (const auto& element : mesh.elements) {
         for (size_t i = 0; i < 4; ++i) {
-            size_t v1 = t.v[i];
-            size_t v2 = t.v[(i + 1) % 4];
-            size_t v3 = t.v[(i + 2) % 4];
+            size_t v1 = element.v[i];
+            size_t v2 = element.v[(i + 1) % 4];
+            size_t v3 = element.v[(i + 2) % 4];
 
             Triangle triangle = {{std::min({v1, v2, v3}), std::min({std::max(v1, v2), std::max(v2, v3), std::max(v3, v1)}), std::max({v1, v2, v3})}};  // Store triangles in a consistent order
             counts[triangle]++;

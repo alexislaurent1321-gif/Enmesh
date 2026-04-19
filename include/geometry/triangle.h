@@ -40,10 +40,10 @@ struct Triangle {
     /** 
      * @brief Check if the circum circle of the triangle contains a specific point
      * @param vertices The list of vertices in the mesh
-     * @param P The point to check
-     * @return true if P is inside the circum circle, false otherwise
+     * @param point The point to check
+     * @return true if point is inside the circum circle, false otherwise
      */
-    bool containsPoint(const std::vector<Point>& vertices, const Point& P);
+    bool containsPoint(const std::vector<Point>& vertices, const Point& point);
 
     /**
     * @brief Overload the == operator to compare two triangles based on their vertex indices
@@ -64,11 +64,11 @@ struct Triangle {
 
 /** @brief A hash function for triangles */
 struct TriangleHash {
-    size_t operator()(const Triangle& f) const {
+    size_t operator()(const Triangle& triangle) const {
         // Combine the hashes of the three vertex indices to create a unique hash for the triangle
-        size_t h = std::hash<size_t>{}(f.v[0]);
-        h ^= std::hash<size_t>{}(f.v[1]) + 0x9e3779b9 + (h << 6) + (h >> 2);  // Combine with the second vertex index
-        h ^= std::hash<size_t>{}(f.v[2]) + 0x9e3779b9 + (h << 6) + (h >> 2);  // Combine with the third vertex index
+        size_t h = std::hash<size_t>{}(triangle.v[0]);
+        h ^= std::hash<size_t>{}(triangle.v[1]) + 0x9e3779b9 + (h << 6) + (h >> 2);  // Combine with the second vertex index
+        h ^= std::hash<size_t>{}(triangle.v[2]) + 0x9e3779b9 + (h << 6) + (h >> 2);  // Combine with the third vertex index
         return h;
     }
 };

@@ -55,19 +55,19 @@ Triangle createSuperTriangle(Mesh<Triangle>& mesh) {
 
     // Find the boundary of the polygonal hole created by removing the bad triangles
     std::vector<Edge> polygon;
-    for (const auto& tri : badTriangles) {
+    for (const auto& triangle : badTriangles) {
         
         // Check each edge of the triangle to see if it's shared by another bad triangle
-        Edge edges[3] = { {tri.v[0], tri.v[1]}, {tri.v[1], tri.v[2]}, {tri.v[2], tri.v[0]} };
+        Edge edges[3] = { {triangle.v[0], triangle.v[1]}, {triangle.v[1], triangle.v[2]}, {triangle.v[2], triangle.v[0]} };
         
         // For each edge, check if it's shared by another bad triangle. If not, it's part of the polygon boundary
         for (const auto& edge : edges) {
             bool isShared = false;  // Check if this edge is shared by another bad triangle
-            for (const auto& otherTri : badTriangles) {
+            for (const auto& otherTriangle : badTriangles) {
 
-                if (&tri == &otherTri) continue;
+                if (&triangle == &otherTriangle) continue;
 
-                if (otherTri.containsEdge(edge.v1, edge.v2)) {
+                if (otherTriangle.containsEdge(edge.v1, edge.v2)) {
                     isShared = true;
                     break;
                 }

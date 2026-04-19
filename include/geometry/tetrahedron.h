@@ -27,10 +27,10 @@ struct Tetrahedron {
     /**
      * @brief Check if the circumsphere of the tetrahedron contains a specific point
      * @param vertices The list of vertices in the mesh
-     * @param P The point to check
-     * @return true if P is inside the circumsphere, false otherwise
+     * @param point The point to check
+     * @return true if point is inside the circumsphere, false otherwise
      */
-    bool containsPoint(const std::vector<Point>& vertices, const Point& P);
+    bool containsPoint(const std::vector<Point>& vertices, const Point& point);
 
 
     /**

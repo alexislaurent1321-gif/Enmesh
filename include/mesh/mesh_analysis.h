@@ -16,11 +16,11 @@
 /** 
  * @brief   Calculate the aspect ratio of a triangle defined by its vertex indices. An aspect ratio near to 1 indicates a more equilateral triangle
  * 
- * @param t 
+ * @param element 
  * @return float 
  */
 template <typename T>
-float calculateAspectRatio(const Mesh<T>& mesh, const T& t);
+float calculateAspectRatio(const Mesh<T>& mesh, const T& element);
 
 
 /**

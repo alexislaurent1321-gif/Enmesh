@@ -75,10 +75,10 @@ struct Point {
      * @brief Overload the << operator to print the point's coordinates
      * 
      * @param os 
-     * @param p 
+     * @param point 
      * @return std::ostream& 
      */
-    friend std::ostream& operator<<(std::ostream& os, const Point& p);
+    friend std::ostream& operator<<(std::ostream& os, const Point& point);
 };
 
 #endif

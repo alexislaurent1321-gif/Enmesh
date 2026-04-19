@@ -61,7 +61,7 @@ Point Point::cross(const Point& other) const {
 }
 
 
-std::ostream& operator<<(std::ostream& os, const Point& p) {
-    os << "(" << p.x << ", " << p.y << ", " << p.z << ")";
+std::ostream& operator<<(std::ostream& os, const Point& point) {
+    os << "(" << point.x << ", " << point.y << ", " << point.z << ")";
     return os;
 }
