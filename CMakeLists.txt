@@ -12,12 +12,14 @@ add_library(mesh_analyzer
     src/geometry/point.cpp
 
     src/mesh/mesh.cpp
-    src/mesh/mesh_analysis.cpp
-    src/mesh/mesh_analysis.tpp
     src/mesh/mesh_smoothing.cpp
     src/mesh/mesh_basic_shapes.cpp
     src/mesh/mesh_triangulation.cpp
-    # src/mesh/mesh_refine.cpp
+
+    src/mesh/mesh_analysis/mesh_analysis_getValence.cpp
+    src/mesh/mesh_analysis/mesh_analysis_aspectRatio.tpp
+    src/mesh/mesh_analysis/mesh_analysis_count.tpp
+    src/mesh/mesh_analysis/mesh_analysis.tpp
 
     src/io/exportToVTK.cpp
     src/io/loadMsh.tpp
