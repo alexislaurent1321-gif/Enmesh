@@ -99,10 +99,12 @@ max aspect ratio : 4.0086
 mean aspect ratio : 1.60255
 boundaries triangles : 324
 ```
+The aspect ratio is calculated using this formula: (https://docs.salome-platform.org/latest/gui/SMESH/aspect_ratio_3d.html)
+
 The statistics match those of Gmsh :
 <img width="361" height="268" alt="statistics" src="https://github.com/user-attachments/assets/7aa8f484-0913-4807-8609-b646647547c9" />
 
-The aspect ratio is calculated using this formula: (https://docs.salome-platform.org/latest/gui/SMESH/aspect_ratio_3d.html)
+
 
 
 ## Delaunay triangulation (`demo/demo_triangulation.cpp`)
