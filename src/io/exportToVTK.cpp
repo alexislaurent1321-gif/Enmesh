@@ -69,7 +69,10 @@ void exportToVTK(const std::string& filename, const Mesh<Tetrahedron>& mesh){
     file << "CELL_TYPES " << nT << "\n";
     for (size_t i = 0; i < nT; ++i) file << "10\n"; // Tetrahedra
 
+    // Write cell data (quality ratios)
+    file << "CELL_DATA " << nT << "\n";
+    file << "SCALARS Quality_Ratio float\nLOOKUP_TABLE default\n";
+    for (float r : mesh.ratios) file << r << "\n";
+
     file.close();
-
-
 }
