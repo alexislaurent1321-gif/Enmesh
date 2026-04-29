@@ -1,14 +1,22 @@
-#include "geometry/edge.h"
-#include "geometry/point.h"
-#include "geometry/triangle.h"
-#include "geometry/tetrahedron.h"
+#ifndef ENMESH_H
+#define ENMESH_H
 
-#include "io/exportToVTK.h"
-#include "io/loadMsh.h"
-#include "io/loadObj.h"
+namespace Enmesh {
+    
+    #include "geometry/edge.h"
+    #include "geometry/point.h"
+    #include "geometry/triangle.h"
+    #include "geometry/tetrahedron.h"
 
-#include "mesh/mesh.h"
-#include "mesh/mesh_analysis.h"
-#include "mesh/mesh_basic_shapes.h"
-#include "mesh/mesh_smoothing.h"
-#include "mesh/mesh_triangulation.h"
+    #include "io/exportToVTK.h"
+    #include "io/loadMsh.h"
+    #include "io/loadObj.h"
+
+    #include "mesh/mesh.h"
+    #include "mesh/mesh_analysis.h"
+    #include "mesh/mesh_basic_shapes.h"
+    #include "mesh/mesh_smoothing.h"
+    #include "mesh/mesh_triangulation.h"
+}
+
+#endif  

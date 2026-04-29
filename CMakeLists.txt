@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.20)
-project(meshAnalyzer LANGUAGES CXX)
+project(Enmesh LANGUAGES CXX)
 
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
@@ -7,7 +7,7 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 add_subdirectory(extern/tinyobjloader)
 add_subdirectory(extern/mshio)
 
-add_library(mesh_analyzer 
+add_library(Enmesh STATIC 
     src/geometry/triangle.cpp
     src/geometry/point.cpp
 
@@ -26,21 +26,21 @@ add_library(mesh_analyzer
     src/io/loadObj.cpp
 )
 
-target_include_directories(mesh_analyzer PUBLIC include/Enmesh)
+target_include_directories(Enmesh PUBLIC include/Enmesh)
 
-target_link_libraries(mesh_analyzer PUBLIC mshio tinyobjloader)
+target_link_libraries(Enmesh PUBLIC mshio tinyobjloader)
 
 
 # Demos
 
 add_executable(analyzer demos/demo_analyzer.cpp)
-target_link_libraries(analyzer PRIVATE mesh_analyzer)
+target_link_libraries(analyzer PRIVATE Enmesh)
 
 add_executable(analyzer3D demos/demo_analyzer3D.cpp)
-target_link_libraries(analyzer3D PRIVATE mesh_analyzer)
+target_link_libraries(analyzer3D PRIVATE Enmesh)
 
 add_executable(smoothing demos/demo_smoothing.cpp)
-target_link_libraries(smoothing PRIVATE mesh_analyzer)
+target_link_libraries(smoothing PRIVATE Enmesh)
 
 add_executable(triangulation demos/demo_triangulation.cpp)
-target_link_libraries(triangulation PRIVATE mesh_analyzer)
+target_link_libraries(triangulation PRIVATE Enmesh)
