@@ -95,9 +95,9 @@ template <typename T>
 void analyzeMesh(Mesh<T>& mesh);
 
 
-#include "../src/mesh/mesh_analysis/mesh_analysis.tpp" 
-#include "../src/mesh/mesh_analysis/mesh_analysis_aspectRatio.tpp"
-#include "../src/mesh/mesh_analysis/mesh_analysis_count.tpp"
+#include "../../src/mesh/mesh_analysis/mesh_analysis.tpp" 
+#include "../../src/mesh/mesh_analysis/mesh_analysis_aspectRatio.tpp"
+#include "../../src/mesh/mesh_analysis/mesh_analysis_count.tpp"
 
 
 #endif  
