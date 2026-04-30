@@ -170,7 +170,7 @@ using Edge Collapse](https://arxiv.org/pdf/2512.19959)) (maybe)
 # Compilation and execution
 To clone the project : 
 ```bash
-git clone --recurse-submodules https://github.com/alexislaurent1321-gif/mesh_analyzer.git
+git clone --recurse-submodules https://github.com/alexislaurent1321-gif/Enmesh.git
 ```
 
 Compilation on Windows (preferably with **MSVC**) or Linux. Use the **VS Code** interface if possible. On Windows, to run ParaView from the command line, add the ParaView bin folder (e.g., `C:\Program Files\ParaView 6.1.0\bin`) to the `PATH` environment variables.
