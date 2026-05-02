@@ -5,10 +5,9 @@
 #include "mesh/mesh_smoothing.h"
 #include "io/exportToVTK.h"
 #include "mesh/mesh_triangulation.h"
-#include "mesh/mesh_refine.h"
 
 
-/** @file triangulation.cpp
+/** @file smoothing.cpp
  * @brief A simple demo to generate a grid mesh, perform Delaunay triangulation on it, analyze the resulting mesh, and export it to VTK format for visualization in tools like ParaView.
  */
 

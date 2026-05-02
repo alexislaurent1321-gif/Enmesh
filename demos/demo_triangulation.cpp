@@ -5,7 +5,6 @@
 #include "mesh/mesh_smoothing.h"
 #include "io/exportToVTK.h"
 #include "mesh/mesh_triangulation.h"
-#include "mesh/mesh_refine.h"
 
 
 /** @file triangulation.cpp
