@@ -8,13 +8,13 @@
  */
 
  int main() {
-    Mesh<Tetrahedron> mesh;
-    loadMsh<Tetrahedron>(mesh, "models/sphere.msh");
+    Enmesh::Mesh<Enmesh::Tetrahedron> mesh;
+    Enmesh::loadMsh<Enmesh::Tetrahedron>(mesh, "models/sphere.msh");
   
-    analyzeMesh<Tetrahedron>(mesh);
-    exportToVTK("output.vtk", mesh);
+    Enmesh::analyzeMesh<Enmesh::Tetrahedron>(mesh);
+    Enmesh::exportToVTK("output.vtk", mesh);
 
-    std::cout << "boundaries triangles : " << getBoundaryTriangles(mesh).size() << std::endl;
+    std::cout << "boundaries tetrahedra : " << Enmesh::getBoundaryTriangles(mesh).size() << std::endl;
 
 
    return 0;

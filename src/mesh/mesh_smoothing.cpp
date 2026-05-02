@@ -1,5 +1,6 @@
 #include "mesh/mesh_smoothing.h"
 
+namespace Enmesh {
 
 void smooth(Mesh<Triangle>& mesh, int iterations, float lambda){
         
@@ -45,3 +46,5 @@ void smooth(Mesh<Triangle>& mesh, int iterations, float lambda){
         mesh.vertices = nextPositions; // Update the vertex positions after smoothing
     }
 }
+
+} // namespace Enmesh

@@ -13,17 +13,17 @@
 
 int main() {
     
-    Mesh<Triangle> mesh;
+    Enmesh::Mesh<Enmesh::Triangle> mesh;
 
     if (!loadObj(mesh, "models/demi_sphere_broken.obj")) {
         std::cerr << "Error loading OBJ file." << std::endl;
         return 1;
     }
     
-    analyzeMesh<Triangle>(mesh);
+    Enmesh::analyzeMesh<Enmesh::Triangle>(mesh);
 
     std::cout << "Exporting mesh to VTK format..." << std::endl;
-    exportToVTK("output.vtk", mesh);
+    Enmesh::exportToVTK("output.vtk", mesh);
     
     return 0;
 }

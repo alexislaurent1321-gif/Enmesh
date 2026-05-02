@@ -1,5 +1,6 @@
 #include "tetrahedron.h"
 
+namespace Enmesh {
 
 bool Tetrahedron::containsPoint(const std::vector<Point>& vertices, const Point& point) {
     
@@ -46,3 +47,5 @@ bool Tetrahedron::containsEdge(int v1, int v2) const {
 
     return false; 
 }
+
+} // namespace Enmesh

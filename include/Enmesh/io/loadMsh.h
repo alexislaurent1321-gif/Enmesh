@@ -4,6 +4,8 @@
 #include "mesh/mesh.h"
 
 
+namespace Enmesh {
+
 /**
  * @brief   Load a mesh from a .msh file in Gmsh format
  * 
@@ -14,6 +16,9 @@
  */
 template <typename T>
 bool loadMsh(Mesh<T>& mesh, const std::string& path);
+
+} // namespace Enmesh
+
 
 #include "../../src/io/loadMsh.tpp"
 

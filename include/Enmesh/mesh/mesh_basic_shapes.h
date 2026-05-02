@@ -4,6 +4,8 @@
 
 #include "mesh/mesh.h"
 
+namespace Enmesh {
+
 /** 
  * @brief Generate a grid of vertices
  * @param mesh The mesh to populate with vertices
@@ -23,5 +25,8 @@ void generateGrid(Mesh<Triangle>& mesh, int Nx, int Ny, float Lx, float Ly);
  * @param Ly The height of the bounding box
  */
 void generateRandomPoints(Mesh<Triangle>& mesh, int N, float Lx, float Ly);
+
+
+} // namespace Enmesh
 
 #endif

@@ -16,13 +16,13 @@ int main() {
     // Triangulation test on a grid
 
     // Example of generating a grid mesh and exporting it
-    Mesh<Triangle> gridMesh;
-    generateGrid(gridMesh, 5, 5, 1.f, 1.f);
+    Enmesh::Mesh<Enmesh::Triangle> gridMesh;
+    Enmesh::generateGrid(gridMesh, 5, 5, 1.f, 1.f);
 
-    triangulate(gridMesh); // Perform Delaunay triangulation on the grid mesh
+    Enmesh::triangulate(gridMesh); // Perform Delaunay triangulation on the grid mesh
 
-    analyzeMesh<Triangle>(gridMesh);
-    exportToVTK("output.vtk", gridMesh);
+    Enmesh::analyzeMesh<Enmesh::Triangle>(gridMesh);
+    Enmesh::exportToVTK("output.vtk", gridMesh);
 
     return 0;
 }

@@ -1,5 +1,6 @@
 #include "mesh/mesh_triangulation.h"
 
+namespace Enmesh {
 
 Triangle createSuperTriangle(Mesh<Triangle>& mesh) {
 
@@ -130,3 +131,5 @@ void triangulate(Mesh<Triangle>& mesh) {
     // Remove triangles that include the vertices of the super-triangle
     cleanup(mesh, superTriangle);
 }
+
+} // namespace Enmesh

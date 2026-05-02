@@ -18,6 +18,7 @@
 #include "geometry/tetrahedron.h"
 
 
+namespace Enmesh {
 
 /**
  * @brief A class representing a 3D mesh
@@ -31,5 +32,7 @@ struct Mesh {
     std::vector<ElementType> elements;      ///< List of elements defined by vertex indices
     std::vector<float> ratios;              ///< aspect ratios of elements (for quality analysis)
 };
+
+} // namespace Enmesh
 
 #endif

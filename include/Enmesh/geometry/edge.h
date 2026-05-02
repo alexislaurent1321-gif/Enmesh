@@ -12,6 +12,8 @@
 
 #include "geometry/point.h"
 
+namespace Enmesh {
+
 /**
  * @brief A struct representing an edge in the mesh
  * 
@@ -32,5 +34,7 @@ struct EdgeHash {
         return std::hash<int>{}(e.v1) ^ (std::hash<int>{}(e.v2) << 1); // Combine hashes of v1 and v2
     }
 };
+
+} // namespace Enmesh
 
 #endif  

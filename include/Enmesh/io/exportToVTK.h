@@ -3,6 +3,8 @@
 
 #include "mesh/mesh.h"
 
+namespace Enmesh {
+
 /** 
  * @brief Exports the mesh data to a VTK file for visualization in Paraview
  * @param filename The name of the output VTK file
@@ -16,5 +18,7 @@ void exportToVTK(const std::string& filename, const Mesh<Triangle>& mesh);
  * @param mesh The mesh object containing vertices, tetrahedra, and quality ratios
 */
 void exportToVTK(const std::string& filename, const Mesh<Tetrahedron>& mesh);
+
+} // namespace Enmesh
 
 #endif

@@ -3,6 +3,7 @@
 
 #include "mesh/mesh_analysis.h"
 
+namespace Enmesh {
 
 // Quality analysis
 
@@ -40,3 +41,5 @@ size_t countUniqueTriangles(const Mesh<T>& mesh) {
     }
     return uniqueTriangles.size();
 }
+
+} // namespace Enmesh

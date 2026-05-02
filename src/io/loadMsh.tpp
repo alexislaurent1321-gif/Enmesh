@@ -2,6 +2,8 @@
 #include <mshio/mshio.h>
 #include <map>
 
+namespace Enmesh {
+
 template <typename T>
 bool loadMsh(Mesh<T>& mesh, const std::string& path) {
     mshio::MshSpec spec = mshio::load_msh(path);
@@ -50,4 +52,4 @@ bool loadMsh(Mesh<T>& mesh, const std::string& path) {
     return !mesh.elements.empty();
 }
 
-  
+} // namespace Enmesh

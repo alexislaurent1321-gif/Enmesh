@@ -1,5 +1,6 @@
 #include "geometry/triangle.h"
 
+namespace Enmesh {
 
 bool Triangle::containsEdge(size_t v1, size_t v2) const {
     return (v[0] == v1 && v[1] == v2) || (v[1] == v1 && v[0] == v2) ||
@@ -29,3 +30,5 @@ bool Triangle::containsPoint(const std::vector<Point>& vertices,const Point& poi
 
     return det < -1e-5; // Use a small epsilon to account for floating-point precision issues
 }
+
+} // namespace Enmesh

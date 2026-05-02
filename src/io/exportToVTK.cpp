@@ -1,6 +1,8 @@
 #include "io/exportToVTK.h"
 #include "mesh/mesh_analysis.h"
 
+namespace Enmesh {
+
 void exportToVTK(const std::string& filename, const Mesh<Triangle>& mesh) {
     std::ofstream file(filename);
     if (!file.is_open()) return;
@@ -76,3 +78,5 @@ void exportToVTK(const std::string& filename, const Mesh<Tetrahedron>& mesh){
 
     file.close();
 }
+
+} // namespace Enmesh

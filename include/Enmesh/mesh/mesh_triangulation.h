@@ -9,6 +9,8 @@
 #include "mesh/mesh_basic_shapes.h"
    
 
+namespace Enmesh {
+
 /** 
  * @brief Create a super-triangle that encompasses all vertices in the mesh
  * @return The super-triangle
@@ -36,5 +38,6 @@ void cleanup(Mesh<Triangle>& mesh, Triangle superTriangle);
  */
 void triangulate(Mesh<Triangle>& mesh);
    
+} // namespace Enmesh
 
 #endif  

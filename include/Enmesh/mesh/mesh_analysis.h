@@ -11,6 +11,9 @@
 
 #include "mesh/mesh.h"
 
+
+namespace Enmesh {
+
 // Quality analysis
 
 /** 
@@ -94,6 +97,7 @@ size_t countUniqueTriangles(const Mesh<T>& mesh);
 template <typename T>
 void analyzeMesh(Mesh<T>& mesh);
 
+} // namespace Enmesh
 
 #include "../../src/mesh/mesh_analysis/mesh_analysis.tpp" 
 #include "../../src/mesh/mesh_analysis/mesh_analysis_aspectRatio.tpp"

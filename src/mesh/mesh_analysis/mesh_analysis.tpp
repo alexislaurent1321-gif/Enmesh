@@ -3,6 +3,7 @@
 
 #include "mesh/mesh_analysis.h"
 
+namespace Enmesh {
 
 // Display analysis
 
@@ -34,3 +35,5 @@ inline void analyzeMesh(Mesh<Tetrahedron>& mesh) {
     std::cout << "max aspect ratio : " << *std::max_element(mesh.ratios.begin(), mesh.ratios.end()) << std::endl;
     std::cout << "mean aspect ratio : " << std::accumulate(mesh.ratios.begin(), mesh.ratios.end(), 0.f) / mesh.ratios.size() << std::endl;
 }
+
+} // namespace Enmesh

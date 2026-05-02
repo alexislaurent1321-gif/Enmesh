@@ -3,6 +3,7 @@
 
 #include "mesh/mesh_analysis.h"
 
+namespace Enmesh {
 
 // Quality analysis
 
@@ -60,3 +61,5 @@ void calculateAspectRatios(Mesh<T>& mesh) {
         mesh.ratios.push_back(calculateAspectRatio<T>(mesh, t));
     }
 }
+
+} // namespace Enmesh

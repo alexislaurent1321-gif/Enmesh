@@ -16,6 +16,8 @@
 #include "geometry/point.h"
 #include "geometry/edge.h"
 
+namespace Enmesh {
+
 /**
  * @brief A struct representing a triangle in the mesh
  * 
@@ -72,5 +74,7 @@ struct TriangleHash {
         return h;
     }
 };
+
+} // namespace Enmesh
 
 #endif

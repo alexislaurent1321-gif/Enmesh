@@ -3,6 +3,8 @@
 
 #include "mesh/mesh.h"
 
+namespace Enmesh {
+
 /**
  * @brief  Load a triangular mesh from an OBJ file using tinyobjloader
  * 
@@ -11,6 +13,8 @@
  * @return false 
  */
 bool loadObj(Mesh<Triangle>& mesh, const std::string& path);
+
+} // namespace Enmesh
 
 #endif
 

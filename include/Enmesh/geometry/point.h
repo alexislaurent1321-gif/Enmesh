@@ -5,6 +5,9 @@
 #include <cmath>
 #include <vector>
 
+
+namespace Enmesh {
+
 /**
  * @brief A struct representing a point in 3D space
  * 
@@ -80,5 +83,7 @@ struct Point {
      */
     friend std::ostream& operator<<(std::ostream& os, const Point& point);
 };
+
+} // namespace Enmesh
 
 #endif

@@ -1,5 +1,7 @@
 #include "geometry/point.h"
 
+namespace Enmesh {
+
 float Point::length() const { 
     return std::sqrt(x*x + y*y + z*z); 
 }
@@ -65,3 +67,5 @@ std::ostream& operator<<(std::ostream& os, const Point& point) {
     os << "(" << point.x << ", " << point.y << ", " << point.z << ")";
     return os;
 }
+
+} // namespace Enmesh

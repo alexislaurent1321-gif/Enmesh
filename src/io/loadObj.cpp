@@ -5,6 +5,8 @@
 
 #include "io/loadObj.h"
 
+namespace Enmesh {
+
 bool loadObj(Mesh<Triangle>& mesh, const std::string& path) {
     tinyobj::ObjReaderConfig reader_config; // Create a reader configuration object (optional)
     tinyobj::ObjReader reader;              // Create an ObjReader object to read the OBJ file
@@ -44,3 +46,5 @@ bool loadObj(Mesh<Triangle>& mesh, const std::string& path) {
 
     return true;
 }
+
+} // namespace Enmesh

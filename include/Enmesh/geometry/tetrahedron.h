@@ -15,6 +15,9 @@
 #include "geometry/point.h"
 #include "geometry/edge.h"
 
+
+namespace Enmesh {
+
 struct Tetrahedron {
 
     static constexpr size_t elementType = 4; ///< Gmsh element type for tetrahedra 
@@ -40,5 +43,7 @@ struct Tetrahedron {
      */
     bool containsEdge(int v1, int v2) const;
 };
+
+} // namespace Enmesh
 
 #endif 

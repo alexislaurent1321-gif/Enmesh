@@ -16,15 +16,15 @@ int main() {
     // Triangulation test on a grid
 
     // Example of generating a grid mesh and exporting it
-    Mesh<Triangle> irregularMesh;
+    Enmesh::Mesh<Enmesh::Triangle> irregularMesh;
     generateRandomPoints(irregularMesh, 25, 1.f, 1.f);
 
-    triangulate(irregularMesh); // Perform Delaunay triangulation on the grid mesh
+    Enmesh::triangulate(irregularMesh); // Perform Delaunay triangulation on the grid mesh
 
-    smooth(irregularMesh, 100, 1.f); // Apply smoothing to improve triangle quality
+    Enmesh::smooth(irregularMesh, 100, 1.f); // Apply smoothing to improve triangle quality
 
-    analyzeMesh<Triangle>(irregularMesh);
-    exportToVTK("output.vtk", irregularMesh);
+    Enmesh::analyzeMesh<Enmesh::Triangle>(irregularMesh);
+    Enmesh::exportToVTK("output.vtk", irregularMesh);
 
     return 0;
 }

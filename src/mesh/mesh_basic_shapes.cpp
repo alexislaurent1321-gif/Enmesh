@@ -1,5 +1,7 @@
 #include "mesh/mesh_basic_shapes.h"
 
+namespace Enmesh {
+
 void generateGrid(Mesh<Triangle>& mesh, int Nx, int Ny, float Lx, float Ly) {
     float dx = Lx / (Nx - 1);
     float dy = Ly / (Ny - 1);
@@ -18,3 +20,5 @@ void generateRandomPoints(Mesh<Triangle>& mesh, int N, float Lx, float Ly) {
         mesh.vertices.push_back({x, y});
     }
 }
+
+} // namespace Enmesh

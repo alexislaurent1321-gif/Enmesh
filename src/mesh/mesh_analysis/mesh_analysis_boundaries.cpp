@@ -3,6 +3,7 @@
 
 #include "mesh/mesh_analysis.h"
 
+namespace Enmesh {
 
 std::unordered_map<Edge, size_t, EdgeHash> getEdgeValences(const Mesh<Triangle>& mesh) {
     std::unordered_map<Edge, size_t, EdgeHash> counts;     // Use an unordered_map to count occurrences of each edge
@@ -61,3 +62,5 @@ std::vector<Triangle> getBoundaryTriangles(const Mesh<Tetrahedron>& mesh) {
     
     return boundaryTriangles;
 }
+
+} // namespace Enmesh
