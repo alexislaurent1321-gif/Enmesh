@@ -15,6 +15,6 @@
 template <typename T>
 bool loadMsh(Mesh<T>& mesh, const std::string& path);
 
-#include "../src/io/loadMsh.tpp"
+#include "../../src/io/loadMsh.tpp"
 
 #endif 
