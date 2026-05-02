@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.14.0"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Enmesh: Mesh&lt; ElementType &gt; Struct Template Reference</title>
+<title>Enmesh: Enmesh::Enmesh::Edge Struct Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -68,38 +68,42 @@ $(function() {
 </div>
 </div>
 
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><b>Enmesh</b></li><li class="navelem"><b>Enmesh</b></li><li class="navelem"><a href="structEnmesh_1_1Enmesh_1_1Edge.html">Edge</a></li>  </ul>
+</div>
 </div><!-- top -->
 <div id="doc-content">
 <div class="header">
   <div class="summary">
+<a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#pub-attribs">Public Attributes</a> &#124;
-<a href="structMesh-members.html">List of all members</a>  </div>
-  <div class="headertitle"><div class="title">Mesh&lt; ElementType &gt; Struct Template Reference</div></div>
+<a href="structEnmesh_1_1Enmesh_1_1Edge-members.html">List of all members</a>  </div>
+  <div class="headertitle"><div class="title">Enmesh::Enmesh::Edge Struct Reference</div></div>
 </div><!--header-->
 <div class="contents">
 
-<p>A class representing a 3D mesh.  
+<p>A struct representing an edge in the mesh.  
  <a href="#details">More...</a></p>
 
-<p><code>#include &lt;<a class="el" href="mesh_8h_source.html">mesh.h</a>&gt;</code></p>
+<p><code>#include &lt;<a class="el" href="Enmesh_8h_source.html">Enmesh.h</a>&gt;</code></p>
 <table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-pub-methods" class="groupheader"><a id="pub-methods" name="pub-methods"></a>
+Public Member Functions</h2></td></tr>
+<tr class="memitem:a21163a7289dad42d1f82f64bec613faf" id="r_a21163a7289dad42d1f82f64bec613faf"><td class="memItemLeft" align="right" valign="top"><a id="a21163a7289dad42d1f82f64bec613faf" name="a21163a7289dad42d1f82f64bec613faf"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><b>operator==</b> (const <a class="el" href="structEnmesh_1_1Enmesh_1_1Edge.html">Edge</a> &amp;other) const</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pub-attribs" class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
-<tr class="memitem:ac535c76b73cf1e5c7c5fdb3dc536843b" id="r_ac535c76b73cf1e5c7c5fdb3dc536843b"><td class="memItemLeft" align="right" valign="top"><a id="ac535c76b73cf1e5c7c5fdb3dc536843b" name="ac535c76b73cf1e5c7c5fdb3dc536843b"></a>
-std::vector&lt; <a class="el" href="structPoint.html">Point</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>vertices</b></td></tr>
-<tr class="memdesc:ac535c76b73cf1e5c7c5fdb3dc536843b"><td class="mdescLeft">&#160;</td><td class="mdescRight">List of vertices in the mesh. <br /></td></tr>
-<tr class="memitem:ad9108fd1ab8a2bcbd3f637cf3e1044c7" id="r_ad9108fd1ab8a2bcbd3f637cf3e1044c7"><td class="memItemLeft" align="right" valign="top"><a id="ad9108fd1ab8a2bcbd3f637cf3e1044c7" name="ad9108fd1ab8a2bcbd3f637cf3e1044c7"></a>
-std::vector&lt; ElementType &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>elements</b></td></tr>
-<tr class="memdesc:ad9108fd1ab8a2bcbd3f637cf3e1044c7"><td class="mdescLeft">&#160;</td><td class="mdescRight">List of elements defined by vertex indices. <br /></td></tr>
-<tr class="memitem:a742d460aaf9322b1ab64defc4b3fdd0a" id="r_a742d460aaf9322b1ab64defc4b3fdd0a"><td class="memItemLeft" align="right" valign="top"><a id="a742d460aaf9322b1ab64defc4b3fdd0a" name="a742d460aaf9322b1ab64defc4b3fdd0a"></a>
-std::vector&lt; float &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>ratios</b></td></tr>
-<tr class="memdesc:a742d460aaf9322b1ab64defc4b3fdd0a"><td class="mdescLeft">&#160;</td><td class="mdescRight">aspect ratios of elements (for quality analysis) <br /></td></tr>
+<tr class="memitem:a6a79040f6c4eda66ece902393dbd6213" id="r_a6a79040f6c4eda66ece902393dbd6213"><td class="memItemLeft" align="right" valign="top"><a id="a6a79040f6c4eda66ece902393dbd6213" name="a6a79040f6c4eda66ece902393dbd6213"></a>
+size_t&#160;</td><td class="memItemRight" valign="bottom"><b>v1</b></td></tr>
+<tr class="memitem:aeef2cad9c424531b9d49148c7fc2c50e" id="r_aeef2cad9c424531b9d49148c7fc2c50e"><td class="memItemLeft" align="right" valign="top"><a id="aeef2cad9c424531b9d49148c7fc2c50e" name="aeef2cad9c424531b9d49148c7fc2c50e"></a>
+size_t&#160;</td><td class="memItemRight" valign="bottom"><b>v2</b></td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
-<div class="textblock"><div class="compoundTemplParams">template&lt;typename ElementType&gt;<br />
-struct Mesh&lt; ElementType &gt;</div><p>A class representing a 3D mesh. </p>
+<div class="textblock"><p>A struct representing an edge in the mesh. </p>
 </div><hr/>The documentation for this struct was generated from the following file:<ul>
-<li>include/Enmesh/mesh/<a class="el" href="mesh_8h_source.html">mesh.h</a></li>
+<li>include/Enmesh/<a class="el" href="Enmesh_8h_source.html">Enmesh.h</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->

@@ -12,5 +12,5 @@ var searchData=
   ['demo_5ftriangulation_20cpp_9',['Delaunay triangulation (&lt;span class=&quot;tt&quot;&gt;demo/demo_triangulation.cpp&lt;/span&gt;)',['../index.html#autotoc_md9',1,'']]],
   ['dependencies_10',['Dependencies',['../index.html#autotoc_md18',1,'']]],
   ['detection_11',['Boundaries detection',['../index.html#autotoc_md7',1,'']]],
-  ['distance_12',['distance',['../structEnmesh_1_1Point.html#ae1ee8fa4ee6ece7f2b6c5f0fa1e9e49e',1,'Enmesh::Point::distance()'],['../structPoint.html#a0d86d1c1e7a6202483fd83ddd065e14f',1,'Point::distance()']]]
+  ['distance_12',['distance',['../structEnmesh_1_1Enmesh_1_1Point.html#ae1ee8fa4ee6ece7f2b6c5f0fa1e9e49e',1,'Enmesh::Enmesh::Point::distance()'],['../structEnmesh_1_1Point.html#ae1ee8fa4ee6ece7f2b6c5f0fa1e9e49e',1,'Enmesh::Point::distance()']]]
 ];
