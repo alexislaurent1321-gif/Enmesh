@@ -6,6 +6,7 @@
 #include "io/exportToVTK.h"
 #include "mesh/mesh_triangulation.h"
 
+using namespace Enmesh;
 
 /** @file triangulation.cpp
  * @brief A simple demo to generate a grid mesh, perform Delaunay triangulation on it, analyze the resulting mesh, and export it to VTK format for visualization in tools like ParaView.
@@ -16,13 +17,13 @@ int main() {
     // Triangulation test on a grid
 
     // Example of generating a grid mesh and exporting it
-    Enmesh::Mesh<Enmesh::Triangle> gridMesh;
-    Enmesh::generateGrid(gridMesh, 5, 5, 1.f, 1.f);
+    Mesh<Triangle> gridMesh;
+    generateGrid(gridMesh, 5, 5, 1.f, 1.f);
 
-    Enmesh::triangulate(gridMesh); // Perform Delaunay triangulation on the grid mesh
+    triangulate(gridMesh); // Perform Delaunay triangulation on the grid mesh
 
-    Enmesh::analyzeMesh<Enmesh::Triangle>(gridMesh);
-    Enmesh::exportToVTK("output.vtk", gridMesh);
+    analyzeMesh<Triangle>(gridMesh);
+    exportToVTK("output.vtk", gridMesh);
 
     return 0;
 }

@@ -15,6 +15,6 @@ void exportToVTK(const std::string& filename, const Mesh<T>& mesh);
 
 } // namespace Enmesh
 
-#include "../../../src/io/exportToVTK.tpp"
+#include "../../src/io/exportToVTK.tpp"
 
 #endif

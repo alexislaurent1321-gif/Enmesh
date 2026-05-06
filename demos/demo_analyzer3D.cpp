@@ -3,18 +3,20 @@
 #include "io/loadMsh.h"
 #include "mesh/mesh_analysis.h"
 
+using namespace Enmesh;
+
 /** @file demo_analyzer3D.cpp
  * @brief A simple demo to load a 3D mesh from a MSH file, analyze it, and print out basic statistics about the mesh quality. It also exports the mesh to VTK format for visualization in tools like ParaView.
  */
 
  int main() {
-    Enmesh::Mesh<Enmesh::Tetrahedron> mesh;
-    Enmesh::loadMsh<Enmesh::Tetrahedron>(mesh, "models/sphere.msh");
+    Mesh<Tetrahedron> mesh;
+    loadMsh<Tetrahedron>(mesh, "models/sphere.msh");
   
-    Enmesh::analyzeMesh<Enmesh::Tetrahedron>(mesh);
-    Enmesh::exportToVTK("output.vtk", mesh);
+    analyzeMesh<Tetrahedron>(mesh);
+    exportToVTK("output.vtk", mesh);
 
-    std::cout << "boundaries tetrahedra : " << Enmesh::getBoundaryTriangles(mesh).size() << std::endl;
+    std::cout << "boundaries tetrahedra : " << getBoundaryTriangles(mesh).size() << std::endl;
 
 
    return 0;

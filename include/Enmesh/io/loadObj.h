@@ -18,5 +18,7 @@ bool loadObj(Mesh<T>& mesh, const std::string& path);
 
 } // namespace Enmesh
 
+#include "../../src/io/loadObj.tpp"
+
 #endif
 

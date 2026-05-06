@@ -28,7 +28,7 @@ bool loadObj(Mesh<T>& mesh, const std::string& path) {
     auto& shapes = reader.GetShapes();
 
     // Load vertices
-    for (size_t v = 0; v < attrib.vertices.size(); v += mesh.numVertices) {
+    for (size_t v = 0; v < attrib.vertices.size(); v += 3) {
         mesh.vertices.push_back({
             attrib.vertices[v], 
             attrib.vertices[v + 1], 
@@ -40,8 +40,8 @@ bool loadObj(Mesh<T>& mesh, const std::string& path) {
     // Load elements
     for (const auto& shape : shapes) {
         size_t index_offset = 0;
-        for (size_t f = 0; f < shape.mesh.num_face_vertices.size(); ++f) {
-            int fv = shape.mesh.num_face_vertices[f];   // Get the number of vertices for this face
+        for (size_t face = 0; face < shape.mesh.num_face_vertices.size(); ++face) {
+            int fv = 4;   // Get the number of vertices for this face
             if (fv != T::numVertices) continue;         // Only support elements with the specified number of vertices
 
             // Create an element object and fill its vertex indices
