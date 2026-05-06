@@ -29,14 +29,14 @@ bool loadMsh(Mesh<T>& mesh, const std::string& path) {
         }
     }
 
-    // Load elements (triangles)
+    // Load elements
     for (const auto& entity_block : spec.elements.entity_blocks) {
-        // We are only interested in triangles, which have an element type of 2 in Gmsh.
+        // We are only interested in elements of the specified type
         if (entity_block.element_type != T::elementType) continue; 
 
 
         // Each element block has a specific format: the first value is the element tag, followed by the node tags that define the element.
-        const size_t nodesPerElem = T::numVertices; // Determine the number of nodes per element based on the mesh type (triangle or tetrahedron)
+        const size_t nodesPerElem = T::numVertices;     // Determine the number of nodes per element based on the mesh type
         const size_t stride = 1 + nodesPerElem; 
 
         for (size_t i = 0; i < entity_block.num_elements_in_block; ++i) {
