@@ -9,7 +9,7 @@ void exportToVTK<Triangle>(const std::string& filename, const Mesh<Triangle>& me
     if (!file.is_open()) return;
 
     // Identify boundary edges (edges that belong to only one triangle)
-    std::vector<Edge> boundaryEdges = getBoundaryEdges(mesh);
+    std::vector<Edge> boundaryEdges = getBoundaryEdges<Triangle>(mesh);
 
     file << "# vtk DataFile Version 3.0\n";
     file << "Mesh Analysis Combo\nASCII\nDATASET UNSTRUCTURED_GRID\n";
@@ -58,7 +58,7 @@ void exportToVTK<Quad>(const std::string& filename, const Mesh<Quad>& mesh) {
     if (!file.is_open()) return;
 
     // Identify boundary edges (edges that belong to only one triangle)
-    std::vector<Edge> boundaryEdges = getBoundaryEdges(mesh);
+    std::vector<Edge> boundaryEdges = getBoundaryEdges<Quad>(mesh);
 
     file << "# vtk DataFile Version 3.0\n";
     file << "Mesh Analysis Combo\nASCII\nDATASET UNSTRUCTURED_GRID\n";

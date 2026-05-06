@@ -7,15 +7,15 @@ namespace Enmesh {
 
 // Display analysis
 
-template <>
-inline void analyzeMesh(Mesh<Triangle>& mesh) {
+template <typename T>
+inline void analyzeMesh(Mesh<T>& mesh) {
     // Basic info
     std::cout << "Vertices : " << mesh.vertices.size() << std::endl;
     std::cout << "Elements : " << mesh.elements.size() << std::endl;
-    std::cout << "Unique edges : " << countUniqueEdges<Triangle>(mesh) << std::endl;
+    std::cout << "Unique edges : " << countUniqueEdges<T>(mesh) << std::endl;
 
     // Aspect ratio analysis
-    calculateAspectRatios<Triangle>(mesh);
+    calculateAspectRatios<T>(mesh);
     std::cout << "min aspect ratio : " << *std::min_element(mesh.ratios.begin(), mesh.ratios.end()) << std::endl;
     std::cout << "max aspect ratio : " << *std::max_element(mesh.ratios.begin(), mesh.ratios.end()) << std::endl;
     std::cout << "mean aspect ratio : " << std::accumulate(mesh.ratios.begin(), mesh.ratios.end(), 0.f) / mesh.ratios.size() << std::endl;

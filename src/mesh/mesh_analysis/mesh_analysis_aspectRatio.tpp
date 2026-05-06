@@ -22,6 +22,21 @@ inline float calculateAspectRatio(const Mesh<Triangle>& mesh, const Triangle& el
 
 
 template <>
+inline float calculateAspectRatio(const Mesh<Quad>& mesh, const Quad& element)  {
+    // quad lengths
+    float a = mesh.vertices[element.v[0]].distance(mesh.vertices[element.v[1]]);
+    float b = mesh.vertices[element.v[1]].distance(mesh.vertices[element.v[2]]);
+    float c = mesh.vertices[element.v[2]].distance(mesh.vertices[element.v[3]]);
+    float d = mesh.vertices[element.v[3]].distance(mesh.vertices[element.v[0]]);
+
+    // aspect ratio formula: (abcd) / ((b+c+d-a)(c+a+d-b)(a+b+d-c)(a+b+c-d))
+    float num = a * b * c * d;
+    float denom = (b+c+d - a) * (c+a+d - b) * (a+b+d - c) * (a+b+c - d);
+    return num / denom;
+}
+
+
+template <>
 inline float calculateAspectRatio(const Mesh<Tetrahedron>& mesh, const Tetrahedron& element)  {
 
     Point A = mesh.vertices[element.v[0]];

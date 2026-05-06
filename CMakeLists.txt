@@ -16,12 +16,12 @@ add_library(Enmesh STATIC
     src/mesh/mesh_basic_shapes.cpp
     src/mesh/mesh_triangulation.cpp
 
-    src/mesh/mesh_analysis/mesh_analysis_boundaries.cpp
+    src/mesh/mesh_analysis/mesh_analysis_boundaries.tpp
     src/mesh/mesh_analysis/mesh_analysis_aspectRatio.tpp
     src/mesh/mesh_analysis/mesh_analysis_count.tpp
     src/mesh/mesh_analysis/mesh_analysis.tpp
 
-    src/io/exportToVTK.cpp
+    src/io/exportToVTK.tpp
     src/io/loadMsh.tpp
     src/io/loadObj.cpp
 )

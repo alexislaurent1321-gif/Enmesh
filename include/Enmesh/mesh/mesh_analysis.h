@@ -42,7 +42,8 @@ void calculateAspectRatios(Mesh<T>& mesh);
  * 
  * @return std::unordered_map<Edge, size_t, EdgeHash> 
  */
-std::unordered_map<Edge, size_t, EdgeHash> getEdgeValences(const Mesh<Triangle>& mesh);
+template <typename T>
+std::unordered_map<Edge, size_t, EdgeHash> getEdgeValences(const Mesh<T>& mesh);
 
 
 /** 
@@ -56,7 +57,8 @@ std::unordered_map<Triangle, size_t, TriangleHash> getTriangleValences(const Mes
  * @brief Get the boundary edges of the mesh
  * @return A vector containing the boundary edges
  */
-std::vector<Edge> getBoundaryEdges(const Mesh<Triangle>& mesh);
+template <typename T>
+std::vector<Edge> getBoundaryEdges(const Mesh<T>& mesh);
 
 
 /** 
@@ -102,6 +104,7 @@ void analyzeMesh(Mesh<T>& mesh);
 #include "../../src/mesh/mesh_analysis/mesh_analysis.tpp" 
 #include "../../src/mesh/mesh_analysis/mesh_analysis_aspectRatio.tpp"
 #include "../../src/mesh/mesh_analysis/mesh_analysis_count.tpp"
+#include "../../src/mesh/mesh_analysis/mesh_analysis_boundaries.tpp"
 
 
 #endif  

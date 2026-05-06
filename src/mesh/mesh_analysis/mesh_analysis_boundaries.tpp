@@ -5,13 +5,20 @@
 
 namespace Enmesh {
 
-std::unordered_map<Edge, size_t, EdgeHash> getEdgeValences(const Mesh<Triangle>& mesh) {
+template <typename T>
+std::unordered_map<Edge, size_t, EdgeHash> getEdgeValences(const Mesh<T>& mesh) {
+
+    if(T::elementType != 2 && T::elementType != 3) {
+        std::cerr << "Error: getEdgeValences only supports surface meshes" << std::endl;
+        return {};
+    }
+
     std::unordered_map<Edge, size_t, EdgeHash> counts;     // Use an unordered_map to count occurrences of each edge
     
     for (const auto& element : mesh.elements) {
-        for (size_t i = 0; i < 3; ++i) {
+        for (size_t i = 0; i < T::numVertices; ++i) {
             size_t v1 = element.v[i];
-            size_t v2 = element.v[(i + 1) % 3];
+            size_t v2 = element.v[(i + 1) % T::numVertices];
 
             Edge e = {std::min(v1, v2), std::max(v1, v2)};  // Store edges in a consistent order
             counts[e]++;
@@ -22,7 +29,14 @@ std::unordered_map<Edge, size_t, EdgeHash> getEdgeValences(const Mesh<Triangle>&
 }
 
 
-std::vector<Edge> getBoundaryEdges(const Mesh<Triangle>& mesh) {
+template <typename T>
+std::vector<Edge> getBoundaryEdges(const Mesh<T>& mesh) {
+
+    if(T::elementType != 2 && T::elementType != 3) {
+        std::cerr << "Error: getBoundaryEdges only supports surface meshes" << std::endl;
+        return {};
+    }
+
     auto edgeCounts = getEdgeValences(mesh);    // Get the valence counts for all edges
     std::vector<Edge> boundaryEdges;            // Collect edges that belong to only one triangle (valence = 1)
     
