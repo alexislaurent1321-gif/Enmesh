@@ -23,16 +23,20 @@ inline float calculateAspectRatio(const Mesh<Triangle>& mesh, const Triangle& el
 
 template <>
 inline float calculateAspectRatio(const Mesh<Quad>& mesh, const Quad& element)  {
-    // quad lengths
-    float a = mesh.vertices[element.v[0]].distance(mesh.vertices[element.v[1]]);
-    float b = mesh.vertices[element.v[1]].distance(mesh.vertices[element.v[2]]);
-    float c = mesh.vertices[element.v[2]].distance(mesh.vertices[element.v[3]]);
-    float d = mesh.vertices[element.v[3]].distance(mesh.vertices[element.v[0]]);
+    // midpoints of the diagonals
+    Point mAB = { (mesh.vertices[element.v[0]].x + mesh.vertices[element.v[1]].x) / 2, (mesh.vertices[element.v[0]].y + mesh.vertices[element.v[1]].y) / 2 };
+    Point mCD = { (mesh.vertices[element.v[2]].x + mesh.vertices[element.v[3]].x) / 2, (mesh.vertices[element.v[2]].y + mesh.vertices[element.v[3]].y) / 2 };
+    Point mBC = { (mesh.vertices[element.v[1]].x + mesh.vertices[element.v[2]].x) / 2, (mesh.vertices[element.v[1]].y + mesh.vertices[element.v[2]].y) / 2 };
+    Point mDA = { (mesh.vertices[element.v[3]].x + mesh.vertices[element.v[0]].x) / 2, (mesh.vertices[element.v[3]].y + mesh.vertices[element.v[0]].y) / 2 };
 
-    // aspect ratio formula: (abcd) / ((b+c+d-a)(c+a+d-b)(a+b+d-c)(a+b+c-d))
-    float num = a * b * c * d;
-    float denom = (b+c+d - a) * (c+a+d - b) * (a+b+d - c) * (a+b+c - d);
-    return num / denom;
+    // lengths of the diagonals
+    float L1 = mAB.distance(mCD);
+    float L2 = mBC.distance(mDA);
+
+    if (L1 == 0 || L2 == 0) return 0; // Avoid division by zero for degenerate quads
+
+    // aspect ratio formula
+    return std::max(L1, L2) / std::min(L1, L2);
 }
 
 
