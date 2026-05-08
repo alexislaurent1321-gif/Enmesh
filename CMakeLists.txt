@@ -23,7 +23,6 @@ add_library(Enmesh STATIC
 
     src/io/exportToVTK.tpp
     src/io/loadMsh.tpp
-    src/io/loadObj.tpp
 )
 
 target_include_directories(Enmesh PUBLIC include/Enmesh)

@@ -7,15 +7,29 @@ namespace Enmesh {
 
 // Display analysis
 
-template <typename T>
-inline void analyzeMesh(Mesh<T>& mesh) {
+template <>
+inline void analyzeMesh(Mesh<Triangle>& mesh) {
     // Basic info
     std::cout << "Vertices : " << mesh.vertices.size() << std::endl;
     std::cout << "Elements : " << mesh.elements.size() << std::endl;
-    std::cout << "Unique edges : " << countUniqueEdges<T>(mesh) << std::endl;
+    std::cout << "Unique edges : " << countUniqueEdges<Triangle>(mesh) << std::endl;
 
     // Aspect ratio analysis
-    calculateAspectRatios<T>(mesh);
+    calculateAspectRatios<Triangle>(mesh);
+    std::cout << "min aspect ratio : " << *std::min_element(mesh.ratios.begin(), mesh.ratios.end()) << std::endl;
+    std::cout << "max aspect ratio : " << *std::max_element(mesh.ratios.begin(), mesh.ratios.end()) << std::endl;
+    std::cout << "mean aspect ratio : " << std::accumulate(mesh.ratios.begin(), mesh.ratios.end(), 0.f) / mesh.ratios.size() << std::endl;
+}
+
+template <>
+inline void analyzeMesh(Mesh<Quad>& mesh) {
+    // Basic info
+    std::cout << "Vertices : " << mesh.vertices.size() << std::endl;
+    std::cout << "Elements : " << mesh.elements.size() << std::endl;
+    std::cout << "Unique edges : " << countUniqueEdges<Quad>(mesh) << std::endl;
+
+    // Aspect ratio analysis
+    calculateAspectRatios<Quad>(mesh);
     std::cout << "min aspect ratio : " << *std::min_element(mesh.ratios.begin(), mesh.ratios.end()) << std::endl;
     std::cout << "max aspect ratio : " << *std::max_element(mesh.ratios.begin(), mesh.ratios.end()) << std::endl;
     std::cout << "mean aspect ratio : " << std::accumulate(mesh.ratios.begin(), mesh.ratios.end(), 0.f) / mesh.ratios.size() << std::endl;

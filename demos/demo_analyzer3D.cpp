@@ -14,7 +14,7 @@ using namespace Enmesh;
     loadMsh<Tetrahedron>(mesh, "models/sphere.msh");
   
     analyzeMesh<Tetrahedron>(mesh);
-    exportToVTK("output.vtk", mesh);
+    exportToVTK<Tetrahedron>("output.vtk", mesh);
 
     std::cout << "boundaries tetrahedra : " << getBoundaryTriangles(mesh).size() << std::endl;
 

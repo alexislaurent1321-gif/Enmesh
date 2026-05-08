@@ -54,52 +54,12 @@ void exportToVTK<Triangle>(const std::string& filename, const Mesh<Triangle>& me
 
 template <>
 void exportToVTK<Quad>(const std::string& filename, const Mesh<Quad>& mesh) {
-    // std::ofstream file(filename);
-    // if (!file.is_open()) return;
-
-    // // Identify boundary edges (edges that belong to only one triangle)
-    // std::vector<Edge> boundaryEdges = getBoundaryEdges<Quad>(mesh);
-
-    // file << "# vtk DataFile Version 3.0\n";
-    // file << "Mesh Analysis Combo\nASCII\nDATASET UNSTRUCTURED_GRID\n";
-
-    // // Write vertices
-    // file << "POINTS " << mesh.vertices.size() << " float\n";
-    // for (const auto& v : mesh.vertices) 
-    //     file << v.x << " " << v.y << " " << v.z << "\n";
-
-    // // Write cells (quads + boundary edges)
-    // size_t nT = mesh.elements.size();
-    // size_t nB = boundaryEdges.size();
-    // file << "CELLS " << (nT + nB) << " " << (nT * 5 + nB * 3) << "\n";
     
-    // for (const auto& quad : mesh.elements)
-    //     file << "4 " << quad.v[0] << " " << quad.v[1] << " " << quad.v[2] << " " << quad.v[3] << "\n";
-    // for (const auto& e : boundaryEdges)
-    //     file << "2 " << e.v1 << " " << e.v2 << "\n";
-
-    // file << "CELL_TYPES " << (nT + nB) << "\n";
-    // for (size_t i = 0; i < nT; ++i) file << "5\n"; // Quads
-    // for (size_t i = 0; i < nB; ++i) file << "3\n"; // Lines
-
-
-    // // Write cell data (quality ratios and boundary flags)
-    // file << "CELL_DATA " << (nT + nB) << "\n";
-
-
-    // file << "SCALARS Quality_Ratio float\nLOOKUP_TABLE default\n";
-    // for (float r : mesh.ratios) file << r << "\n";
-    // for (size_t i = 0; i < nB; ++i) file << "0.\n"; 
-
-
-    // // Boundary representation: 0 for quads, 1 for boundary edges 
-    // file << "SCALARS Is_Boundary int\nLOOKUP_TABLE default\n";
-    // for (size_t i = 0; i < nT; ++i) file << "0\n"; // Quad = 0 
-    // for (size_t i = 0; i < nB; ++i) file << "1\n"; // Boundary = 1
-
-    // file.close();
     std::ofstream file(filename);
-    if (!file.is_open()) return;
+    if (!file.is_open()){
+        std::cerr << "export to VTK : Error opening file for writing: " << filename << std::endl;
+        return;
+    }
 
     file << "# vtk DataFile Version 3.0\n";
     file << "Mesh Analysis Combo\nASCII\nDATASET UNSTRUCTURED_GRID\n";
@@ -109,18 +69,18 @@ void exportToVTK<Quad>(const std::string& filename, const Mesh<Quad>& mesh) {
     for (const auto& v : mesh.vertices) 
         file << v.x << " " << v.y << " " << v.z << "\n";
 
-    // Write cells (tetrahedra)
+    // Write cells (quads)
     size_t nT = mesh.elements.size();
     file << "CELLS " << nT << " " << (nT * 5) << "\n";
-    for (const auto& tetra : mesh.elements)
-        file << "4 " << tetra.v[0] << " " << tetra.v[1] << " " << tetra.v[2] << " " << tetra.v[3] << "\n";
+    for (const auto& quad : mesh.elements)
+        file << "4 " << quad.v[0] << " " << quad.v[1] << " " << quad.v[2] << " " << quad.v[3] << "\n";
     file << "CELL_TYPES " << nT << "\n";
-    for (size_t i = 0; i < nT; ++i) file << "10\n"; // Tetrahedra
+    for (size_t i = 0; i < nT; ++i) file << "9\n"; // Quads
 
-    // Write cell data (quality ratios)
-    file << "CELL_DATA " << nT << "\n";
-    file << "SCALARS Quality_Ratio float\nLOOKUP_TABLE default\n";
-    for (float r : mesh.ratios) file << r << "\n";
+    // // Write cell data (quality ratios)
+    // file << "CELL_DATA " << nT << "\n";
+    // file << "SCALARS Quality_Ratio float\nLOOKUP_TABLE default\n";
+    // for (float r : mesh.ratios) file << r << "\n";
 
     file.close();
 }
@@ -130,7 +90,10 @@ void exportToVTK<Quad>(const std::string& filename, const Mesh<Quad>& mesh) {
 template <>
 void exportToVTK<Tetrahedron>(const std::string& filename, const Mesh<Tetrahedron>& mesh){
     std::ofstream file(filename);
-    if (!file.is_open()) return;
+    if (!file.is_open()){
+        std::cerr << "export to VTK : Error opening file for writing: " << filename << std::endl;
+        return;
+    }
 
     file << "# vtk DataFile Version 3.0\n";
     file << "Mesh Analysis Combo\nASCII\nDATASET UNSTRUCTURED_GRID\n";
