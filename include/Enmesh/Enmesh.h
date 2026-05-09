@@ -8,7 +8,6 @@
 
 #include "io/exportToVTK.h"
 #include "io/loadMsh.h"
-#include "io/loadObj.h"
 
 #include "mesh/mesh.h"
 #include "mesh/mesh_analysis.h"
