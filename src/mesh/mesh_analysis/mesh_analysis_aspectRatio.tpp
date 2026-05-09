@@ -76,8 +76,8 @@ void calculateAspectRatios(Mesh<T>& mesh) {
     mesh.ratios.clear();
 
     // Calculate aspect ratio for each element and store in the ratios vector
-    for (const auto& t : mesh.elements) {
-        mesh.ratios.push_back(calculateAspectRatio<T>(mesh, t));
+    for (const auto& element : mesh.elements) {
+        mesh.ratios.push_back(calculateAspectRatio<T>(mesh, element));
     }
 }
 
