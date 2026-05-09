@@ -50,7 +50,7 @@ std::unordered_map<Edge, size_t, EdgeHash> getEdgeValences(const Mesh<T>& mesh);
  * @brief Get the triangle valences of the mesh
  * @return A map containing the valence of each triangle
  */
-std::unordered_map<Triangle, size_t, TriangleHash> getTriangleValences(const Mesh<Tetrahedron>& mesh);
+inline std::unordered_map<Triangle, size_t, TriangleHash> getTriangleValences(const Mesh<Tetrahedron>& mesh);
 
 
  /** 
@@ -65,7 +65,7 @@ std::vector<Edge> getBoundaryEdges(const Mesh<T>& mesh);
  * @brief Get the boundary triangles of the mesh
  * @return A vector containing the boundary triangles
  */
-std::vector<Triangle> getBoundaryTriangles(const Mesh<Tetrahedron>& mesh);
+inline std::vector<Triangle> getBoundaryTriangles(const Mesh<Tetrahedron>& mesh);
 
 
  /**
