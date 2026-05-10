@@ -11,7 +11,6 @@ template <typename T>
 size_t countUniqueEdges(const Mesh<T>& mesh) {
     std::unordered_set<Edge, EdgeHash> uniqueEdges; // Use an unordered_set to store unique edges
     
-    std::cout << "numVertices : " << T::numVertices << std::endl;
     // Iterate through all triangles and add their edges to the set
     for (const auto& element : mesh.elements) {
         for (size_t i = 0; i < T::numVertices; ++i) {
@@ -29,6 +28,7 @@ size_t countUniqueEdges(const Mesh<T>& mesh) {
 template <typename T>
 size_t countUniqueTriangles(const Mesh<T>& mesh) {
     std::unordered_set<Triangle, TriangleHash> uniqueTriangles; // Use an unordered_set to store unique triangles   
+    
     // Iterate through all tetrahedra and add their triangles to the set
     for (const auto& element : mesh.elements) {
         for (size_t i = 0; i < T::numVertices; ++i) {

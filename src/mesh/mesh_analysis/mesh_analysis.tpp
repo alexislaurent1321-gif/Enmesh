@@ -3,9 +3,11 @@
 
 #include "mesh/mesh_analysis.h"
 
-namespace Enmesh {
+/** @file mesh_analysis.tpp
+ *  @brief Implementation of mesh analysis functions : counting unique edges/triangles and calculating aspect ratios for triangles, quads and tetrahedra.
+ */
 
-// Display analysis
+namespace Enmesh {
 
 template <>
 inline void analyzeMesh(Mesh<Triangle>& mesh) {
@@ -20,6 +22,7 @@ inline void analyzeMesh(Mesh<Triangle>& mesh) {
     std::cout << "max aspect ratio : " << *std::max_element(mesh.ratios.begin(), mesh.ratios.end()) << std::endl;
     std::cout << "mean aspect ratio : " << std::accumulate(mesh.ratios.begin(), mesh.ratios.end(), 0.f) / mesh.ratios.size() << std::endl;
 }
+
 
 template <>
 inline void analyzeMesh(Mesh<Quad>& mesh) {
