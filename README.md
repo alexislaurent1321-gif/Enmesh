@@ -1,9 +1,14 @@
 [![Documentation](https://img.shields.io/badge/docs-doxygen-blue.svg)](https://alexislaurent1321-gif.github.io/Enmesh/)
 
 # Enmesh
-Project to analyze a triangular mesh or create one using Delaunay. 
 
-This project is currently in the process of integrating 3D mesh management (created on [Gmsh](https://gmsh.info/)). 
+Enmesh is a library used to create, manage, and analyze meshes. It is particularly useful for finite element solvers. 
+Its features include: 
+- Delaunay triangulation for 2D meshes
+- Import of .msh files
+- VTK export for ParaView visualization
+- Mesh quality analysis and edge detection
+The supported mesh types are triangular, quadrangular, and tetrahedral meshes
 
 The next step will be to implement more complex methods, such as constrained Delaunay. For more information, see the [Upcoming changes](#upcoming-changes) section.
 
@@ -76,9 +81,10 @@ Here is an example with a cube and a stretched cube. Since the side faces are st
 Another function of this project is to detect the edges of the mesh if it is open. To do this, we select the edges along the boundary. An edge is considered to belong to the boundary of the region if it belongs to exactly one triangle. 
 To evaluate the valence of the edges (the number of triangles they belong to), we create a `std::unordered_map` that stores integers as values and edges as keys. We iterate through the edges of each triangle and increment the value corresponding to the evaluated edge by 1.
 
-The example used here is a hemisphere with some missing faces. Part of the edge, as well as two triangles sharing a common vertex, have been removed. 
+Here is an example of a square made up of quadrangles, the edges are displayed in red.
 
-<img width="600" height="400" alt="demi_sphere_boundaries" src="https://github.com/user-attachments/assets/171883d1-4b31-4704-8ced-66f49e6d964d" style="width:50%;" /> 
+<img width="2200" height="1140" alt="square" src="https://github.com/user-attachments/assets/129587d6-6fb7-4f0c-8159-21e6efdbde40" style="width:50%;" />
+
 
 
 
