@@ -18,6 +18,9 @@
 #include "geometry/quad.h"
 #include "geometry/tetrahedron.h"
 
+/** @file
+ * @brief Mesh class definition
+ */
 
 namespace Enmesh {
 
@@ -32,6 +35,20 @@ struct Mesh {
     std::vector<Point> vertices;            ///< List of vertices in the mesh
     std::vector<ElementType> elements;      ///< List of elements defined by vertex indices
     std::vector<float> ratios;              ///< aspect ratios of elements (for quality analysis)
+
+    // Methods
+
+    /**
+     * @brief Get the number of vertices in the mesh
+     * 
+     */
+    std::size_t getNumVertices() const { return vertices.size(); } 
+
+    /**
+     * @brief Get the number of elements in the mesh
+     * 
+     */
+    std::size_t getNumElements() const { return elements.size(); } 
 };
 
 } // namespace Enmesh
