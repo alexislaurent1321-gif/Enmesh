@@ -78,7 +78,7 @@ $(function() {
   <div class="headertitle"><div class="title">mesh.h</div></div>
 </div><!--header-->
 <div class="contents">
-<div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#ifndef MESH_H</span></div>
+<a href="mesh_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#ifndef MESH_H</span></div>
 <div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="preprocessor">#define MESH_H</span></div>
 <div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span> </div>
 <div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="preprocessor">#include &lt;vector&gt;</span></div>
@@ -97,28 +97,36 @@ $(function() {
 <div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span><span class="preprocessor">#include &quot;geometry/triangle.h&quot;</span></div>
 <div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span><span class="preprocessor">#include &quot;geometry/quad.h&quot;</span></div>
 <div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span><span class="preprocessor">#include &quot;geometry/tetrahedron.h&quot;</span></div>
-<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span> </div>
-<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span> </div>
-<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span><span class="keyword">namespace </span>Enmesh {</div>
-<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span></div>
-<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span><span class="keyword">template</span> &lt;<span class="keyword">typename</span> ElementType&gt;</div>
-<div class="foldopen" id="foldopen00029" data-start="{" data-end="};">
-<div class="line"><a id="l00029" name="l00029"></a><span class="lineno"><a class="line" href="structEnmesh_1_1Mesh.html">   29</a></span><span class="keyword">struct </span><a class="code hl_struct" href="structEnmesh_1_1Mesh.html">Mesh</a> {</div>
-<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span> </div>
-<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>    <span class="comment">// Datas</span></div>
-<div class="line"><a id="l00032" name="l00032"></a><span class="lineno"><a class="line" href="structEnmesh_1_1Mesh.html#a4cbb89fa86a03bee565bdd6dba75f3e0">   32</a></span>    std::vector&lt;Point&gt; <a class="code hl_variable" href="structEnmesh_1_1Mesh.html#a4cbb89fa86a03bee565bdd6dba75f3e0">vertices</a>;            </div>
-<div class="line"><a id="l00033" name="l00033"></a><span class="lineno"><a class="line" href="structEnmesh_1_1Mesh.html#a60d996c421d587292ad7915810a7f827">   33</a></span>    std::vector&lt;ElementType&gt; <a class="code hl_variable" href="structEnmesh_1_1Mesh.html#a60d996c421d587292ad7915810a7f827">elements</a>;      </div>
-<div class="line"><a id="l00034" name="l00034"></a><span class="lineno"><a class="line" href="structEnmesh_1_1Mesh.html#a45f3d827fb4caa2017abef72c7f6b14d">   34</a></span>    std::vector&lt;float&gt; <a class="code hl_variable" href="structEnmesh_1_1Mesh.html#a45f3d827fb4caa2017abef72c7f6b14d">ratios</a>;              </div>
-<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>};</div>
-</div>
-<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span> </div>
-<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>} <span class="comment">// namespace Enmesh</span></div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span></div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span> </div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span><span class="keyword">namespace </span>Enmesh {</div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span></div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span><span class="keyword">template</span> &lt;<span class="keyword">typename</span> ElementType&gt;</div>
+<div class="foldopen" id="foldopen00032" data-start="{" data-end="};">
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno"><a class="line" href="structEnmesh_1_1Mesh.html">   32</a></span><span class="keyword">struct </span><a class="code hl_struct" href="structEnmesh_1_1Mesh.html">Mesh</a> {</div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span> </div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>    <span class="comment">// Datas</span></div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno"><a class="line" href="structEnmesh_1_1Mesh.html#a4cbb89fa86a03bee565bdd6dba75f3e0">   35</a></span>    std::vector&lt;Point&gt; <a class="code hl_variable" href="structEnmesh_1_1Mesh.html#a4cbb89fa86a03bee565bdd6dba75f3e0">vertices</a>;            </div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno"><a class="line" href="structEnmesh_1_1Mesh.html#a60d996c421d587292ad7915810a7f827">   36</a></span>    std::vector&lt;ElementType&gt; <a class="code hl_variable" href="structEnmesh_1_1Mesh.html#a60d996c421d587292ad7915810a7f827">elements</a>;      </div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno"><a class="line" href="structEnmesh_1_1Mesh.html#a45f3d827fb4caa2017abef72c7f6b14d">   37</a></span>    std::vector&lt;float&gt; <a class="code hl_variable" href="structEnmesh_1_1Mesh.html#a45f3d827fb4caa2017abef72c7f6b14d">ratios</a>;              </div>
 <div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span> </div>
-<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span><span class="preprocessor">#endif</span></div>
-<div class="ttc" id="astructEnmesh_1_1Mesh_html"><div class="ttname"><a href="structEnmesh_1_1Mesh.html">Enmesh::Mesh</a></div><div class="ttdoc">A class representing a 3D mesh.</div><div class="ttdef"><b>Definition</b> mesh.h:29</div></div>
-<div class="ttc" id="astructEnmesh_1_1Mesh_html_a45f3d827fb4caa2017abef72c7f6b14d"><div class="ttname"><a href="structEnmesh_1_1Mesh.html#a45f3d827fb4caa2017abef72c7f6b14d">Enmesh::Mesh::ratios</a></div><div class="ttdeci">std::vector&lt; float &gt; ratios</div><div class="ttdoc">aspect ratios of elements (for quality analysis)</div><div class="ttdef"><b>Definition</b> mesh.h:34</div></div>
-<div class="ttc" id="astructEnmesh_1_1Mesh_html_a4cbb89fa86a03bee565bdd6dba75f3e0"><div class="ttname"><a href="structEnmesh_1_1Mesh.html#a4cbb89fa86a03bee565bdd6dba75f3e0">Enmesh::Mesh::vertices</a></div><div class="ttdeci">std::vector&lt; Point &gt; vertices</div><div class="ttdoc">List of vertices in the mesh.</div><div class="ttdef"><b>Definition</b> mesh.h:32</div></div>
-<div class="ttc" id="astructEnmesh_1_1Mesh_html_a60d996c421d587292ad7915810a7f827"><div class="ttname"><a href="structEnmesh_1_1Mesh.html#a60d996c421d587292ad7915810a7f827">Enmesh::Mesh::elements</a></div><div class="ttdeci">std::vector&lt; ElementType &gt; elements</div><div class="ttdoc">List of elements defined by vertex indices.</div><div class="ttdef"><b>Definition</b> mesh.h:33</div></div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>    <span class="comment">// Methods</span></div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span></div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno"><a class="line" href="structEnmesh_1_1Mesh.html#a84de1a76ecb186c1abf120df9558e3b8">   45</a></span>    std::size_t <a class="code hl_function" href="structEnmesh_1_1Mesh.html#a84de1a76ecb186c1abf120df9558e3b8">getNumVertices</a>()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> <a class="code hl_variable" href="structEnmesh_1_1Mesh.html#a4cbb89fa86a03bee565bdd6dba75f3e0">vertices</a>.size(); } </div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span></div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno"><a class="line" href="structEnmesh_1_1Mesh.html#ac7b62048284403b5a3f420eaca3f7939">   51</a></span>    std::size_t <a class="code hl_function" href="structEnmesh_1_1Mesh.html#ac7b62048284403b5a3f420eaca3f7939">getNumElements</a>()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> <a class="code hl_variable" href="structEnmesh_1_1Mesh.html#a60d996c421d587292ad7915810a7f827">elements</a>.size(); } </div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>};</div>
+</div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span> </div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>} <span class="comment">// namespace Enmesh</span></div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span> </div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span><span class="preprocessor">#endif</span></div>
+<div class="ttc" id="astructEnmesh_1_1Mesh_html"><div class="ttname"><a href="structEnmesh_1_1Mesh.html">Enmesh::Mesh</a></div><div class="ttdoc">A class representing a 3D mesh.</div><div class="ttdef"><b>Definition</b> mesh.h:32</div></div>
+<div class="ttc" id="astructEnmesh_1_1Mesh_html_a45f3d827fb4caa2017abef72c7f6b14d"><div class="ttname"><a href="structEnmesh_1_1Mesh.html#a45f3d827fb4caa2017abef72c7f6b14d">Enmesh::Mesh::ratios</a></div><div class="ttdeci">std::vector&lt; float &gt; ratios</div><div class="ttdoc">aspect ratios of elements (for quality analysis)</div><div class="ttdef"><b>Definition</b> mesh.h:37</div></div>
+<div class="ttc" id="astructEnmesh_1_1Mesh_html_a4cbb89fa86a03bee565bdd6dba75f3e0"><div class="ttname"><a href="structEnmesh_1_1Mesh.html#a4cbb89fa86a03bee565bdd6dba75f3e0">Enmesh::Mesh::vertices</a></div><div class="ttdeci">std::vector&lt; Point &gt; vertices</div><div class="ttdoc">List of vertices in the mesh.</div><div class="ttdef"><b>Definition</b> mesh.h:35</div></div>
+<div class="ttc" id="astructEnmesh_1_1Mesh_html_a60d996c421d587292ad7915810a7f827"><div class="ttname"><a href="structEnmesh_1_1Mesh.html#a60d996c421d587292ad7915810a7f827">Enmesh::Mesh::elements</a></div><div class="ttdeci">std::vector&lt; ElementType &gt; elements</div><div class="ttdoc">List of elements defined by vertex indices.</div><div class="ttdef"><b>Definition</b> mesh.h:36</div></div>
+<div class="ttc" id="astructEnmesh_1_1Mesh_html_a84de1a76ecb186c1abf120df9558e3b8"><div class="ttname"><a href="structEnmesh_1_1Mesh.html#a84de1a76ecb186c1abf120df9558e3b8">Enmesh::Mesh::getNumVertices</a></div><div class="ttdeci">std::size_t getNumVertices() const</div><div class="ttdoc">Get the number of vertices in the mesh.</div><div class="ttdef"><b>Definition</b> mesh.h:45</div></div>
+<div class="ttc" id="astructEnmesh_1_1Mesh_html_ac7b62048284403b5a3f420eaca3f7939"><div class="ttname"><a href="structEnmesh_1_1Mesh.html#ac7b62048284403b5a3f420eaca3f7939">Enmesh::Mesh::getNumElements</a></div><div class="ttdeci">std::size_t getNumElements() const</div><div class="ttdoc">Get the number of elements in the mesh.</div><div class="ttdef"><b>Definition</b> mesh.h:51</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

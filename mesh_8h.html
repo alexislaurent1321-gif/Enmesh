@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.14.0"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Enmesh: include/Enmesh/mesh/mesh_smoothing.h Source File</title>
+<title>Enmesh: include/Enmesh/mesh/mesh.h File Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -75,25 +75,39 @@ $(function() {
 </div><!-- top -->
 <div id="doc-content">
 <div class="header">
-  <div class="headertitle"><div class="title">mesh_smoothing.h</div></div>
+  <div class="summary">
+<a href="#nested-classes">Classes</a>  </div>
+  <div class="headertitle"><div class="title">mesh.h File Reference</div></div>
 </div><!--header-->
 <div class="contents">
-<div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#ifndef MESH_SMOOTHING_H</span></div>
-<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="preprocessor">#define MESH_SMOOTHING_H</span></div>
-<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span> </div>
-<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="preprocessor">#include &quot;<a class="code" href="mesh_8h.html">mesh/mesh.h</a>&quot;</span></div>
-<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="preprocessor">#include &quot;mesh/mesh_analysis.h&quot;</span></div>
-<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span> </div>
-<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="keyword">namespace </span>Enmesh {</div>
-<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span></div>
-<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="keywordtype">void</span> smooth(<a class="code hl_struct" href="structEnmesh_1_1Mesh.html">Mesh&lt;Triangle&gt;</a>&amp; mesh, <span class="keywordtype">int</span> iterations, <span class="keywordtype">float</span> lambda);</div>
-<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span> </div>
-<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>} <span class="comment">// namespace Enmesh</span></div>
-<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span> </div>
-<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span><span class="preprocessor">#endif</span></div>
-<div class="ttc" id="amesh_8h_html"><div class="ttname"><a href="mesh_8h.html">mesh.h</a></div><div class="ttdoc">Mesh class definition.</div></div>
-<div class="ttc" id="astructEnmesh_1_1Mesh_html"><div class="ttname"><a href="structEnmesh_1_1Mesh.html">Enmesh::Mesh</a></div><div class="ttdoc">A class representing a 3D mesh.</div><div class="ttdef"><b>Definition</b> mesh.h:32</div></div>
-</div><!-- fragment --></div><!-- contents -->
+
+<p>Mesh class definition.  
+<a href="#details">More...</a></p>
+<div class="textblock"><code>#include &lt;vector&gt;</code><br />
+<code>#include &lt;array&gt;</code><br />
+<code>#include &lt;iostream&gt;</code><br />
+<code>#include &lt;cmath&gt;</code><br />
+<code>#include &lt;unordered_set&gt;</code><br />
+<code>#include &lt;unordered_map&gt;</code><br />
+<code>#include &lt;fstream&gt;</code><br />
+<code>#include &lt;sstream&gt;</code><br />
+<code>#include &lt;string&gt;</code><br />
+<code>#include &quot;geometry/point.h&quot;</code><br />
+<code>#include &quot;geometry/edge.h&quot;</code><br />
+<code>#include &quot;geometry/triangle.h&quot;</code><br />
+<code>#include &quot;geometry/quad.h&quot;</code><br />
+<code>#include &quot;geometry/tetrahedron.h&quot;</code><br />
+</div>
+<p><a href="mesh_8h_source.html">Go to the source code of this file.</a></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-nested-classes" class="groupheader"><a id="nested-classes" name="nested-classes"></a>
+Classes</h2></td></tr>
+<tr class="memitem:Enmesh_3A_3AMesh_3C_20ElementType_20_3E" id="r_Enmesh_3A_3AMesh_3C_20ElementType_20_3E"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structEnmesh_1_1Mesh.html">Enmesh::Mesh&lt; ElementType &gt;</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">A class representing a 3D mesh.  <a href="structEnmesh_1_1Mesh.html#details">More...</a><br /></td></tr>
+</table>
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Mesh class definition. </p>
+</div></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.14.0
