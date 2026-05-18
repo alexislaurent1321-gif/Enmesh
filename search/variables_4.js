@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['v_0',['v',['../structEnmesh_1_1Quad.html#af4c9ebcc5857524f5f922abee98e7af7',1,'Enmesh::Quad::v'],['../structEnmesh_1_1Tetrahedron.html#a04a40694b7da040b860ea376f3e90c29',1,'Enmesh::Tetrahedron::v'],['../structEnmesh_1_1Triangle.html#a45bf8dfb4b9cb56f5308edfb21e55673',1,'Enmesh::Triangle::v']]],
-  ['vertices_1',['vertices',['../structEnmesh_1_1Mesh.html#a4cbb89fa86a03bee565bdd6dba75f3e0',1,'Enmesh::Mesh']]]
+  ['numvertices_0',['numVertices',['../structEnmesh_1_1Quad.html#a13a165c8e0542d5f0d45a714c5cf2d92',1,'Enmesh::Quad::numVertices'],['../structEnmesh_1_1Tetrahedron.html#affa72393e7f9f4b21bf4e1a1b361d306',1,'Enmesh::Tetrahedron::numVertices'],['../structEnmesh_1_1Triangle.html#af917801b407f6338253b5548d66f379c',1,'Enmesh::Triangle::numVertices']]]
 ];

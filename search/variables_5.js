@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['z_0',['z',['../structEnmesh_1_1Point.html#aa18d5f7c658ca16c3c02f77f91a26e39',1,'Enmesh::Point']]]
+  ['ratios_0',['ratios',['../structEnmesh_1_1Mesh.html#a45f3d827fb4caa2017abef72c7f6b14d',1,'Enmesh::Mesh']]]
 ];
