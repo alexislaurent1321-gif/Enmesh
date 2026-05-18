@@ -25,6 +25,9 @@
 namespace Enmesh {
 
 
+/** @brief A struct representing a boundary condition
+ * 
+ */
 template <typename ElementType>
 struct Boundary{
     std::vector<int> coord;     ///< List of boundary elements defined by vertex indices
