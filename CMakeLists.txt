@@ -4,7 +4,6 @@ project(Enmesh LANGUAGES CXX)
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-add_subdirectory(extern/tinyobjloader)
 add_subdirectory(extern/mshio)
 
 add_library(Enmesh STATIC 
@@ -27,7 +26,7 @@ add_library(Enmesh STATIC
 
 target_include_directories(Enmesh PUBLIC include/Enmesh)
 
-target_link_libraries(Enmesh PUBLIC mshio tinyobjloader)
+target_link_libraries(Enmesh PUBLIC mshio)
 
 
 # Demos
