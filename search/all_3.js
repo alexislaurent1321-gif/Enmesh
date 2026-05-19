@@ -1,7 +1,7 @@
 var searchData=
 [
-  ['boundaries_0',['boundaries',['../structEnmesh_1_1Mesh.html#adf65509402f1eaa1a18cfdea23bbeacc',1,'Enmesh::Mesh']]],
-  ['boundaries_20conditions_1',['Boundaries conditions',['../index.html#autotoc_md12',1,'']]],
-  ['boundaries_20detection_2',['Boundaries detection',['../index.html#autotoc_md7',1,'']]],
-  ['boundary_3',['Boundary',['../structEnmesh_1_1Boundary.html',1,'Enmesh']]]
+  ['boundaries_20conditions_0',['Boundaries conditions',['../index.html#autotoc_md12',1,'']]],
+  ['boundaries_20detection_1',['Boundaries detection',['../index.html#autotoc_md7',1,'']]],
+  ['boundaryelements_2',['boundaryElements',['../structEnmesh_1_1Mesh.html#a5b1b40262c5ecd8f12c64edc696640c0',1,'Enmesh::Mesh']]],
+  ['boundarytags_3',['boundaryTags',['../structEnmesh_1_1Mesh.html#a9e0b6b329ef235c4a5cd396b6a7642d1',1,'Enmesh::Mesh']]]
 ];

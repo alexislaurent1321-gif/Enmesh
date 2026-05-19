@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['tag_0',['tag',['../structEnmesh_1_1Boundary.html#a7dc4a8b6143cd82629658f9fd2e493ec',1,'Enmesh::Boundary']]]
+  ['z_0',['z',['../structEnmesh_1_1Point.html#aa18d5f7c658ca16c3c02f77f91a26e39',1,'Enmesh::Point']]]
 ];
