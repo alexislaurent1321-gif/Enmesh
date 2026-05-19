@@ -42,3 +42,6 @@ target_link_libraries(smoothing PRIVATE Enmesh)
 
 add_executable(triangulation demos/demo_triangulation.cpp)
 target_link_libraries(triangulation PRIVATE Enmesh)
+
+add_executable(generateGrid demos/demo_generateGrid.cpp)
+target_link_libraries(generateGrid PRIVATE Enmesh)

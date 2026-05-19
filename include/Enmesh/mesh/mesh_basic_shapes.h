@@ -7,24 +7,15 @@
 namespace Enmesh {
 
 /** 
- * @brief Generate a grid of vertices
- * @param mesh The mesh to populate with vertices
+ * @brief Generate a mesh grid of the specified dimensions and size
  * @param Nx Number of vertices in the x-direction
  * @param Ny Number of vertices in the y-direction
  * @param Lx The length of the grid in the x-direction
  * @param Ly The length of the grid in the y-direction
+ * @return mesh grid
  */
-void generateGrid(Mesh<Triangle>& mesh, int Nx, int Ny, float Lx, float Ly);
-
-
-/** 
- * @brief Generate random points within a bounding box
- * @param mesh The mesh to populate with vertices
- * @param N The number of random points to generate
- * @param Lx The width of the bounding box
- * @param Ly The height of the bounding box
- */
-void generateRandomPoints(Mesh<Triangle>& mesh, int N, float Lx, float Ly);
+template <typename ElementType>
+Mesh<ElementType> generateGrid(int Nx, int Ny, float Lx, float Ly);
 
 
 } // namespace Enmesh

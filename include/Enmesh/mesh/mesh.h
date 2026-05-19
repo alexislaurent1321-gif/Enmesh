@@ -24,17 +24,6 @@
 
 namespace Enmesh {
 
-
-/** @brief A struct representing a boundary condition
- * 
- */
-template <typename ElementType>
-struct Boundary{
-    std::vector<int> coord;     ///< List of boundary elements defined by vertex indices
-    int tag = 0;                ///< Physical tag for boundary condition application
-};
-
-
 /**
  * @brief A class representing a 3D mesh
  * 
@@ -45,8 +34,12 @@ struct Mesh {
     // Datas
     std::vector<Point> vertices;                    ///< List of vertices in the mesh
     std::vector<ElementType> elements;              ///< List of elements defined by vertex indices
+    
+    std::vector<Edge> boundaryElements;             ///< List of boundary edges for surface and boundary surfaces for volumes
+    std::vector<size_t> boundaryTags;               ///< List of boundary tags corresponding to the
+    
     std::vector<float> ratios;                      ///< aspect ratios of elements (for quality analysis)
-    std::vector<Boundary<ElementType>> boundaries;  ///< List of boundary conditions
+
 
     // Methods
 

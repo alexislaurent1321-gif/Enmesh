@@ -71,6 +71,23 @@ bool loadMsh(Mesh<T>& mesh, const std::string& path) {
 
             mesh.boundaries.push_back(boundary);
         }
+        else if(physical_group.dim == 2) {
+            Boundary<T> boundary;
+            boundary.tag = physical_group.tag;
+
+            // Find the corresponding surface entity in the entities section
+            for (const auto& surface_entity : spec.entities.surfaces) {
+                if (surface_entity.tag == physical_group.tag) {
+                    // Add the boundary elements defined by the surface's boundary point tags
+                    for (size_t point_tag : surface_entity.boundary_point_tags) {
+                        boundary.coord.push_back(tagToIndex[point_tag]);
+                    }
+                    break; // Stop searching after finding the matching surface entity
+                }
+            }
+
+            mesh.boundaries.push_back(boundary);
+        }
     }
     
 
