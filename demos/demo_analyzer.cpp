@@ -11,14 +11,11 @@
 
 int main() {
     
-    Enmesh::Mesh<Enmesh::Quad> mesh;
-
-    loadMsh<Enmesh::Quad>(mesh, "models/grid_quad.msh");
+    Enmesh::Mesh<Enmesh::Triangle> mesh;
+    loadMsh<Enmesh::Triangle>(mesh, "models/grid_tri.msh");
     
-    analyzeMesh<Enmesh::Quad>(mesh);
-
-    std::cout << "Exporting mesh to VTK format..." << std::endl;
-    exportToVTK<Enmesh::Quad>("output.vtk", mesh);
+    analyzeMesh<Enmesh::Triangle>(mesh);
+    exportToVTK<Enmesh::Triangle>("output.vtk", mesh);
     
     return 0;
 }

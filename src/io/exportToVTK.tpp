@@ -16,7 +16,7 @@ void exportToVTK<Triangle>(const std::string& filename, Mesh<Triangle>& mesh) {
     // Identify boundary edges (edges that belong to only one triangle)
     if(mesh.boundaryElements.empty()) {
         mesh.boundaryElements = Enmesh::getBoundaryEdges<Triangle>(mesh);
-        mesh.boundaryTags.resize(mesh.boundaryElements.size(), 0); 
+        mesh.boundaryTags.resize(mesh.boundaryElements.size(), 1); 
     }
 
     file << "# vtk DataFile Version 3.0\n";
@@ -68,7 +68,7 @@ void exportToVTK<Quad>(const std::string& filename, Mesh<Quad>& mesh) {
     // Identify boundary edges (edges that belong to only one quad)
     if(mesh.boundaryElements.empty()) {
         mesh.boundaryElements = getBoundaryEdges<Quad>(mesh);
-        mesh.boundaryTags.resize(mesh.boundaryElements.size(), 0); 
+        mesh.boundaryTags.resize(mesh.boundaryElements.size(), 1); 
     }
 
     file << "# vtk DataFile Version 3.0\n";
