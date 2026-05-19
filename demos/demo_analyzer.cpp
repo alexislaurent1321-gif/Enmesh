@@ -15,7 +15,7 @@ int main() {
     
     Mesh<Quad> mesh;
 
-    loadMsh<Quad>(mesh, "models/square.msh");
+    loadMsh<Quad>(mesh, "models/grid_quad.msh");
     
     analyzeMesh<Quad>(mesh);
 
