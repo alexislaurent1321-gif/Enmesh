@@ -1,15 +1,23 @@
+#include <format>
+#include <iostream>
+#include <string>
+#include <string_view>
+
 #include "io/exportToVTK.h"
 #include "mesh/mesh_analysis.h"
 
 namespace Enmesh {
 
 template <>
-void exportToVTK<Triangle>(const std::string& filename, const Mesh<Triangle>& mesh) {
+void exportToVTK<Triangle>(const std::string& filename, Mesh<Triangle>& mesh) {
     std::ofstream file(filename);
     if (!file.is_open()) return;
 
     // Identify boundary edges (edges that belong to only one triangle)
-    std::vector<Edge> boundaryEdges = getBoundaryEdges<Triangle>(mesh);
+    if(mesh.boundaryElements.empty()) {
+        mesh.boundaryElements = Enmesh::getBoundaryEdges<Triangle>(mesh);
+        mesh.boundaryTags.resize(mesh.boundaryElements.size(), 0); 
+    }
 
     file << "# vtk DataFile Version 3.0\n";
     file << "Mesh Analysis Combo\nASCII\nDATASET UNSTRUCTURED_GRID\n";
@@ -21,12 +29,12 @@ void exportToVTK<Triangle>(const std::string& filename, const Mesh<Triangle>& me
 
     // Write cells (triangles + boundary edges)
     size_t nT = mesh.elements.size();
-    size_t nB = boundaryEdges.size();
+    size_t nB = mesh.boundaryElements.size();
     file << "CELLS " << (nT + nB) << " " << (nT * 4 + nB * 3) << "\n";
     
     for (const auto& triangle : mesh.elements)
         file << "3 " << triangle.v[0] << " " << triangle.v[1] << " " << triangle.v[2] << "\n";
-    for (const auto& e : boundaryEdges)
+    for (const auto& e : mesh.boundaryElements)
         file << "2 " << e.v1 << " " << e.v2 << "\n";
 
     file << "CELL_TYPES " << (nT + nB) << "\n";
@@ -46,19 +54,22 @@ void exportToVTK<Triangle>(const std::string& filename, const Mesh<Triangle>& me
     // Boundary representation: 0 for triangles, 1 for boundary edges 
     file << "SCALARS Is_Boundary int\nLOOKUP_TABLE default\n";
     for (size_t i = 0; i < nT; ++i) file << "0\n"; // Triangle = 0
-    for (size_t i = 0; i < nB; ++i) file << "1\n"; // Boundary = 1
+    for (size_t i = 0; i < nB; ++i) file << std::format("{}\n", mesh.boundaryTags[i]); // BoundaryTag = tag
 
     file.close();
 }
 
 
 template <>
-void exportToVTK<Quad>(const std::string& filename, const Mesh<Quad>& mesh) {
+void exportToVTK<Quad>(const std::string& filename, Mesh<Quad>& mesh) {
     std::ofstream file(filename);
     if (!file.is_open()) return;
 
     // Identify boundary edges (edges that belong to only one quad)
-    std::vector<Edge> boundaryEdges = getBoundaryEdges<Quad>(mesh);
+    if(mesh.boundaryElements.empty()) {
+        mesh.boundaryElements = getBoundaryEdges<Quad>(mesh);
+        mesh.boundaryTags.resize(mesh.boundaryElements.size(), 0); 
+    }
 
     file << "# vtk DataFile Version 3.0\n";
     file << "Mesh Analysis Combo\nASCII\nDATASET UNSTRUCTURED_GRID\n";
@@ -70,12 +81,12 @@ void exportToVTK<Quad>(const std::string& filename, const Mesh<Quad>& mesh) {
 
     // Write cells (quads + boundary edges)
     size_t nQ = mesh.elements.size();
-    size_t nB = boundaryEdges.size();
+    size_t nB = mesh.boundaryElements.size();
     file << "CELLS " << (nQ + nB) << " " << (nQ * 5 + nB * 3) << "\n";
     
     for (const auto& quad : mesh.elements)
         file << "4 " << quad.v[0] << " " << quad.v[1] << " " << quad.v[2] << " " << quad.v[3] << "\n";
-    for (const auto& e : boundaryEdges)
+    for (const auto& e : mesh.boundaryElements)
         file << "2 " << e.v1 << " " << e.v2 << "\n";
 
     file << "CELL_TYPES " << (nQ + nB) << "\n";
@@ -95,15 +106,14 @@ void exportToVTK<Quad>(const std::string& filename, const Mesh<Quad>& mesh) {
     // Boundary representation: 0 for quads, 1 for boundary edges 
     file << "SCALARS Is_Boundary int\nLOOKUP_TABLE default\n";
     for (size_t i = 0; i < nQ; ++i) file << "0\n"; // Quad = 0
-    for (size_t i = 0; i < nB; ++i) file << "1\n"; // Boundary = 1
+    for (size_t i = 0; i < nB; ++i) file << std::format("{}\n", mesh.boundaryTags[i]); // BoundaryTag = tag
 
     file.close();
 }
 
 
-
 template <>
-void exportToVTK<Tetrahedron>(const std::string& filename, const Mesh<Tetrahedron>& mesh){
+void exportToVTK<Tetrahedron>(const std::string& filename, Mesh<Tetrahedron>& mesh){
     std::ofstream file(filename);
     if (!file.is_open()){
         std::cerr << "export to VTK : Error opening file for writing: " << filename << std::endl;

@@ -31,7 +31,6 @@ Mesh<Triangle> generateGrid(int Nx, int Ny, float Lx, float Ly){
 
     // Boundary conditions 
     mesh.boundaryElements = Enmesh::getBoundaryEdges(mesh);
-    mesh.boundaryTags.resize(mesh.boundaryElements.size(), 0);
 
     for(auto& edge : mesh.boundaryElements) {
         if(edge.v1 < Nx || edge.v2 < Nx) { // Bottom boundary
@@ -76,7 +75,6 @@ Mesh<Quad> generateGrid(int Nx, int Ny, float Lx, float Ly){
 
     // Boundary conditions 
     mesh.boundaryElements = Enmesh::getBoundaryEdges(mesh);
-    mesh.boundaryTags.resize(mesh.boundaryElements.size(), 0);
 
     for(auto& edge : mesh.boundaryElements) {
         if(edge.v1 < Nx || edge.v2 < Nx) { // Bottom boundary
