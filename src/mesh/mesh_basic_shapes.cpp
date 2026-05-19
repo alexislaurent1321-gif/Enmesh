@@ -33,13 +33,13 @@ Mesh<Triangle> generateGrid(int Nx, int Ny, float Lx, float Ly){
     mesh.boundaryElements = Enmesh::getBoundaryEdges(mesh);
 
     for(auto& edge : mesh.boundaryElements) {
-        if(edge.v1 < Nx || edge.v2 < Nx) { // Bottom boundary
+        if(edge.v1 < Nx && edge.v2 < Nx) { // Bottom boundary
             mesh.boundaryTags.push_back(1);
-        } else if (edge.v1 >= (Ny - 1) * Nx || edge.v2 >= (Ny - 1) * Nx) { // Top boundary
+        } else if (edge.v1 >= (Ny - 1) * Nx && edge.v2 >= (Ny - 1) * Nx) { // Top boundary
             mesh.boundaryTags.push_back(2);
-        } else if (edge.v1 % Nx == 0 || edge.v2 % Nx == 0) { // Left boundary
+        } else if (edge.v1 % Nx == 0 && edge.v2 % Nx == 0) { // Left boundary
             mesh.boundaryTags.push_back(3);
-        } else if (edge.v1 % Nx == Nx - 1 || edge.v2 % Nx == Nx - 1) { // Right boundary
+        } else if (edge.v1 % Nx == Nx - 1 && edge.v2 % Nx == Nx - 1) { // Right boundary
             mesh.boundaryTags.push_back(4);
         }
     }
@@ -69,7 +69,7 @@ Mesh<Quad> generateGrid(int Nx, int Ny, float Lx, float Ly){
             size_t v2 = v0 + Nx;
             size_t v3 = v2 + 1;
 
-            mesh.elements.push_back({v0, v1, v2, v3}); // Quad
+            mesh.elements.push_back({v0, v1, v3, v2}); // Quad
         }
     }
 
@@ -77,13 +77,13 @@ Mesh<Quad> generateGrid(int Nx, int Ny, float Lx, float Ly){
     mesh.boundaryElements = Enmesh::getBoundaryEdges(mesh);
 
     for(auto& edge : mesh.boundaryElements) {
-        if(edge.v1 < Nx || edge.v2 < Nx) { // Bottom boundary
+        if(edge.v1 < Nx && edge.v2 < Nx) { // Bottom boundary
             mesh.boundaryTags.push_back(1);
-        } else if (edge.v1 >= (Ny - 1) * Nx || edge.v2 >= (Ny - 1) * Nx) { // Top boundary
+        } else if (edge.v1 >= (Ny - 1) * Nx && edge.v2 >= (Ny - 1) * Nx) { // Top boundary
             mesh.boundaryTags.push_back(2);
-        } else if (edge.v1 % Nx == 0 || edge.v2 % Nx == 0) { // Left boundary
+        } else if (edge.v1 % Nx == 0 && edge.v2 % Nx == 0) { // Left boundary
             mesh.boundaryTags.push_back(3);
-        } else if (edge.v1 % Nx == Nx - 1 || edge.v2 % Nx == Nx - 1) { // Right boundary
+        } else if (edge.v1 % Nx == Nx - 1 && edge.v2 % Nx == Nx - 1) { // Right boundary
             mesh.boundaryTags.push_back(4);
         }
     }

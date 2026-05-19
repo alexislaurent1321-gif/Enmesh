@@ -12,10 +12,10 @@
 
 int main() {
 
-    Enmesh::Mesh<Enmesh::Triangle> gridMesh = Enmesh::generateGrid<Enmesh::Triangle>(5, 5, 1.f, 1.f);   // Generate a regular grid 
+    Enmesh::Mesh<Enmesh::Quad> gridMesh = Enmesh::generateGrid<Enmesh::Quad>(5, 5, 1.f, 1.f);   // Generate a regular grid 
 
-    Enmesh::analyzeMesh<Enmesh::Triangle>(gridMesh);
-    Enmesh::exportToVTK<Enmesh::Triangle>("output.vtk", gridMesh);
+    Enmesh::analyzeMesh<Enmesh::Quad>(gridMesh);
+    Enmesh::exportToVTK<Enmesh::Quad>("output.vtk", gridMesh);
 
     return 0;
 }
