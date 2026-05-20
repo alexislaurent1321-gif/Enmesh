@@ -4,7 +4,7 @@
 #include "geometry/edge.h"
 #include "geometry/point.h"
 #include "geometry/triangle.h"
-#include "geometry/tetrahedron.h"
+#include "geometry/tetra.h"
 
 #include "io/exportToVTK.h"
 #include "io/loadMsh.h"

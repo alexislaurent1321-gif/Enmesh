@@ -24,7 +24,7 @@ namespace Enmesh {
  */
 struct Triangle {
 
-    static constexpr size_t elementType = 2; ///< Gmsh element type for triangles 
+    static constexpr size_t type = 2; ///< Gmsh element type for triangles 
     static constexpr size_t numVertices = 3; ///< Number of vertices in a triangle
 
     std::array<size_t, 3> v;   ///< Indices of the vertices that form the triangle

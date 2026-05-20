@@ -16,7 +16,7 @@
 #include "geometry/edge.h"
 #include "geometry/triangle.h"
 #include "geometry/quad.h"
-#include "geometry/tetrahedron.h"
+#include "geometry/tetra.h"
 
 /** @file
  * @brief Mesh class definition
@@ -28,12 +28,12 @@ namespace Enmesh {
  * @brief A class representing a 3D mesh
  * 
  */
-template <typename ElementType>
+template <typename Element>
 struct Mesh {
 
     // Datas
     std::vector<Point> vertices;                    ///< List of vertices in the mesh
-    std::vector<ElementType> elements;              ///< List of elements defined by vertex indices
+    std::vector<Element> elements;              ///< List of elements defined by vertex indices
     
     std::vector<Edge> boundaryElements;             ///< List of boundary edges for surface and boundary surfaces for volumes
     std::vector<size_t> boundaryTags;               ///< List of boundary tags corresponding to the

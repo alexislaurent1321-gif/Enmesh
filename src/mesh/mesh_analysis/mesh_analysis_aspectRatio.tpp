@@ -41,7 +41,7 @@ inline float calculateAspectRatio(const Mesh<Quad>& mesh, const Quad& element)  
 
 
 template <>
-inline float calculateAspectRatio(const Mesh<Tetrahedron>& mesh, const Tetrahedron& element)  {
+inline float calculateAspectRatio(const Mesh<Tetra>& mesh, const Tetra& element)  {
 
     Point A = mesh.vertices[element.v[0]];
     Point B = mesh.vertices[element.v[1]];
@@ -71,13 +71,13 @@ inline float calculateAspectRatio(const Mesh<Tetrahedron>& mesh, const Tetrahedr
 }
 
 
-template <typename T>
-void calculateAspectRatios(Mesh<T>& mesh) {
+template <typename Element>
+void calculateAspectRatios(Mesh<Element>& mesh) {
     mesh.ratios.clear();
 
     // Calculate aspect ratio for each element and store in the ratios vector
     for (const auto& element : mesh.elements) {
-        mesh.ratios.push_back(calculateAspectRatio<T>(mesh, element));
+        mesh.ratios.push_back(calculateAspectRatio<Element>(mesh, element));
     }
 }
 

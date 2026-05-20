@@ -22,16 +22,16 @@ namespace Enmesh {
  * @param element 
  * @return float 
  */
-template <typename T>
-float calculateAspectRatio(const Mesh<T>& mesh, const T& element);
+template <typename Element>
+float calculateAspectRatio(const Mesh<Element>& mesh, const Element& element);
 
 
 /**
  * @brief  Calculate the aspect ratio for all triangles in the mesh and store them in the ratios vector
  * 
  */
-template <typename T>
-void calculateAspectRatios(Mesh<T>& mesh);
+template <typename Element>
+void calculateAspectRatios(Mesh<Element>& mesh);
 
 
 
@@ -42,30 +42,30 @@ void calculateAspectRatios(Mesh<T>& mesh);
  * 
  * @return std::unordered_map<Edge, size_t, EdgeHash> 
  */
-template <typename T>
-std::unordered_map<Edge, size_t, EdgeHash> getEdgeValences(const Mesh<T>& mesh);
+template <typename Element>
+std::unordered_map<Edge, size_t, EdgeHash> getEdgeValences(const Mesh<Element>& mesh);
 
 
 /** 
  * @brief Get the triangle valences of the mesh
  * @return A map containing the valence of each triangle
  */
-inline std::unordered_map<Triangle, size_t, TriangleHash> getTriangleValences(const Mesh<Tetrahedron>& mesh);
+inline std::unordered_map<Triangle, size_t, TriangleHash> getTriangleValences(const Mesh<Tetra>& mesh);
 
 
  /** 
  * @brief Get the boundary edges of the mesh
  * @return A vector containing the boundary edges
  */
-template <typename T>
-std::vector<Edge> getBoundaryEdges(const Mesh<T>& mesh);
+template <typename Element>
+std::vector<Edge> getBoundaryEdges(const Mesh<Element>& mesh);
 
 
 /** 
  * @brief Get the boundary triangles of the mesh
  * @return A vector containing the boundary triangles
  */
-inline std::vector<Triangle> getBoundaryTriangles(const Mesh<Tetrahedron>& mesh);
+inline std::vector<Triangle> getBoundaryTriangles(const Mesh<Tetra>& mesh);
 
 
  /**
@@ -73,8 +73,8 @@ inline std::vector<Triangle> getBoundaryTriangles(const Mesh<Tetrahedron>& mesh)
  * 
  * @return number of unique edges in the mesh 
  */
-template <typename T>
-size_t countUniqueEdges(const Mesh<T>& mesh);
+template <typename Element>
+size_t countUniqueEdges(const Mesh<Element>& mesh);
 
 
 /** 
@@ -82,8 +82,8 @@ size_t countUniqueEdges(const Mesh<T>& mesh);
  * 
  * @return number of unique triangles in the mesh 
  */
-template <typename T>
-size_t countUniqueTriangles(const Mesh<T>& mesh);
+template <typename Element>
+size_t countUniqueTriangles(const Mesh<Element>& mesh);
 
 
 
@@ -96,8 +96,8 @@ size_t countUniqueTriangles(const Mesh<T>& mesh);
  * @brief  Analyze the mesh by printing out the number of vertices, triangles, and unique edges. Optionally, it could also calculate and print the aspect ratio of each triangle for quality analysis.
  * 
  */
-template <typename T>
-void analyzeMesh(Mesh<T>& mesh);
+template <typename Element>
+void analyzeMesh(Mesh<Element>& mesh);
 
 } // namespace Enmesh
 

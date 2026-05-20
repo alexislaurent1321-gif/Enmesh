@@ -5,10 +5,10 @@
 
 namespace Enmesh {
 
-template <typename T>
-std::unordered_map<Edge, size_t, EdgeHash> getEdgeValences(const Mesh<T>& mesh) {
+template <typename Element>
+std::unordered_map<Edge, size_t, EdgeHash> getEdgeValences(const Mesh<Element>& mesh) {
 
-    if(T::elementType != 2 && T::elementType != 3) {
+    if(Element::type != 2 && Element::type != 3) {
         std::cerr << "Error: getEdgeValences only supports surface meshes" << std::endl;
         return {};
     }
@@ -16,9 +16,9 @@ std::unordered_map<Edge, size_t, EdgeHash> getEdgeValences(const Mesh<T>& mesh) 
     std::unordered_map<Edge, size_t, EdgeHash> counts;     // Use an unordered_map to count occurrences of each edge
     
     for (const auto& element : mesh.elements) {
-        for (size_t i = 0; i < T::numVertices; ++i) {
+        for (size_t i = 0; i < Element::numVertices; ++i) {
             size_t v1 = element.v[i];
-            size_t v2 = element.v[(i + 1) % T::numVertices];
+            size_t v2 = element.v[(i + 1) % Element::numVertices];
 
             Edge e = {std::min(v1, v2), std::max(v1, v2)};  // Store edges in a consistent order
             counts[e]++;
@@ -29,10 +29,10 @@ std::unordered_map<Edge, size_t, EdgeHash> getEdgeValences(const Mesh<T>& mesh) 
 }
 
 
-template <typename T>
-std::vector<Edge> getBoundaryEdges(const Mesh<T>& mesh) {
+template <typename Element>
+std::vector<Edge> getBoundaryEdges(const Mesh<Element>& mesh) {
 
-    if(T::elementType != 2 && T::elementType != 3) {
+    if(Element::type != 2 && Element::type != 3) {
         std::cerr << "Error: getBoundaryEdges only supports surface meshes" << std::endl;
         return {};
     }
@@ -48,7 +48,7 @@ std::vector<Edge> getBoundaryEdges(const Mesh<T>& mesh) {
 }
 
 
-std::unordered_map<Triangle, size_t, TriangleHash> getTriangleValences(const Mesh<Tetrahedron>& mesh) {
+std::unordered_map<Triangle, size_t, TriangleHash> getTriangleValences(const Mesh<Tetra>& mesh) {
     std::unordered_map<Triangle, size_t, TriangleHash> counts;     // Use an unordered_map to count occurrences of each triangle
     
     for (const auto& element : mesh.elements) {
@@ -66,7 +66,7 @@ std::unordered_map<Triangle, size_t, TriangleHash> getTriangleValences(const Mes
 }
 
 
-std::vector<Triangle> getBoundaryTriangles(const Mesh<Tetrahedron>& mesh) {
+std::vector<Triangle> getBoundaryTriangles(const Mesh<Tetra>& mesh) {
     auto triangleCounts = getTriangleValences(mesh);    // Get the valence counts for all triangles
     std::vector<Triangle> boundaryTriangles;            // Collect triangles that belong to only one tetrahedron (valence = 1)
     

@@ -18,9 +18,9 @@
 
 namespace Enmesh {
 
-struct Tetrahedron {
+struct Tetra {
 
-    static constexpr size_t elementType = 4; ///< Gmsh element type for tetrahedra 
+    static constexpr size_t type = 4; ///< Gmsh element type for tetrahedra 
     static constexpr size_t numVertices = 4; ///< Number of vertices in a tetrahedron
 
     std::array<size_t, 4> v;   ///< Indices of the vertices that form the tetrahedron

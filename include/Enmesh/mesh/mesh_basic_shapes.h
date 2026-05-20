@@ -14,8 +14,8 @@ namespace Enmesh {
  * @param Ly The length of the grid in the y-direction
  * @return mesh grid
  */
-template <typename ElementType>
-Mesh<ElementType> generateGrid(int Nx, int Ny, float Lx, float Ly);
+template <typename Element>
+Mesh<Element> generateGrid(int Nx, int Ny, float Lx, float Ly);
 
 
 } // namespace Enmesh

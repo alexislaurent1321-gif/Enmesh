@@ -113,7 +113,7 @@ void exportToVTK<Quad>(const std::string& filename, Mesh<Quad>& mesh) {
 
 
 template <>
-void exportToVTK<Tetrahedron>(const std::string& filename, Mesh<Tetrahedron>& mesh){
+void exportToVTK<Tetra>(const std::string& filename, Mesh<Tetra>& mesh){
     std::ofstream file(filename);
     if (!file.is_open()){
         std::cerr << "export to VTK : Error opening file for writing: " << filename << std::endl;

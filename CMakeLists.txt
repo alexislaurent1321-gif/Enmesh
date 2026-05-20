@@ -8,6 +8,8 @@ add_subdirectory(extern/mshio)
 
 add_library(Enmesh STATIC 
     src/geometry/triangle.cpp
+    src/geometry/quad.cpp
+    src/geometry/tetra.cpp
     src/geometry/point.cpp
 
     src/mesh/mesh.cpp

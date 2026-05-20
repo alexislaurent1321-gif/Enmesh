@@ -10,8 +10,8 @@ namespace Enmesh {
  * @param filename The name of the output VTK file
  * @param mesh The mesh object containing vertices, triangles, and quality ratios
 */
-template <typename T>
-void exportToVTK(const std::string& filename, Mesh<T>& mesh);
+template <typename Element>
+void exportToVTK(const std::string& filename, Mesh<Element>& mesh);
 
 } // namespace Enmesh
 

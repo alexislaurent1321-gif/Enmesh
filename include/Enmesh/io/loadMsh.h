@@ -14,8 +14,8 @@ namespace Enmesh {
  * @return true 
  * @return false 
  */
-template <typename T>
-bool loadMsh(Mesh<T>& mesh, const std::string& path);
+template <typename Element>
+bool loadMsh(Mesh<Element>& mesh, const std::string& path);
 
 } // namespace Enmesh
 
