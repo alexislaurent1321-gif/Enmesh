@@ -159,7 +159,10 @@ We observe a better average aspect ratio. However, this result can be further im
 ### in the short term
 - import the physical tags from the .msh files
 - display boundaries and phsyical tags for 3D meshes
+
+### in the middle term
 - adding hexahedral meshes
+- adding unitary tests and CI
 
 ### in the longer term
 - **local mesh adjustments :** remove triangles from the mesh, especially if the model contains a hole or is not convex.
