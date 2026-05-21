@@ -11,6 +11,6 @@ var searchData=
   ['demo_5fgenerategrid_20cpp_8',['Smoothing (&lt;span class=&quot;tt&quot;&gt;demo/demo_generateGrid.cpp&lt;/span&gt;)',['../index.html#autotoc_md9',1,'']]],
   ['demo_5fsmoothing_20cpp_9',['Smoothing (&lt;span class=&quot;tt&quot;&gt;demo/demo_smoothing.cpp&lt;/span&gt;)',['../index.html#autotoc_md12',1,'']]],
   ['demo_5ftriangulation_20cpp_10',['Delaunay triangulation (&lt;span class=&quot;tt&quot;&gt;demo/demo_triangulation.cpp&lt;/span&gt;)',['../index.html#autotoc_md10',1,'']]],
-  ['dependencies_11',['Dependencies',['../index.html#autotoc_md18',1,'']]],
+  ['dependencies_11',['Dependencies',['../index.html#autotoc_md19',1,'']]],
   ['detection_12',['Boundary detection',['../index.html#autotoc_md7',1,'']]]
 ];
