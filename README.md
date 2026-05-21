@@ -67,15 +67,6 @@ $$\frac{abc}{(b+c-a)(c+a-b)(a+b-c)}$$
 This is a basic finite element formula : 
 - a ratio of 1 corresponds to a perfect equilateral triangle.
 - the higher the ratio, the more distorted the triangle becomes, which can hinder the convergence of the solvers.
-  
-Here is an example with a cube and a stretched cube. Since the side faces are stretched, the result is larger : 
-
-<table>
-  <tr>
-    <td><img width="600" height="300" alt="cube_ratios" src="https://github.com/user-attachments/assets/aeea27de-0dd5-40a6-b300-3f0f8b586e1b" />
-    <td><img width="600" height="300" alt="cube2_ratios" src="https://github.com/user-attachments/assets/75ffb92b-da42-4868-8ef9-5d5246ebd412" />
-  </tr>
-</table>
 
 #### Boundaries detection 
 Another function of this project is to detect the edges of the mesh if it is open. To do this, we select the edges along the boundary. An edge is considered to belong to the boundary of the region if it belongs to exactly one triangle. 
@@ -107,8 +98,14 @@ boundaries triangles : 324
 The aspect ratio is calculated using this formula: (https://docs.salome-platform.org/latest/gui/SMESH/aspect_ratio_3d.html)
 
 The statistics match those of Gmsh :
+
+
 <img width="361" height="268" alt="statistics" src="https://github.com/user-attachments/assets/7aa8f484-0913-4807-8609-b646647547c9" />
 
+## Smoothing (`demo/demo_generateGrid.cpp`)
+Generates a grid with a tag for each boundary condition
+
+<img width="2197" height="1131" alt="grid_bound" src="https://github.com/user-attachments/assets/bcb40053-94a6-466a-a6b1-df2544924f1d" style="width:50%;"/>
 
 
 
@@ -191,5 +188,4 @@ Use the following commands :
 
 ### Dependencies
 - [mshio](https://github.com/qnzhou/MshIO.git)
-- [tinyobjloader](https://github.com/tinyobjloader/tinyobjloader.git) 
 - [ParaView](https://www.paraview.org/)
