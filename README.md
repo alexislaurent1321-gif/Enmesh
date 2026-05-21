@@ -156,13 +156,14 @@ We observe a better average aspect ratio. However, this result can be further im
 
 
 # Upcoming changes
-### as soon as possible
-- Finish the demo for 3D mesh analysis (display boundaries on ParaView)
-- manually generate and triangulate basic shapes (grid, cylinder, disc) in the `basic_shapes` file
 ### in the short term
+- import the physical tags from the .msh files
+- display boundaries and phsyical tags for 3D meshes
+- adding hexahedral meshes
+
+### in the longer term
 - **local mesh adjustments :** remove triangles from the mesh, especially if the model contains a hole or is not convex.
 - see Constrained Delaunay triangulation
-### in the longer term
 - see advancing front method ([Advancing Front Grid
 Generation](http://ebrary.free.fr/Mesh%20Generation/Handbook_of_Grid_%20Generation,1999/chap17.pdf))
 - implement Delaunay for tetrhedral meshes
