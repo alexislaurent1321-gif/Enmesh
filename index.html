@@ -180,25 +180,22 @@ Boundaries conditions</h3>
 <h1 class="doxsection"><a class="anchor" id="autotoc_md14"></a>
 Upcoming changes</h1>
 <h3 class="doxsection"><a class="anchor" id="autotoc_md15"></a>
-as soon as possible</h3>
-<ul>
-<li>Finish the demo for 3D mesh analysis (display boundaries on ParaView)</li>
-<li>manually generate and triangulate basic shapes (grid, cylinder, disc) in the <span class="tt">basic_shapes</span> file </li>
-</ul>
-<h3 class="doxsection"><a class="anchor" id="autotoc_md16"></a>
 in the short term</h3>
 <ul>
-<li><b>local mesh adjustments :</b> remove triangles from the mesh, especially if the model contains a hole or is not convex.</li>
-<li>see Constrained Delaunay triangulation </li>
+<li>import the physical tags from the .msh files</li>
+<li>display boundaries and phsyical tags for 3D meshes</li>
+<li>adding hexahedral meshes</li>
 </ul>
-<h3 class="doxsection"><a class="anchor" id="autotoc_md17"></a>
+<h3 class="doxsection"><a class="anchor" id="autotoc_md16"></a>
 in the longer term</h3>
 <ul>
+<li><b>local mesh adjustments :</b> remove triangles from the mesh, especially if the model contains a hole or is not convex.</li>
+<li>see Constrained Delaunay triangulation</li>
 <li>see advancing front method (<a href="http://ebrary.free.fr/Mesh%20Generation/Handbook_of_Grid_%20Generation,1999/chap17.pdf">Advancing Front Grid Generation</a>)</li>
 <li>implement Delaunay for tetrhedral meshes</li>
 <li><b>mesh simplification :</b> edge collapse (<a href="https://arxiv.org/pdf/2512.19959">A Comprehensive Guide to Mesh Simplification using Edge Collapse</a>) (maybe)</li>
 </ul>
-<h1 class="doxsection"><a class="anchor" id="autotoc_md18"></a>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md17"></a>
 Compilation and execution</h1>
 <p>To clone the project : </p><div class="fragment"><div class="line">git clone --recurse-submodules https://github.com/alexislaurent1321-gif/Enmesh.git</div>
 </div><!-- fragment --><p>Compilation on Windows (preferably with <b>MSVC</b>) or Linux. Use the <b>VS Code</b> interface if possible. On Windows, to run ParaView from the command line, add the ParaView bin folder (e.g., <span class="tt">C:\Program Files\ParaView 6.1.0\bin</span>) to the <span class="tt">PATH</span> environment variables.</p>
@@ -207,7 +204,7 @@ Compilation and execution</h1>
 <li><span class="tt">./scripts/run_{demo}.bat</span> on Windows</li>
 <li><span class="tt">bash scripts/run_{demo}.sh</span> or <span class="tt">wsl sh scripts/run_{demo}.sh</span> on Linux</li>
 </ul>
-<h3 class="doxsection"><a class="anchor" id="autotoc_md19"></a>
+<h3 class="doxsection"><a class="anchor" id="autotoc_md18"></a>
 Dependencies</h3>
 <ul>
 <li><a href="https://github.com/qnzhou/MshIO.git">mshio</a></li>
