@@ -1,5 +1,5 @@
 var searchData=
 [
   ['boundaries_20conditions_0',['Boundaries conditions',['../index.html#autotoc_md13',1,'']]],
-  ['boundaries_20detection_1',['Boundaries detection',['../index.html#autotoc_md7',1,'']]]
+  ['boundary_20detection_1',['Boundary detection',['../index.html#autotoc_md7',1,'']]]
 ];
