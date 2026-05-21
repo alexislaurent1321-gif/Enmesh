@@ -68,7 +68,7 @@ This is a basic finite element formula :
 - a ratio of 1 corresponds to a perfect equilateral triangle.
 - the higher the ratio, the more distorted the triangle becomes, which can hinder the convergence of the solvers.
 
-#### Boundaries detection 
+#### Boundary detection 
 Another function of this project is to detect the edges of the mesh if it is open. To do this, we select the edges along the boundary. An edge is considered to belong to the boundary of the region if it belongs to exactly one triangle. 
 To evaluate the valence of the edges (the number of triangles they belong to), we create a `std::unordered_map` that stores integers as values and edges as keys. We iterate through the edges of each triangle and increment the value corresponding to the evaluated edge by 1.
 
