@@ -52,21 +52,21 @@ bool loadMsh(Mesh<Element>& mesh, const std::string& path) {
 
             mesh.elements.push_back(element);
         }
+
+        // Load boundary elements and tags
+        if (entity_block.entity_dim < 3) { // Only consider boundary elements (edges for 2D, faces for 3D)
+            for (size_t i = 0; i < entity_block.num_elements_in_block; ++i) {
+                Edge edge;
+                if (entity_block.element_type == 1) { // 2-node line element
+                    edge.v1 = tagToIndex[entity_block.data[i * stride + 1]];
+                    edge.v2 = tagToIndex[entity_block.data[i * stride + 2]];
+                    mesh.boundaryElements.push_back(edge);
+                    mesh.boundaryTags.push_back(entity_block.entity_tag);
+                }
+               
+            }
+        }
     }
-
-
-    // // Load boundary elements and tags
-    // for (const auto& boundary_block : spec.boundary.entity_blocks) {
-    //     for (size_t i = 0; i < boundary_block.num_elements_in_block; ++i) {
-    //         Edge edge;
-
-    //         edge.v1 = tagToIndex[boundary_block.data[i * 3 + 1]];
-    //         edge.v2 = tagToIndex[boundary_block.data[i * 3 + 2]];
-
-    //         mesh.boundaryElements.push_back(edge);
-    //         mesh.boundaryTags.push_back(boundary_block.entity_tag);
-    //     }
-    // }
 
 
     return !mesh.elements.empty();
