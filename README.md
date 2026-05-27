@@ -67,17 +67,8 @@ $$\frac{abc}{(b+c-a)(c+a-b)(a+b-c)}$$
 This is a basic finite element formula : 
 - a ratio of 1 corresponds to a perfect equilateral triangle.
 - the higher the ratio, the more distorted the triangle becomes, which can hinder the convergence of the solvers.
-  
-Here is an example with a cube and a stretched cube. Since the side faces are stretched, the result is larger : 
 
-<table>
-  <tr>
-    <td><img width="600" height="300" alt="cube_ratios" src="https://github.com/user-attachments/assets/aeea27de-0dd5-40a6-b300-3f0f8b586e1b" />
-    <td><img width="600" height="300" alt="cube2_ratios" src="https://github.com/user-attachments/assets/75ffb92b-da42-4868-8ef9-5d5246ebd412" />
-  </tr>
-</table>
-
-#### Boundaries detection 
+#### Boundary detection 
 Another function of this project is to detect the edges of the mesh if it is open. To do this, we select the edges along the boundary. An edge is considered to belong to the boundary of the region if it belongs to exactly one triangle. 
 To evaluate the valence of the edges (the number of triangles they belong to), we create a `std::unordered_map` that stores integers as values and edges as keys. We iterate through the edges of each triangle and increment the value corresponding to the evaluated edge by 1.
 
@@ -107,8 +98,14 @@ boundaries triangles : 324
 The aspect ratio is calculated using this formula: (https://docs.salome-platform.org/latest/gui/SMESH/aspect_ratio_3d.html)
 
 The statistics match those of Gmsh :
+
+
 <img width="361" height="268" alt="statistics" src="https://github.com/user-attachments/assets/7aa8f484-0913-4807-8609-b646647547c9" />
 
+## Smoothing (`demo/demo_generateGrid.cpp`)
+Generates a grid with a tag for each boundary condition
+
+<img width="2197" height="1131" alt="grid_bound" src="https://github.com/user-attachments/assets/bcb40053-94a6-466a-a6b1-df2544924f1d" style="width:50%;"/>
 
 
 
@@ -159,13 +156,17 @@ We observe a better average aspect ratio. However, this result can be further im
 
 
 # Upcoming changes
-### as soon as possible
-- Finish the demo for 3D mesh analysis (display boundaries on ParaView)
-- manually generate and triangulate basic shapes (grid, cylinder, disc) in the `basic_shapes` file
 ### in the short term
+- import the physical tags from the .msh files
+- display boundaries and phsyical tags for 3D meshes
+
+### in the middle term
+- adding hexahedral meshes
+- adding unitary tests and CI
+
+### in the longer term
 - **local mesh adjustments :** remove triangles from the mesh, especially if the model contains a hole or is not convex.
 - see Constrained Delaunay triangulation
-### in the longer term
 - see advancing front method ([Advancing Front Grid
 Generation](http://ebrary.free.fr/Mesh%20Generation/Handbook_of_Grid_%20Generation,1999/chap17.pdf))
 - implement Delaunay for tetrhedral meshes
@@ -191,5 +192,4 @@ Use the following commands :
 
 ### Dependencies
 - [mshio](https://github.com/qnzhou/MshIO.git)
-- [tinyobjloader](https://github.com/tinyobjloader/tinyobjloader.git) 
 - [ParaView](https://www.paraview.org/)
