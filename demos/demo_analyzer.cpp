@@ -13,24 +13,9 @@ int main() {
     
     Enmesh::Mesh<Enmesh::Quad> mesh;
     Enmesh::loadMsh(mesh, "models/grid_quad.msh");
-
-    std::cout << "Boundary elements: ";
-    for (const auto& element : mesh.boundaryElements) {
-        std::cout << element.v1 << " " << element.v2 << std::endl;
-    }
-    std::cout << std::endl;
-
-
-    std::cout << "Boundary tags: ";
-    for (const auto& tag : mesh.boundaryTags) {
-        std::cout << tag << " ";
-    }
-    std::cout << std::endl;
     
     Enmesh::analyzeMesh(mesh);
     Enmesh::exportToVTK("output.vtk", mesh);
-
-    
 
     return 0;
 }

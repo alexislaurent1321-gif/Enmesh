@@ -17,10 +17,10 @@ std::unordered_map<Edge, size_t, EdgeHash> getEdgeValences(const Mesh<Element>& 
     
     for (const auto& element : mesh.elements) {
         for (size_t i = 0; i < Element::numVertices; ++i) {
-            size_t v1 = element.v[i];
-            size_t v2 = element.v[(i + 1) % Element::numVertices];
+            size_t v0 = element.v[i];
+            size_t v1 = element.v[(i + 1) % Element::numVertices];
 
-            Edge e = {std::min(v1, v2), std::max(v1, v2)};  // Store edges in a consistent order
+            Edge e = {std::min(v0, v1), std::max(v0, v1)};  // Store edges in a consistent order
             counts[e]++;
         }
     }
@@ -53,11 +53,11 @@ std::unordered_map<Triangle, size_t, TriangleHash> getTriangleValences(const Mes
     
     for (const auto& element : mesh.elements) {
         for (size_t i = 0; i < 4; ++i) {
-            size_t v1 = element.v[i];
-            size_t v2 = element.v[(i + 1) % 4];
-            size_t v3 = element.v[(i + 2) % 4];
+            size_t v0 = element.v[i];
+            size_t v1 = element.v[(i + 1) % 4];
+            size_t v2 = element.v[(i + 2) % 4];
 
-            Triangle triangle = {{std::min({v1, v2, v3}), std::min({std::max(v1, v2), std::max(v2, v3), std::max(v3, v1)}), std::max({v1, v2, v3})}};  // Store triangles in a consistent order
+            Triangle triangle = {{std::min({v0, v1, v2}), std::min({std::max(v0, v1), std::max(v1, v2), std::max(v2, v0)}), std::max({v0, v1, v2})}};  // Store triangles in a consistent order
             counts[triangle]++;
         }
     }  

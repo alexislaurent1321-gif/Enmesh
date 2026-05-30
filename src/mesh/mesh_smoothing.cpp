@@ -11,8 +11,8 @@ void smooth(Mesh<Triangle>& mesh, int iterations, float lambda){
     // Get boundary vertices from boundary edges
     std::vector<Edge> boundaryEdges = getBoundaryEdges(mesh);
     for (const auto& edge : boundaryEdges) {
-        boundaryVertices.insert(edge.v1);
-        boundaryVertices.insert(edge.v2);
+        boundaryVertices.insert(edge.v[0]);
+        boundaryVertices.insert(edge.v[1]);
     }
 
     // Build the adjacency list

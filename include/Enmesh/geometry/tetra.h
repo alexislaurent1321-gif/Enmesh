@@ -46,7 +46,7 @@ struct Tetra {
      * @param v1 index of the first vertex of the edge
      * @param v2 index of the second vertex of the edge
      */
-    bool containsEdge(int v1, int v2) const;
+    bool containsEdge(size_t v1, size_t v2) const;
 };
 
 } // namespace Enmesh

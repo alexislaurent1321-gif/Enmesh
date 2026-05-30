@@ -35,7 +35,7 @@ void exportToVTK<Triangle>(const std::string& filename, Mesh<Triangle>& mesh) {
     for (const auto& triangle : mesh.elements)
         file << "3 " << triangle.v[0] << " " << triangle.v[1] << " " << triangle.v[2] << "\n";
     for (const auto& e : mesh.boundaryElements)
-        file << "2 " << e.v1 << " " << e.v2 << "\n";
+        file << "2 " << e.v[0] << " " << e.v[1] << "\n";
 
     file << "CELL_TYPES " << (nT + nB) << "\n";
     for (size_t i = 0; i < nT; ++i) file << "5\n"; // Triangles
@@ -87,7 +87,7 @@ void exportToVTK<Quad>(const std::string& filename, Mesh<Quad>& mesh) {
     for (const auto& quad : mesh.elements)
         file << "4 " << quad.v[0] << " " << quad.v[1] << " " << quad.v[2] << " " << quad.v[3] << "\n";
     for (const auto& e : mesh.boundaryElements)
-        file << "2 " << e.v1 << " " << e.v2 << "\n";
+        file << "2 " << e.v[0] << " " << e.v[1] << "\n";
 
     file << "CELL_TYPES " << (nQ + nB) << "\n";
     for (size_t i = 0; i < nQ; ++i) file << "5\n"; // Quads

@@ -68,7 +68,7 @@ Triangle createSuperTriangle(Mesh<Triangle>& mesh) {
 
                 if (&triangle == &otherTriangle) continue;
 
-                if (otherTriangle.containsEdge(edge.v1, edge.v2)) {
+                if (otherTriangle.containsEdge(edge.v[0], edge.v[1])) {
                     isShared = true;
                     break;
                 }
@@ -85,7 +85,7 @@ Triangle createSuperTriangle(Mesh<Triangle>& mesh) {
 
     // Retriangulate the polygonal hole by connecting the new point to the vertices of the polygon
     for (const auto& edge : polygon) {
-        mesh.elements.push_back({edge.v1, edge.v2, pointIndex});
+        mesh.elements.push_back({edge.v[0], edge.v[1], pointIndex});
     }
 }
 

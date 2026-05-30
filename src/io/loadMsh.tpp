@@ -58,10 +58,10 @@ bool loadMsh(Mesh<Element>& mesh, const std::string& path) {
             const size_t stride = 1 + nodesPerElem; 
             
             for (size_t i = 0; i < entity_block.num_elements_in_block; ++i) {
-                
+
                 Edge edge;
-                    edge.v1 = tagToIndex[entity_block.data[i * stride + 1]];
-                    edge.v2 = tagToIndex[entity_block.data[i * stride + 2]];
+                    edge.v[0] = tagToIndex[entity_block.data[i * stride + 1]];
+                    edge.v[1] = tagToIndex[entity_block.data[i * stride + 2]];
                     mesh.boundaryElements.push_back(edge);
                     mesh.boundaryTags.push_back(entity_block.entity_tag);
             }   

@@ -19,9 +19,14 @@ namespace Enmesh {
  * 
  */
 struct Edge {
-    size_t v1, v2;
+
+    static constexpr size_t type = 1;           ///< Gmsh element type for edges 
+    static constexpr size_t numVertices = 2;    ///< Number of vertices in an edge
+    static constexpr size_t dimension = 1;      ///< Dimension of the edge element
+
+    std::array<size_t, 2> v;   ///< Indices of the vertices that form the edge
     bool operator==(const Edge& other) const {
-        return (v1 == other.v1 && v2 == other.v2) || (v1 == other.v2 && v2 == other.v1);
+        return (v[0] == other.v[0] && v[1] == other.v[1]) || (v[0] == other.v[1] && v[1] == other.v[0]);
     }
 };
 
@@ -31,7 +36,7 @@ struct Edge {
  */
 struct EdgeHash {
     size_t operator()(const Edge& e) const {
-        return std::hash<int>{}(e.v1) ^ (std::hash<int>{}(e.v2) << 1); // Combine hashes of v1 and v2
+        return std::hash<size_t>{}(e.v[0]) ^ (std::hash<size_t>{}(e.v[1]) << 1); // Combine hashes of v[0] and v[1]
     }
 };
 
