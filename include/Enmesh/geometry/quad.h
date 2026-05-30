@@ -24,8 +24,13 @@ namespace Enmesh {
  */
 struct Quad {
 
-    static constexpr size_t type = 3; ///< Gmsh element type for quads 
-    static constexpr size_t numVertices = 4; ///< Number of vertices in a quad
+    static constexpr size_t type = 3;           ///< Gmsh element type for quads 
+    static constexpr size_t dimension = 2;      ///< Dimension of the quad element
+    static constexpr size_t numVertices = 4;    ///< Number of vertices in a quad
+
+    static constexpr size_t boundaryType = 1;           ///< Gmsh element type for boundary edges
+    static constexpr size_t boundaryDimension = 1;      ///< Dimension of the boundary element (edge)
+    static constexpr size_t boundaryNumVertices = 2;    ///< Number of vertices in a boundary edge
 
     std::array<size_t, 4> v;   ///< Indices of the vertices that form the quad
 

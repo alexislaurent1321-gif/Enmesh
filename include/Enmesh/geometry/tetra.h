@@ -20,8 +20,13 @@ namespace Enmesh {
 
 struct Tetra {
 
-    static constexpr size_t type = 4; ///< Gmsh element type for tetrahedra 
-    static constexpr size_t numVertices = 4; ///< Number of vertices in a tetrahedron
+    static constexpr size_t type = 4;           ///< Gmsh element type for tetrahedra 
+    static constexpr size_t dimension = 3;      ///< Dimension of the tetrahedron element
+    static constexpr size_t numVertices = 4;    ///< Number of vertices in a tetrahedron
+
+    static constexpr size_t boundaryType = 2;           ///< Gmsh element type for boundary triangles
+    static constexpr size_t boundaryDimension = 2;      ///< Dimension of the boundary element (triangle)
+    static constexpr size_t boundaryNumVertices = 3;    ///< Number of vertices in a boundary triangle
 
     std::array<size_t, 4> v;   ///< Indices of the vertices that form the tetrahedron
     bool isBad = false;     ///< Flag used in Delaunay triangulation to mark tetrahedra that need to be removed

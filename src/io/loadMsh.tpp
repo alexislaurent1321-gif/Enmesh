@@ -35,37 +35,38 @@ bool loadMsh(Mesh<Element>& mesh, const std::string& path) {
 
     // Load elements
     for (const auto& entity_block : spec.elements.entity_blocks) {
-        // We are only interested in elements of the specified type
-        if (entity_block.element_type != Element::type) continue; 
 
+        if (entity_block.element_type == Element::type) { 
+            // Each element block has a specific format: the first value is the element tag, followed by the node tags that define the element.
+            const size_t nodesPerElem = Element::numVertices;     // Determine the number of nodes per element based on the mesh type
+            const size_t stride = 1 + nodesPerElem; 
 
-        // Each element block has a specific format: the first value is the element tag, followed by the node tags that define the element.
-        const size_t nodesPerElem = Element::numVertices;     // Determine the number of nodes per element based on the mesh type
-        const size_t stride = 1 + nodesPerElem; 
+            for (size_t i = 0; i < entity_block.num_elements_in_block; ++i) {
 
-        for (size_t i = 0; i < entity_block.num_elements_in_block; ++i) {
+                Element element;
+                for (size_t j = 0; j < nodesPerElem; ++j) {
+                    element.v[j] = tagToIndex[entity_block.data[i * stride + (j + 1)]];
+                }
 
-            Element element;
-            for (size_t j = 0; j < nodesPerElem; ++j) {
-                element.v[j] = tagToIndex[entity_block.data[i * stride + (j + 1)]];
+                mesh.elements.push_back(element);
             }
-
-            mesh.elements.push_back(element);
         }
 
         // Load boundary elements and tags
-        if (entity_block.entity_dim < 3) { // Only consider boundary elements (edges for 2D, faces for 3D)
+        if (entity_block.element_type == Element::boundaryType) { // 2-node line element
+            const size_t nodesPerElem = Element::boundaryNumVertices;     // Determine the number of nodes per element based on the mesh type
+            const size_t stride = 1 + nodesPerElem; 
+            
             for (size_t i = 0; i < entity_block.num_elements_in_block; ++i) {
+                
                 Edge edge;
-                if (entity_block.element_type == 1) { // 2-node line element
                     edge.v1 = tagToIndex[entity_block.data[i * stride + 1]];
                     edge.v2 = tagToIndex[entity_block.data[i * stride + 2]];
                     mesh.boundaryElements.push_back(edge);
                     mesh.boundaryTags.push_back(entity_block.entity_tag);
-                }
-               
-            }
+            }   
         }
+        
     }
 
 

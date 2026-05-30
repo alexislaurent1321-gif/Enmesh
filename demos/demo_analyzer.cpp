@@ -12,11 +12,26 @@
 int main() {
     
     Enmesh::Mesh<Enmesh::Quad> mesh;
-    loadMsh<Enmesh::Quad>(mesh, "models/square.msh");
+    Enmesh::loadMsh(mesh, "models/grid_quad.msh");
+
+    std::cout << "Boundary elements: ";
+    for (const auto& element : mesh.boundaryElements) {
+        std::cout << element.v1 << " " << element.v2 << std::endl;
+    }
+    std::cout << std::endl;
+
+
+    std::cout << "Boundary tags: ";
+    for (const auto& tag : mesh.boundaryTags) {
+        std::cout << tag << " ";
+    }
+    std::cout << std::endl;
     
-    analyzeMesh<Enmesh::Quad>(mesh);
-    exportToVTK<Enmesh::Quad>("output.vtk", mesh);
+    Enmesh::analyzeMesh(mesh);
+    Enmesh::exportToVTK("output.vtk", mesh);
+
     
+
     return 0;
 }
 
