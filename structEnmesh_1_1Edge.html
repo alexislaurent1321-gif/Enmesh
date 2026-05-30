@@ -78,6 +78,7 @@ $(function() {
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#pub-attribs">Public Attributes</a> &#124;
+<a href="#pub-static-attribs">Static Public Attributes</a> &#124;
 <a href="structEnmesh_1_1Edge-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">Enmesh::Edge Struct Reference</div></div>
 </div><!--header-->
@@ -95,10 +96,21 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>operator==</b> (const
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pub-attribs" class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
-<tr class="memitem:a14082c21dc9d9e0d32dab70b21d4492d" id="r_a14082c21dc9d9e0d32dab70b21d4492d"><td class="memItemLeft" align="right" valign="top"><a id="a14082c21dc9d9e0d32dab70b21d4492d" name="a14082c21dc9d9e0d32dab70b21d4492d"></a>
-size_t&#160;</td><td class="memItemRight" valign="bottom"><b>v1</b></td></tr>
-<tr class="memitem:a12dc0cb3c07d1080abf175da6cec72dd" id="r_a12dc0cb3c07d1080abf175da6cec72dd"><td class="memItemLeft" align="right" valign="top"><a id="a12dc0cb3c07d1080abf175da6cec72dd" name="a12dc0cb3c07d1080abf175da6cec72dd"></a>
-size_t&#160;</td><td class="memItemRight" valign="bottom"><b>v2</b></td></tr>
+<tr class="memitem:aad40e7082a428bb0a6b4221b8643a019" id="r_aad40e7082a428bb0a6b4221b8643a019"><td class="memItemLeft" align="right" valign="top"><a id="aad40e7082a428bb0a6b4221b8643a019" name="aad40e7082a428bb0a6b4221b8643a019"></a>
+std::array&lt; size_t, 2 &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>v</b></td></tr>
+<tr class="memdesc:aad40e7082a428bb0a6b4221b8643a019"><td class="mdescLeft">&#160;</td><td class="mdescRight">Indices of the vertices that form the edge. <br /></td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-pub-static-attribs" class="groupheader"><a id="pub-static-attribs" name="pub-static-attribs"></a>
+Static Public Attributes</h2></td></tr>
+<tr class="memitem:a983910fdf7cf47155dc63849698c9ebd" id="r_a983910fdf7cf47155dc63849698c9ebd"><td class="memItemLeft" align="right" valign="top"><a id="a983910fdf7cf47155dc63849698c9ebd" name="a983910fdf7cf47155dc63849698c9ebd"></a>
+static constexpr size_t&#160;</td><td class="memItemRight" valign="bottom"><b>type</b> = 1</td></tr>
+<tr class="memdesc:a983910fdf7cf47155dc63849698c9ebd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gmsh element type for edges. <br /></td></tr>
+<tr class="memitem:a1bae538baddb976d32b676a50baad1d2" id="r_a1bae538baddb976d32b676a50baad1d2"><td class="memItemLeft" align="right" valign="top"><a id="a1bae538baddb976d32b676a50baad1d2" name="a1bae538baddb976d32b676a50baad1d2"></a>
+static constexpr size_t&#160;</td><td class="memItemRight" valign="bottom"><b>numVertices</b> = 2</td></tr>
+<tr class="memdesc:a1bae538baddb976d32b676a50baad1d2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Number of vertices in an edge. <br /></td></tr>
+<tr class="memitem:ae6f481d5e774cb8533350878a78ed19e" id="r_ae6f481d5e774cb8533350878a78ed19e"><td class="memItemLeft" align="right" valign="top"><a id="ae6f481d5e774cb8533350878a78ed19e" name="ae6f481d5e774cb8533350878a78ed19e"></a>
+static constexpr size_t&#160;</td><td class="memItemRight" valign="bottom"><b>dimension</b> = 1</td></tr>
+<tr class="memdesc:ae6f481d5e774cb8533350878a78ed19e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Dimension of the edge element. <br /></td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>A struct representing an edge in the mesh. </p>

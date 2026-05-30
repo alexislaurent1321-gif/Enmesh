@@ -88,8 +88,8 @@ $(function() {
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a0e0b8e0383a80b2418f7571eca362ca2" id="r_a0e0b8e0383a80b2418f7571eca362ca2"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0e0b8e0383a80b2418f7571eca362ca2">containsPoint</a> (const std::vector&lt; <a class="el" href="structEnmesh_1_1Point.html">Point</a> &gt; &amp;vertices, const <a class="el" href="structEnmesh_1_1Point.html">Point</a> &amp;point)</td></tr>
 <tr class="memdesc:a0e0b8e0383a80b2418f7571eca362ca2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if the circumsphere of the tetrahedron contains a specific point.  <br /></td></tr>
-<tr class="memitem:a571ebb297f5fae5edcac7b0b7f4854a3" id="r_a571ebb297f5fae5edcac7b0b7f4854a3"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a571ebb297f5fae5edcac7b0b7f4854a3">containsEdge</a> (int v1, int v2) const</td></tr>
-<tr class="memdesc:a571ebb297f5fae5edcac7b0b7f4854a3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if the circumsphere of the tetrahedron contains a specific edge defined by two vertex indices.  <br /></td></tr>
+<tr class="memitem:addf8f9e9f1921cd51c8b3d14f84a65c2" id="r_addf8f9e9f1921cd51c8b3d14f84a65c2"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#addf8f9e9f1921cd51c8b3d14f84a65c2">containsEdge</a> (size_t v1, size_t v2) const</td></tr>
+<tr class="memdesc:addf8f9e9f1921cd51c8b3d14f84a65c2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if the circumsphere of the tetrahedron contains a specific edge defined by two vertex indices.  <br /></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pub-attribs" class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
@@ -122,8 +122,8 @@ static constexpr size_t&#160;</td><td class="memItemRight" valign="bottom"><b>bo
 <tr class="memdesc:aa3a6b5c47c2e9255c5ed3417569b830e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Number of vertices in a boundary triangle. <br /></td></tr>
 </table>
 <a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Member Function Documentation</h2>
-<a id="a571ebb297f5fae5edcac7b0b7f4854a3" name="a571ebb297f5fae5edcac7b0b7f4854a3"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a571ebb297f5fae5edcac7b0b7f4854a3">&#9670;&#160;</a></span>containsEdge()</h2>
+<a id="addf8f9e9f1921cd51c8b3d14f84a65c2" name="addf8f9e9f1921cd51c8b3d14f84a65c2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#addf8f9e9f1921cd51c8b3d14f84a65c2">&#9670;&#160;</a></span>containsEdge()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -131,12 +131,12 @@ static constexpr size_t&#160;</td><td class="memItemRight" valign="bottom"><b>bo
         <tr>
           <td class="memname">bool Enmesh::Tetra::containsEdge </td>
           <td>(</td>
-          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>v1</em></span>, </td>
+          <td class="paramtype">size_t</td>          <td class="paramname"><span class="paramname"><em>v1</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>v2</em></span>&#160;) const</td>
+          <td class="paramtype">size_t</td>          <td class="paramname"><span class="paramname"><em>v2</em></span>&#160;) const</td>
         </tr>
       </table>
 </div><div class="memdoc">
