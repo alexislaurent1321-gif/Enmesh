@@ -76,6 +76,7 @@ $(function() {
 <div id="doc-content">
 <div class="header">
   <div class="summary">
+<a href="#pub-types">Public Types</a> &#124;
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#pub-attribs">Public Attributes</a> &#124;
 <a href="structEnmesh_1_1Mesh-members.html">List of all members</a>  </div>
@@ -88,6 +89,11 @@ $(function() {
 
 <p><code>#include &lt;<a class="el" href="mesh_8h_source.html">mesh.h</a>&gt;</code></p>
 <table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-pub-types" class="groupheader"><a id="pub-types" name="pub-types"></a>
+Public Types</h2></td></tr>
+<tr class="memitem:a1ed0dcd384006e510ebb87544d5285fb" id="r_a1ed0dcd384006e510ebb87544d5285fb"><td class="memItemLeft" align="right" valign="top"><a id="a1ed0dcd384006e510ebb87544d5285fb" name="a1ed0dcd384006e510ebb87544d5285fb"></a>
+using&#160;</td><td class="memItemRight" valign="bottom"><b>BoundaryType</b> = std::conditional_t&lt;Element::dimension == 3, <a class="el" href="structEnmesh_1_1Triangle.html">Triangle</a>, <a class="el" href="structEnmesh_1_1Edge.html">Edge</a>&gt;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pub-methods" class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:ac8ce69ed858b170afb6a2927a0e392b4" id="r_ac8ce69ed858b170afb6a2927a0e392b4"><td class="memItemLeft" align="right" valign="top"><a id="ac8ce69ed858b170afb6a2927a0e392b4" name="ac8ce69ed858b170afb6a2927a0e392b4"></a>
@@ -105,9 +111,9 @@ std::vector&lt; <a class="el" href="structEnmesh_1_1Point.html">Point</a> &gt;&#
 <tr class="memitem:aae43ee595047b91e095aa8fc3ec5da3b" id="r_aae43ee595047b91e095aa8fc3ec5da3b"><td class="memItemLeft" align="right" valign="top"><a id="aae43ee595047b91e095aa8fc3ec5da3b" name="aae43ee595047b91e095aa8fc3ec5da3b"></a>
 std::vector&lt; Element &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>elements</b></td></tr>
 <tr class="memdesc:aae43ee595047b91e095aa8fc3ec5da3b"><td class="mdescLeft">&#160;</td><td class="mdescRight">List of elements defined by vertex indices. <br /></td></tr>
-<tr class="memitem:a61773000810f22a4c44936d938f3332a" id="r_a61773000810f22a4c44936d938f3332a"><td class="memItemLeft" align="right" valign="top"><a id="a61773000810f22a4c44936d938f3332a" name="a61773000810f22a4c44936d938f3332a"></a>
-std::vector&lt; <a class="el" href="structEnmesh_1_1Edge.html">Edge</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>boundaryElements</b></td></tr>
-<tr class="memdesc:a61773000810f22a4c44936d938f3332a"><td class="mdescLeft">&#160;</td><td class="mdescRight">List of boundary edges for surface and boundary surfaces for volumes. <br /></td></tr>
+<tr class="memitem:aee777cd582b5dbb6d0011c57ac3d672b" id="r_aee777cd582b5dbb6d0011c57ac3d672b"><td class="memItemLeft" align="right" valign="top"><a id="aee777cd582b5dbb6d0011c57ac3d672b" name="aee777cd582b5dbb6d0011c57ac3d672b"></a>
+std::vector&lt; BoundaryType &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>boundaryElements</b></td></tr>
+<tr class="memdesc:aee777cd582b5dbb6d0011c57ac3d672b"><td class="mdescLeft">&#160;</td><td class="mdescRight">List of boundary elements for surface and boundary surfaces for volumes. <br /></td></tr>
 <tr class="memitem:ae8a4486f29b6455a5b551585fdb2aa7a" id="r_ae8a4486f29b6455a5b551585fdb2aa7a"><td class="memItemLeft" align="right" valign="top"><a id="ae8a4486f29b6455a5b551585fdb2aa7a" name="ae8a4486f29b6455a5b551585fdb2aa7a"></a>
 std::vector&lt; size_t &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>boundaryTags</b></td></tr>
 <tr class="memdesc:ae8a4486f29b6455a5b551585fdb2aa7a"><td class="mdescLeft">&#160;</td><td class="mdescRight">List of boundary tags corresponding to the. <br /></td></tr>
