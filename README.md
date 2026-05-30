@@ -1,4 +1,5 @@
 [![Documentation](https://img.shields.io/badge/docs-doxygen-blue.svg)](https://alexislaurent1321-gif.github.io/Enmesh/)
+![Build](https://github.com/alexislaurent1321-gif/Enmesh/actions/workflows/ci.yml/badge.svg)
 
 # Enmesh
 
