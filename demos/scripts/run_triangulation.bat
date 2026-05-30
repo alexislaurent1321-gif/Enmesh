@@ -1,8 +1,6 @@
 @echo off
 setlocal
 
-cd /d "%~dp0.."
-
 echo --- Compilation in progress... ---
 
 cmake -B build

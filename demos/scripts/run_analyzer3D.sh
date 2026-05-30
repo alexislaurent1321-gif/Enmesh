@@ -1,5 +1,3 @@
-cd "$(dirname "$0")/.."
-
 echo "Compilation in progress..."
 
 cmake -B build

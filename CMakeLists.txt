@@ -7,7 +7,6 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 add_subdirectory(extern/mshio)
 add_subdirectory(extern/Catch2)
 
-
 add_library(Enmesh STATIC 
     src/geometry/triangle.cpp
     src/geometry/quad.cpp
@@ -30,7 +29,7 @@ add_library(Enmesh STATIC
 
 target_include_directories(Enmesh PUBLIC include/Enmesh)
 
-target_link_libraries(Enmesh PUBLIC mshio)
+target_link_libraries(Enmesh PUBLIC mshio Catch2)
 
 
 # Demos
@@ -50,8 +49,8 @@ target_link_libraries(triangulation PRIVATE Enmesh)
 add_executable(generateGrid demos/demo_generateGrid.cpp)
 target_link_libraries(generateGrid PRIVATE Enmesh)
 
-
 # Tests
+
 enable_testing()
 
 add_executable(tests

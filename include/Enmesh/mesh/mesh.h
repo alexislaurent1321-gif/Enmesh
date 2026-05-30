@@ -34,8 +34,10 @@ struct Mesh {
     // Datas
     std::vector<Point> vertices;                    ///< List of vertices in the mesh
     std::vector<Element> elements;              ///< List of elements defined by vertex indices
+
+    using BoundaryType = std::conditional_t<Element::dimension == 3, Triangle, Edge>;
     
-    std::vector<Edge> boundaryElements;             ///< List of boundary edges for surface and boundary surfaces for volumes
+    std::vector<BoundaryType> boundaryElements;       ///< List of boundary elements for surface and boundary surfaces for volumes
     std::vector<size_t> boundaryTags;               ///< List of boundary tags corresponding to the
     
     std::vector<float> ratios;                      ///< aspect ratios of elements (for quality analysis)

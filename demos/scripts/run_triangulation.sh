@@ -1,8 +1,4 @@
 #!/bin/bash
-
-# Move to the project root (one level up from /scripts)
-cd "$(dirname "$0")/.." || exit
-
 echo "Compilation in progress..."
 
 # Configure and build
