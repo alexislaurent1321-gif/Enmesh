@@ -56,15 +56,27 @@ bool loadMsh(Mesh<Element>& mesh, const std::string& path) {
         if (entity_block.element_type == Element::boundaryType) { // 2-node line element
             const size_t nodesPerElem = Element::boundaryNumVertices;     // Determine the number of nodes per element based on the mesh type
             const size_t stride = 1 + nodesPerElem; 
-            
-            for (size_t i = 0; i < entity_block.num_elements_in_block; ++i) {
 
-                Edge edge;
+            if(Element::dimension == 2) { // If the boundary element is an edge, we can directly use the Edge struct
+                for (size_t i = 0; i < entity_block.num_elements_in_block; ++i) {
+                    Edge edge;
                     edge.v[0] = tagToIndex[entity_block.data[i * stride + 1]];
                     edge.v[1] = tagToIndex[entity_block.data[i * stride + 2]];
                     mesh.boundaryElements.push_back(edge);
                     mesh.boundaryTags.push_back(entity_block.entity_tag);
-            }   
+                }   
+            }
+            
+            else if(Element::dimension == 3) { // If the boundary element is a surface, we can store the vertex indices directly
+                for (size_t i = 0; i < entity_block.num_elements_in_block; ++i) {
+                    Triangle triangle;
+                    triangle.v[0] = tagToIndex[entity_block.data[i * stride + 1]];
+                    triangle.v[1] = tagToIndex[entity_block.data[i * stride + 2]];
+                    triangle.v[2] = tagToIndex[entity_block.data[i * stride + 3]];
+                    mesh.boundaryElements.push_back(triangle);
+                    mesh.boundaryTags.push_back(entity_block.entity_tag);
+                }   
+            }
         }
         
     }
