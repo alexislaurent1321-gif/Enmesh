@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['ratios_0',['ratios',['../structEnmesh_1_1Mesh.html#a74ff17724ca573a2333bf05714d8dd40',1,'Enmesh::Mesh']]]
+  ['numvertices_0',['numVertices',['../structEnmesh_1_1Quad.html#a13a165c8e0542d5f0d45a714c5cf2d92',1,'Enmesh::Quad::numVertices'],['../structEnmesh_1_1Tetra.html#a23fded60bd52e0bb2fa15b496fd00d48',1,'Enmesh::Tetra::numVertices'],['../structEnmesh_1_1Triangle.html#af917801b407f6338253b5548d66f379c',1,'Enmesh::Triangle::numVertices']]]
 ];
