@@ -21,8 +21,8 @@ int main() {
 
     Enmesh::triangulate(gridMesh); // Perform Delaunay triangulation on the grid mesh
 
-    Enmesh::analyzeMesh<Enmesh::Triangle>(gridMesh);
-    Enmesh::exportToVTK<Enmesh::Triangle>("output.vtk", gridMesh);
+    Enmesh::analyzeMesh(gridMesh);
+    Enmesh::exportToVTK("output.vtk", gridMesh);
 
     return 0;
 }

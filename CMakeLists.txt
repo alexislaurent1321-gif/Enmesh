@@ -61,6 +61,8 @@ add_executable(tests
 
     tests/test_mesh/test_mesh.cpp
     tests/test_mesh/test_mesh_analysis.cpp
+    tests/test_mesh/test_mesh_triangulation.cpp
+    tests/test_mesh/test_mesh_basic_shapes.cpp
 )
 
 target_link_libraries(tests PRIVATE Enmesh Catch2::Catch2WithMain)

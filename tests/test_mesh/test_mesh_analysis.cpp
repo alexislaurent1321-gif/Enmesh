@@ -33,3 +33,14 @@ TEST_CASE("Mesh analysis - aspect ratio of multiple tetrahedra", "[mesh_analysis
     REQUIRE(mesh.ratios[1] > 0);
 }
 
+TEST_CASE("Mesh analysis - aspect ratio of degenerate tetrahedron", "[mesh_analysis]") {
+    Mesh<Tetra> mesh;
+    mesh.vertices = {{0, 0, 0}, {1, 0, 0}, {0, 1, 0}, {0, 0, 0}}; // Degenerate tetrahedron (last vertex is the same as the first)
+    mesh.elements = {{{0, 1, 2, 3}}};
+    
+    calculateAspectRatios(mesh);
+    
+    REQUIRE(mesh.ratios.size() == 1);
+    REQUIRE(mesh.ratios[0] == std::numeric_limits<float>::infinity()); // Aspect ratio should be infinite for degenerate tetrahedron
+}
+
