@@ -86,8 +86,8 @@ $(function() {
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pub-methods" class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a0e0b8e0383a80b2418f7571eca362ca2" id="r_a0e0b8e0383a80b2418f7571eca362ca2"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0e0b8e0383a80b2418f7571eca362ca2">containsPoint</a> (const std::vector&lt; <a class="el" href="structEnmesh_1_1Point.html">Point</a> &gt; &amp;vertices, const <a class="el" href="structEnmesh_1_1Point.html">Point</a> &amp;point)</td></tr>
-<tr class="memdesc:a0e0b8e0383a80b2418f7571eca362ca2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if the circumsphere of the tetrahedron contains a specific point.  <br /></td></tr>
+<tr class="memitem:a61b0322366992a3cf6948f7b50805145" id="r_a61b0322366992a3cf6948f7b50805145"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a61b0322366992a3cf6948f7b50805145">operator==</a> (const <a class="el" href="structEnmesh_1_1Tetra.html">Tetra</a> &amp;other) const</td></tr>
+<tr class="memdesc:a61b0322366992a3cf6948f7b50805145"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if this tetrahedron is equal to another (same vertices, regardless of order)  <br /></td></tr>
 <tr class="memitem:addf8f9e9f1921cd51c8b3d14f84a65c2" id="r_addf8f9e9f1921cd51c8b3d14f84a65c2"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#addf8f9e9f1921cd51c8b3d14f84a65c2">containsEdge</a> (size_t v1, size_t v2) const</td></tr>
 <tr class="memdesc:addf8f9e9f1921cd51c8b3d14f84a65c2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if the circumsphere of the tetrahedron contains a specific edge defined by two vertex indices.  <br /></td></tr>
 </table><table class="memberdecls">
@@ -152,34 +152,29 @@ static constexpr size_t&#160;</td><td class="memItemRight" valign="bottom"><b>bo
 
 </div>
 </div>
-<a id="a0e0b8e0383a80b2418f7571eca362ca2" name="a0e0b8e0383a80b2418f7571eca362ca2"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a0e0b8e0383a80b2418f7571eca362ca2">&#9670;&#160;</a></span>containsPoint()</h2>
+<a id="a61b0322366992a3cf6948f7b50805145" name="a61b0322366992a3cf6948f7b50805145"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a61b0322366992a3cf6948f7b50805145">&#9670;&#160;</a></span>operator==()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">bool Enmesh::Tetra::containsPoint </td>
+          <td class="memname">bool Enmesh::Tetra::operator== </td>
           <td>(</td>
-          <td class="paramtype">const std::vector&lt; <a class="el" href="structEnmesh_1_1Point.html">Point</a> &gt; &amp;</td>          <td class="paramname"><span class="paramname"><em>vertices</em></span>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">const <a class="el" href="structEnmesh_1_1Point.html">Point</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>point</em></span>&#160;)</td>
+          <td class="paramtype">const <a class="el" href="structEnmesh_1_1Tetra.html">Tetra</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>other</em></span></td><td>)</td>
+          <td> const</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>Check if the circumsphere of the tetrahedron contains a specific point. </p>
+<p>Check if this tetrahedron is equal to another (same vertices, regardless of order) </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">vertices</td><td>The list of vertices in the mesh </td></tr>
-    <tr><td class="paramname">point</td><td>The point to check </td></tr>
+    <tr><td class="paramname">other</td><td>The other tetrahedron to compare with </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>true if point is inside the circumsphere, false otherwise </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>true if the tetrahedra are equal, false otherwise </dd></dl>
 
 </div>
 </div>
