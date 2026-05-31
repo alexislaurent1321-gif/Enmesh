@@ -184,8 +184,8 @@ Compilation on Windows (preferably with **MSVC**) or Linux. Use the **VS Code** 
 The demos can be run in the `scripts` folder. Scripts are named as follows : `run_{demo}.sh` for Linux or `run_{demo}.bat` for Windows.
 
 Use the following commands : 
-- `./scripts/run_{demo}.bat` on Windows
-- `bash scripts/run_{demo}.sh` or `wsl sh scripts/run_{demo}.sh` on Linux
+- `./demos/scripts/run_{demo}.bat` on Windows
+- `bash demos/scripts/run_{demo}.sh` or `wsl sh demos/scripts/run_{demo}.sh` on Linux
 
 
 
