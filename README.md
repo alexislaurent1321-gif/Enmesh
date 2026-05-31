@@ -17,13 +17,14 @@ The next step will be to implement more complex methods, such as constrained Del
 
 ```bash
 +---demos           # demo main files to test different features of the project
+|   +---scripts     # .bat and .sh files to compile and execute demos 
 +---extern          # extern libraries to parse files (submoules)
 +---include 
 |   +---geometry    # geometrical elements of a mesh
 |   +---io          # input/output : functions to load and export meshes
 |   \---mesh        # mesh class and processing functions (smoothing, triangulation, quality analysis)
 +---models
-+---scripts         # .bat and .sh files to compile and execute demos   
++---tests           # unitary tests
 \---src
     +---geometry
     +---io
@@ -158,12 +159,9 @@ We observe a better average aspect ratio. However, this result can be further im
 
 # Upcoming changes
 ### in the short term
-- import the physical tags from the .msh files
 - display boundaries and phsyical tags for 3D meshes
-
-### in the middle term
 - adding hexahedral meshes
-- adding unitary tests and CI
+- improve the unitary tests
 
 ### in the longer term
 - **local mesh adjustments :** remove triangles from the mesh, especially if the model contains a hole or is not convex.
