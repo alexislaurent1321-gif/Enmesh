@@ -2,6 +2,17 @@
 
 namespace Enmesh {
 
+bool Tetra::operator==(const Tetra& other) const {
+    std::unordered_set<size_t> vertices(v.begin(), v.end());
+    for (size_t vertex : other.v) {
+        if (vertices.find(vertex) == vertices.end()) {
+            return false; 
+        }
+    }
+    return true; 
+}
+
+
 bool Tetra::containsPoint(const std::vector<Point>& vertices, const Point& point) {
     
     Point A = vertices[v[0]];

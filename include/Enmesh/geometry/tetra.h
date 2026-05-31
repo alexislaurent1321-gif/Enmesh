@@ -31,6 +31,13 @@ struct Tetra {
     std::array<size_t, 4> v;   ///< Indices of the vertices that form the tetrahedron
     bool isBad = false;     ///< Flag used in Delaunay triangulation to mark tetrahedra that need to be removed
 
+    /**
+     * @brief Check if this tetrahedron is equal to another (same vertices, regardless of order)
+     * @param other The other tetrahedron to compare with
+     * @return true if the tetrahedra are equal, false otherwise
+     */
+    bool operator==(const Tetra& other) const;
+
 
     /**
      * @brief Check if the circumsphere of the tetrahedron contains a specific point
