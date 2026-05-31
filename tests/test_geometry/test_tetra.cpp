@@ -27,16 +27,3 @@ TEST_CASE("Tetra containsEdge - non existing edge", "[tetra]") {
     REQUIRE_FALSE(tetra.containsEdge(0, 4));
 }
 
-TEST_CASE("Tetra containsPoint - point inside circumcircle", "[tetra]") {
-    Tetra tetra{{0, 1, 2, 3}};
-    std::vector<Point> vertices = {{0, 0}, {1, 0}, {0, 1}, {0, 0}};
-    Point p{0.5, 0.5}; 
-    REQUIRE(tetra.containsPoint(vertices, p));
-}
-
-TEST_CASE("Tetra containsPoint - point outside circumcircle", "[tetra]") {
-    Tetra tetra{{0, 1, 2, 3}};
-    std::vector<Point> vertices = {{0, 0}, {1, 0}, {0, 1}, {0, 0}};
-    Point p{1.5, 1.5}; 
-    REQUIRE_FALSE(tetra.containsPoint(vertices, p));
-}

@@ -40,15 +40,6 @@ struct Tetra {
 
 
     /**
-     * @brief Check if the circumsphere of the tetrahedron contains a specific point
-     * @param vertices The list of vertices in the mesh
-     * @param point The point to check
-     * @return true if point is inside the circumsphere, false otherwise
-     */
-    bool containsPoint(const std::vector<Point>& vertices, const Point& point);
-
-
-    /**
      * @brief Check if the circumsphere of the tetrahedron contains a specific edge defined by two vertex indices
      * @param v1 index of the first vertex of the edge
      * @param v2 index of the second vertex of the edge

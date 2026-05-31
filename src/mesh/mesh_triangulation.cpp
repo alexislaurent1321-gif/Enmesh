@@ -48,7 +48,7 @@ Triangle createSuperTriangle(Mesh<Triangle>& mesh) {
     // Find all triangles whose circumcircle contains the new point
     std::vector<Triangle> badTriangles;
     for (auto& triangle : mesh.elements) {
-        if (triangle.containsPoint(mesh.vertices, point)) {
+        if (!triangle.containsPoint(mesh.vertices, point)) {
             triangle.isBad = true;
             badTriangles.push_back(triangle);
         }

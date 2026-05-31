@@ -28,7 +28,7 @@ bool Triangle::containsPoint(const std::vector<Point>& vertices,const Point& poi
                 (bx*bx + by*by) * (ax*cy - cx*ay) +
                 (cx*cx + cy*cy) * (ax*by - bx*ay);
 
-    return det < -1e-5; // Use a small epsilon to account for floating-point precision issues
+    return det > -1e-5; // Use a small epsilon to account for floating-point precision issues
 }
 
 } // namespace Enmesh

@@ -54,8 +54,13 @@ target_link_libraries(generateGrid PRIVATE Enmesh)
 enable_testing()
 
 add_executable(tests
-    tests/test_triangle.cpp
-    tests/test_mesh.cpp
+    tests/test_geometry/test_triangle.cpp
+    tests/test_geometry/test_quad.cpp
+    tests/test_geometry/test_tetra.cpp
+    tests/test_geometry/test_point.cpp
+
+    tests/test_mesh/test_mesh.cpp
+    tests/test_mesh/test_mesh_analysis.cpp
 )
 
 target_link_libraries(tests PRIVATE Enmesh Catch2::Catch2WithMain)

@@ -30,13 +30,13 @@ TEST_CASE("Triangle containsEdge - non existing edge", "[triangle]") {
 TEST_CASE("Triangle containsPoint - point inside circumcircle", "[triangle]") {
     Triangle triangle{{0, 1, 2}};
     std::vector<Point> vertices = {{0, 0}, {1, 0}, {0, 1}};
-    Point p{0.5, 0.5}; 
-    REQUIRE(triangle.containsPoint(vertices, p));
+    Point point{0.5, 0.5}; 
+    REQUIRE(triangle.containsPoint(vertices, point));
 }
 
 TEST_CASE("Triangle containsPoint - point outside circumcircle", "[triangle]") {
     Triangle triangle{{0, 1, 2}};
     std::vector<Point> vertices = {{0, 0}, {1, 0}, {0, 1}};
-    Point p{1.5, 1.5}; 
-    REQUIRE_FALSE(triangle.containsPoint(vertices, p));
+    Point point{1.5, 1.5}; 
+    REQUIRE_FALSE(triangle.containsPoint(vertices, point));
 }
