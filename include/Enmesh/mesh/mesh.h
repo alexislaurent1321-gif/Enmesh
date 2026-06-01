@@ -11,36 +11,33 @@
 #include <sstream>
 #include <string>
 
-
+#include "geometry/boundary.h"
 #include "geometry/point.h"
 #include "geometry/edge.h"
 #include "geometry/triangle.h"
 #include "geometry/quad.h"
 #include "geometry/tetra.h"
-
-/** @file
- * @brief Mesh class definition
- */
+#include "geometry/hexa.h"
 
 namespace Enmesh {
 
 /**
- * @brief A class representing a 3D mesh
+ * @brief A class representing a 2D/3D mesh
  * 
  */
 template <typename Element>
 struct Mesh {
 
     // Datas
-    std::vector<Point> vertices;                    ///< List of vertices in the mesh
-    std::vector<Element> elements;              ///< List of elements defined by vertex indices
+    std::vector<Point> vertices;                                ///< List of vertices in the mesh
+    std::vector<Element> elements;                              ///< List of elements defined by vertex indices
 
-    using BoundaryType = std::conditional_t<Element::dimension == 3, Triangle, Edge>;
+    using BoundaryType = typename Boundary<Element>::type;      ///< Type of boundary element corresponding to the mesh element type
     
-    std::vector<BoundaryType> boundaryElements;       ///< List of boundary elements for surface and boundary surfaces for volumes
-    std::vector<size_t> boundaryTags;               ///< List of boundary tags corresponding to the
+    std::vector<BoundaryType> boundaryElements;                 ///< List of boundary elements for surface and boundary surfaces for volumes
+    std::vector<size_t> boundaryTags;                           ///< List of boundary tags corresponding to the
     
-    std::vector<float> ratios;                      ///< aspect ratios of elements (for quality analysis)
+    std::vector<float> ratios;                                  ///< aspect ratios of elements (for quality analysis)
 
 
     // Methods

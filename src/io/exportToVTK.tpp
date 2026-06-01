@@ -146,5 +146,50 @@ void exportToVTK<Tetra>(const std::string& filename, Mesh<Tetra>& mesh) {
 }
 
 
+template <>
+void exportToVTK<Hexa>(const std::string& filename, Mesh<Hexa>& mesh) {
+    std::ofstream file(filename);
+    if (!file.is_open()) return;
+
+    file << "# vtk DataFile Version 3.0\n";
+    file << "Mesh Analysis Combo\nASCII\nDATASET UNSTRUCTURED_GRID\n";
+
+    // Write vertices
+    file << "POINTS " << mesh.vertices.size() << " float\n";
+    for (const auto& v : mesh.vertices) 
+        file << v.x << " " << v.y << " " << v.z << "\n";
+
+    // Write cells (hexahedra + boundary edges)
+    size_t nH = mesh.elements.size();
+    size_t nB = mesh.boundaryElements.size();
+    file << "CELLS " << (nH + nB) << " " << (nH * 9 + nB * 5) << "\n";
+    
+    for (const auto& hexa : mesh.elements)
+        file << "8 " << hexa.v[0] << " " << hexa.v[1] << " " << hexa.v[2] << " " << hexa.v[3] << " " << hexa.v[4] << " " << hexa.v[5] << " " << hexa.v[6] << " " << hexa.v[7] << "\n";
+    for (const auto& element : mesh.boundaryElements)
+        file << "4 " << element.v[0] << " " << element.v[1] << " " << element.v[2] << " " << element.v[3] << "\n";
+
+    file << "CELL_TYPES " << (nH + nB) << "\n";
+    for (size_t i = 0; i < nH; ++i) file << "12\n"; // Hexahedra
+    for (size_t i = 0; i < nB; ++i) file << "9\n";  // Quads
+
+
+    // Write cell data (quality ratios and boundary flags)
+    file << "CELL_DATA " << (nH + nB) << "\n";
+
+
+    file << "SCALARS Quality_Ratio float\nLOOKUP_TABLE default\n";
+    for (float r : mesh.ratios) file << r << "\n";
+    for (size_t i = 0; i < nB; ++i) file << "0.\n"; 
+
+
+    // Boundary representation: 0 for hexahedra, 1 for boundary edges 
+    file << "SCALARS Is_Boundary int\nLOOKUP_TABLE default\n";
+    for (size_t i = 0; i < nH; ++i) file << "0\n"; // Hexahedron = 0
+    for (size_t i = 0; i < nB; ++i) file << std::format("{}\n", mesh.boundaryTags[i]); // BoundaryTag = tag
+
+    file.close();
+}
+
 
 } // namespace Enmesh
