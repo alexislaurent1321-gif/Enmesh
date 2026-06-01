@@ -9,7 +9,7 @@
 namespace Enmesh {
 
 template <>
-void exportToVTK<Triangle>(const std::string& filename, Mesh<Triangle>& mesh) {
+void exportToVTK<Triangle>(const std::string& filename, const Mesh<Triangle>& mesh) {
     std::ofstream file(filename);
     if (!file.is_open()) return;
 
@@ -55,7 +55,7 @@ void exportToVTK<Triangle>(const std::string& filename, Mesh<Triangle>& mesh) {
 
 
 template <>
-void exportToVTK<Quad>(const std::string& filename, Mesh<Quad>& mesh) {
+void exportToVTK<Quad>(const std::string& filename, const Mesh<Quad>& mesh) {
     std::ofstream file(filename);
     if (!file.is_open()) return;
 
@@ -101,7 +101,7 @@ void exportToVTK<Quad>(const std::string& filename, Mesh<Quad>& mesh) {
 
 
 template <>
-void exportToVTK<Tetra>(const std::string& filename, Mesh<Tetra>& mesh) {
+void exportToVTK<Tetra>(const std::string& filename, const Mesh<Tetra>& mesh) {
     std::ofstream file(filename);
     if (!file.is_open()) return;
 
@@ -147,7 +147,7 @@ void exportToVTK<Tetra>(const std::string& filename, Mesh<Tetra>& mesh) {
 
 
 template <>
-void exportToVTK<Hexa>(const std::string& filename, Mesh<Hexa>& mesh) {
+void exportToVTK<Hexa>(const std::string& filename, const Mesh<Hexa>& mesh) {
     std::ofstream file(filename);
     if (!file.is_open()) return;
 

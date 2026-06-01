@@ -14,7 +14,7 @@ int main() {
 
     Enmesh::Mesh<Enmesh::Triangle> gridMesh = Enmesh::generateGrid<Enmesh::Triangle>(2, 2, 1.f, 1.f);   // Generate a regular grid 
 
-    Enmesh::analyzeMesh(gridMesh);
+    Enmesh::analyzeMesh<Enmesh::Triangle>(gridMesh);
     Enmesh::exportToVTK("output.vtk", gridMesh);
 
     return 0;

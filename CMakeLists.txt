@@ -11,6 +11,7 @@ add_library(Enmesh STATIC
     src/geometry/triangle.cpp
     src/geometry/quad.cpp
     src/geometry/tetra.cpp
+    src/geometry/hexa.cpp
     src/geometry/point.cpp
 
     src/mesh/mesh.cpp
@@ -56,6 +57,7 @@ enable_testing()
 add_executable(tests
     tests/test_geometry/test_triangle.cpp
     tests/test_geometry/test_quad.cpp
+    tests/test_geometry/test_hexa.cpp
     tests/test_geometry/test_tetra.cpp
     tests/test_geometry/test_point.cpp
 

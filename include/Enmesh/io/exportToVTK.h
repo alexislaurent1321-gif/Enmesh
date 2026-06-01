@@ -11,7 +11,7 @@ namespace Enmesh {
  * @param mesh The mesh object containing vertices, triangles, and quality ratios
 */
 template <typename Element>
-void exportToVTK(const std::string& filename, Mesh<Element>& mesh);
+void exportToVTK(const std::string& filename, const Mesh<Element>& mesh);
 
 } // namespace Enmesh
 

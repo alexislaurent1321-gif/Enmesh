@@ -86,12 +86,12 @@ inline float calculateAspectRatio(const Mesh<Hexa>& mesh, const Hexa& element)  
     Point m4 = {(mesh.vertices[element.v[2]].x + mesh.vertices[element.v[3]].x + mesh.vertices[element.v[7]].x + mesh.vertices[element.v[6]].x) / 4,
                 (mesh.vertices[element.v[2]].y + mesh.vertices[element.v[3]].y + mesh.vertices[element.v[7]].y + mesh.vertices[element.v[6]].y) / 4,
                 (mesh.vertices[element.v[2]].z + mesh.vertices[element.v[3]].z + mesh.vertices[element.v[7]].z + mesh.vertices[element.v[6]].z) / 4};
-    Point m5 = {(mesh.vertices[element.v[0]].x + mesh.vertices[element.v[2]].x + mesh.vertices[element.v[4]].x + mesh.vertices[element.v[6]].x) / 4,
-                (mesh.vertices[element.v[0]].y + mesh.vertices[element.v[2]].y + mesh.vertices[element.v[4]].y + mesh.vertices[element.v[6]].y) / 4,
-                (mesh.vertices[element.v[0]].z + mesh.vertices[element.v[2]].z + mesh.vertices[element.v[4]].z + mesh.vertices[element.v[6]].z) / 4};
-    Point m6 = {(mesh.vertices[element.v[1]].x + mesh.vertices[element.v[3]].x + mesh.vertices[element.v[5]].x + mesh.vertices[element.v[7]].x) / 4,
-                (mesh.vertices[element.v[1]].y + mesh.vertices[element.v[3]].y + mesh.vertices[element.v[5]].y + mesh.vertices[element.v[7]].y) / 4,
-                (mesh.vertices[element.v[1]].z + mesh.vertices[element.v[3]].z + mesh.vertices[element.v[5]].z + mesh.vertices[element.v[7]].z) / 4};
+    Point m5 = {(mesh.vertices[element.v[0]].x + mesh.vertices[element.v[3]].x + mesh.vertices[element.v[7]].x + mesh.vertices[element.v[4]].x) / 4,
+                (mesh.vertices[element.v[0]].y + mesh.vertices[element.v[3]].y + mesh.vertices[element.v[7]].y + mesh.vertices[element.v[4]].y) / 4,
+                (mesh.vertices[element.v[0]].z + mesh.vertices[element.v[3]].z + mesh.vertices[element.v[7]].z + mesh.vertices[element.v[4]].z) / 4};
+    Point m6 = {(mesh.vertices[element.v[1]].x + mesh.vertices[element.v[2]].x + mesh.vertices[element.v[6]].x + mesh.vertices[element.v[5]].x) / 4,
+                (mesh.vertices[element.v[1]].y + mesh.vertices[element.v[2]].y + mesh.vertices[element.v[6]].y + mesh.vertices[element.v[5]].y) / 4,
+                (mesh.vertices[element.v[1]].z + mesh.vertices[element.v[2]].z + mesh.vertices[element.v[6]].z + mesh.vertices[element.v[5]].z) / 4};
 
     float h1 = m1.distance(m2);
     float h2 = m3.distance(m4);

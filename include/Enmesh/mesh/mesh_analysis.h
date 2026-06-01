@@ -67,6 +67,13 @@ std::vector<Edge> getBoundaryEdges(const Mesh<Element>& mesh);
  */
 inline std::vector<Triangle> getBoundaryTriangles(const Mesh<Tetra>& mesh);
 
+/** 
+ * @brief Get the boundary quads of the mesh
+ * @return A vector containing the boundary quads
+ */
+inline std::vector<Quad> getBoundaryQuads(const Mesh<Tetra>& mesh);
+
+
 
  /**
  * @brief Count the number of unique edges in the mesh by iterating through all triangles and adding their edges to an unordered_set
@@ -84,6 +91,15 @@ size_t countUniqueEdges(const Mesh<Element>& mesh);
  */
 template <typename Element>
 size_t countUniqueTriangles(const Mesh<Element>& mesh);
+
+
+/** 
+ * @brief Count the number of unique quads in the mesh by iterating through all hexahedra and adding their quads to an unordered_set
+ * 
+ * @return number of unique quads in the mesh 
+ */
+template <typename Element>
+size_t countUniqueQuads(const Mesh<Element>& mesh);
 
 
 

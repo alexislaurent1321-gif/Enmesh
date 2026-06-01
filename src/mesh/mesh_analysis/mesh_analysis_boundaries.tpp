@@ -9,7 +9,7 @@ namespace Enmesh {
 // Get valence for 2D meshes
 
 template <typename Element>
-std::unordered_map<Edge, size_t, EdgeHash> getEdgeValences(const Mesh<Element>& mesh) {
+inline std::unordered_map<Edge, size_t, EdgeHash> getEdgeValences(const Mesh<Element>& mesh) {
 
     if(Element::type != 2 && Element::type != 3) {
         std::cerr << "Error: getEdgeValences only supports surface meshes" << std::endl;
@@ -33,7 +33,7 @@ std::unordered_map<Edge, size_t, EdgeHash> getEdgeValences(const Mesh<Element>& 
 
 
 template <typename Element>
-std::vector<Edge> getBoundaryEdges(const Mesh<Element>& mesh) {
+inline std::vector<Edge> getBoundaryEdges(const Mesh<Element>& mesh) {
 
     if(Element::type != 2 && Element::type != 3) {
         std::cerr << "Error: getBoundaryEdges only supports surface meshes" << std::endl;
@@ -54,7 +54,7 @@ std::vector<Edge> getBoundaryEdges(const Mesh<Element>& mesh) {
 
 // Get valence for tetrahedral meshes
 
-std::unordered_map<Triangle, size_t, TriangleHash> getTriangleValences(const Mesh<Tetra>& mesh) {
+inline std::unordered_map<Triangle, size_t, TriangleHash> getTriangleValences(const Mesh<Tetra>& mesh) {
     std::unordered_map<Triangle, size_t, TriangleHash> counts;     // Use an unordered_map to count occurrences of each triangle
     
     for (const auto& element : mesh.elements) {
@@ -72,7 +72,7 @@ std::unordered_map<Triangle, size_t, TriangleHash> getTriangleValences(const Mes
 }
 
 
-std::vector<Triangle> getBoundaryTriangles(const Mesh<Tetra>& mesh) {
+inline std::vector<Triangle> getBoundaryTriangles(const Mesh<Tetra>& mesh) {
     auto triangleCounts = getTriangleValences(mesh);    // Get the valence counts for all triangles
     std::vector<Triangle> boundaryTriangles;            // Collect triangles that belong to only one tetrahedron (valence = 1)
     
@@ -87,7 +87,7 @@ std::vector<Triangle> getBoundaryTriangles(const Mesh<Tetra>& mesh) {
 
 // Get valence for hexahedral meshes
 
-std::unordered_map<Quad, size_t, QuadHash> getQuadValences(const Mesh<Hexa>& mesh) {
+inline std::unordered_map<Quad, size_t, QuadHash> getQuadValences(const Mesh<Hexa>& mesh) {
     std::unordered_map<Quad, size_t, QuadHash> counts;     // Use an unordered_map to count occurrences of each quad
     
     for (const auto& element : mesh.elements) {
@@ -105,7 +105,7 @@ std::unordered_map<Quad, size_t, QuadHash> getQuadValences(const Mesh<Hexa>& mes
 }
 
 
-std::vector<Quad> getBoundaryQuads(const Mesh<Hexa>& mesh) {
+inline std::vector<Quad> getBoundaryQuads(const Mesh<Hexa>& mesh) {
     auto quadCounts = getQuadValences(mesh);    // Get the valence counts for all quads
     std::vector<Quad> boundaryQuads;            // Collect quads that belong to only one hexahedron (valence = 1)
     
