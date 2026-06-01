@@ -40,7 +40,7 @@ struct Tetra {
 
 
     /**
-     * @brief Check if the circumsphere of the tetrahedron contains a specific edge defined by two vertex indices
+     * @brief Check if the tetrahedron contains a specific edge defined by two vertex indices
      * @param v1 index of the first vertex of the edge
      * @param v2 index of the second vertex of the edge
      */
