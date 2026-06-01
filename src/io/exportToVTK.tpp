@@ -13,12 +13,6 @@ void exportToVTK<Triangle>(const std::string& filename, Mesh<Triangle>& mesh) {
     std::ofstream file(filename);
     if (!file.is_open()) return;
 
-    // Identify boundary edges (edges that belong to only one triangle)
-    if(mesh.boundaryElements.empty()) {
-        mesh.boundaryElements = Enmesh::getBoundaryEdges<Triangle>(mesh);
-        mesh.boundaryTags.resize(mesh.boundaryElements.size(), 1); 
-    }
-
     file << "# vtk DataFile Version 3.0\n";
     file << "Mesh Analysis Combo\nASCII\nDATASET UNSTRUCTURED_GRID\n";
 
@@ -34,8 +28,8 @@ void exportToVTK<Triangle>(const std::string& filename, Mesh<Triangle>& mesh) {
     
     for (const auto& triangle : mesh.elements)
         file << "3 " << triangle.v[0] << " " << triangle.v[1] << " " << triangle.v[2] << "\n";
-    for (const auto& e : mesh.boundaryElements)
-        file << "2 " << e.v[0] << " " << e.v[1] << "\n";
+    for (const auto& element : mesh.boundaryElements)
+        file << "2 " << element.v[0] << " " << element.v[1] << "\n";
 
     file << "CELL_TYPES " << (nT + nB) << "\n";
     for (size_t i = 0; i < nT; ++i) file << "5\n"; // Triangles
@@ -65,12 +59,6 @@ void exportToVTK<Quad>(const std::string& filename, Mesh<Quad>& mesh) {
     std::ofstream file(filename);
     if (!file.is_open()) return;
 
-    // Identify boundary edges (edges that belong to only one quad)
-    if(mesh.boundaryElements.empty()) {
-        mesh.boundaryElements = getBoundaryEdges<Quad>(mesh);
-        mesh.boundaryTags.resize(mesh.boundaryElements.size(), 1); 
-    }
-
     file << "# vtk DataFile Version 3.0\n";
     file << "Mesh Analysis Combo\nASCII\nDATASET UNSTRUCTURED_GRID\n";
 
@@ -86,8 +74,8 @@ void exportToVTK<Quad>(const std::string& filename, Mesh<Quad>& mesh) {
     
     for (const auto& quad : mesh.elements)
         file << "4 " << quad.v[0] << " " << quad.v[1] << " " << quad.v[2] << " " << quad.v[3] << "\n";
-    for (const auto& e : mesh.boundaryElements)
-        file << "2 " << e.v[0] << " " << e.v[1] << "\n";
+    for (const auto& element : mesh.boundaryElements)
+        file << "2 " << element.v[0] << " " << element.v[1] << "\n";
 
     file << "CELL_TYPES " << (nQ + nB) << "\n";
     for (size_t i = 0; i < nQ; ++i) file << "5\n"; // Quads
@@ -113,12 +101,9 @@ void exportToVTK<Quad>(const std::string& filename, Mesh<Quad>& mesh) {
 
 
 template <>
-void exportToVTK<Tetra>(const std::string& filename, Mesh<Tetra>& mesh){
+void exportToVTK<Tetra>(const std::string& filename, Mesh<Tetra>& mesh) {
     std::ofstream file(filename);
-    if (!file.is_open()){
-        std::cerr << "export to VTK : Error opening file for writing: " << filename << std::endl;
-        return;
-    }
+    if (!file.is_open()) return;
 
     file << "# vtk DataFile Version 3.0\n";
     file << "Mesh Analysis Combo\nASCII\nDATASET UNSTRUCTURED_GRID\n";
@@ -128,20 +113,38 @@ void exportToVTK<Tetra>(const std::string& filename, Mesh<Tetra>& mesh){
     for (const auto& v : mesh.vertices) 
         file << v.x << " " << v.y << " " << v.z << "\n";
 
-    // Write cells (tetrahedra)
+    // Write cells (tetrahedra + boundary edges)
     size_t nT = mesh.elements.size();
-    file << "CELLS " << nT << " " << (nT * 5) << "\n";
+    size_t nB = mesh.boundaryElements.size();
+    file << "CELLS " << (nT + nB) << " " << (nT * 5 + nB * 4) << "\n";
+    
     for (const auto& tetra : mesh.elements)
         file << "4 " << tetra.v[0] << " " << tetra.v[1] << " " << tetra.v[2] << " " << tetra.v[3] << "\n";
-    file << "CELL_TYPES " << nT << "\n";
-    for (size_t i = 0; i < nT; ++i) file << "10\n"; // Tetrahedra
+    for (const auto& element : mesh.boundaryElements)
+        file << "3 " << element.v[0] << " " << element.v[1] << " " << element.v[2] << "\n";
 
-    // Write cell data (quality ratios)
-    file << "CELL_DATA " << nT << "\n";
+    file << "CELL_TYPES " << (nT + nB) << "\n";
+    for (size_t i = 0; i < nT; ++i) file << "10\n"; // Tetrahedra
+    for (size_t i = 0; i < nB; ++i) file << "5\n"; // Lines
+
+
+    // Write cell data (quality ratios and boundary flags)
+    file << "CELL_DATA " << (nT + nB) << "\n";
+
+
     file << "SCALARS Quality_Ratio float\nLOOKUP_TABLE default\n";
     for (float r : mesh.ratios) file << r << "\n";
+    for (size_t i = 0; i < nB; ++i) file << "0.\n"; 
+
+
+    // Boundary representation: 0 for tetrahedra, 1 for boundary edges 
+    file << "SCALARS Is_Boundary int\nLOOKUP_TABLE default\n";
+    for (size_t i = 0; i < nT; ++i) file << "0\n"; // Tetrahedron = 0
+    for (size_t i = 0; i < nB; ++i) file << std::format("{}\n", mesh.boundaryTags[i]); // BoundaryTag = tag
 
     file.close();
 }
+
+
 
 } // namespace Enmesh

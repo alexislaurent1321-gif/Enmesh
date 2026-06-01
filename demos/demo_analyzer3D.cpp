@@ -10,12 +10,12 @@
 int main() {
 
     Enmesh::Mesh<Enmesh::Tetra> mesh;
-    loadMsh(mesh, "models/sphere.msh");
+    loadMsh(mesh, "models/cube_tetra.msh");
   
     analyzeMesh(mesh);
     exportToVTK("output.vtk", mesh);
 
-    std::cout << "boundaries tetrahedra : " << Enmesh::getBoundaryTriangles(mesh).size() << std::endl;
+    std::cout << "boundary tetrahedra : " << Enmesh::getBoundaryTriangles(mesh).size() << std::endl;
 
     return 0;
 }
