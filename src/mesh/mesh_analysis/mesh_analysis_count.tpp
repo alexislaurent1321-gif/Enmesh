@@ -55,8 +55,8 @@ size_t countUniqueQuads(const Mesh<Element>& mesh) {
             std::sort(sortedFace.v.begin(), sortedFace.v.end()); // Sort vertex indices to ensure consistent ordering
             uniqueQuads.insert(sortedFace); 
         }
-        return uniqueQuads.size();
     }
+    return uniqueQuads.size();
 }
 
 } // namespace Enmesh
