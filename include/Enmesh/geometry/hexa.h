@@ -14,6 +14,7 @@
 
 #include "geometry/point.h"
 #include "geometry/edge.h"
+#include "geometry/quad.h"
 
 
 namespace Enmesh {
@@ -29,7 +30,6 @@ struct Hexa {
     static constexpr size_t boundaryNumVertices = 4;    ///< Number of vertices in a boundary quadrilateral
 
     std::array<size_t, 8> v;   ///< Indices of the vertices that form the hexahedron
-    bool isBad = false;     ///< Flag used in Delaunay triangulation to mark hexahedra that need to be removed
 
     /**
      * @brief Check if this hexahedron is equal to another (same vertices, regardless of order)
@@ -37,6 +37,12 @@ struct Hexa {
      * @return true if the hexahedra are equal, false otherwise
      */
     bool operator==(const Hexa& other) const;
+
+
+    /** @brief Get the 6 faces of the hexahedron
+     * @return An array of 6 quadrilateral faces
+     */
+    std::array<Quad, 6> getFaces() const;
 
 };
 

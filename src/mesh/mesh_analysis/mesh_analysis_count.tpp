@@ -47,18 +47,16 @@ template <typename Element>
 size_t countUniqueQuads(const Mesh<Element>& mesh) {
     std::unordered_set<Quad, QuadHash> uniqueQuads; // Use an unordered_set to store unique quads   
     
-    // Iterate through all hexahedra and add their quads to the set
     for (const auto& element : mesh.elements) {
-        for (size_t i = 0; i < Element::numVertices; ++i) {
-            size_t v0 = element.v[i];
-            size_t v1 = element.v[(i + 1) % Element::numVertices];
-            size_t v2 = element.v[(i + 2) % Element::numVertices];
-            size_t v3 = element.v[(i + 3) % Element::numVertices];
-            // Store quads in a consistent order to avoid duplicates
-            uniqueQuads.insert({std::min({v0, v1, v2, v3}), std::min({std::max(v0, v1), std::max(v1, v2), std::max(v2, v3), std::max(v3, v0)}), std::max({v0, v1, v2, v3})}); 
+        
+        auto faces = element.getFaces();
+        for (const auto& face : faces) {
+            auto sortedFace = face; // Create a copy of the face to sort its vertices
+            std::sort(sortedFace.v.begin(), sortedFace.v.end()); // Sort vertex indices to ensure consistent ordering
+            uniqueQuads.insert(sortedFace); 
         }
+        return uniqueQuads.size();
     }
-    return uniqueQuads.size();
 }
 
 } // namespace Enmesh

@@ -15,6 +15,9 @@ inline void analyzeMesh(Mesh<Triangle>& mesh) {
     std::cout << "Vertices : " << mesh.vertices.size() << std::endl;
     std::cout << "Elements : " << mesh.elements.size() << std::endl;
     std::cout << "Unique edges : " << countUniqueEdges<Triangle>(mesh) << std::endl;
+    if(!mesh.boundaryElements.empty()) {
+        std::cout << "Boundary elements : " << mesh.boundaryElements.size() << std::endl;
+    }
 
     // Aspect ratio analysis
     calculateAspectRatios<Triangle>(mesh);
@@ -30,6 +33,9 @@ inline void analyzeMesh(Mesh<Quad>& mesh) {
     std::cout << "Vertices : " << mesh.vertices.size() << std::endl;
     std::cout << "Elements : " << mesh.elements.size() << std::endl;
     std::cout << "Unique edges : " << countUniqueEdges<Quad>(mesh) << std::endl;
+    if(!mesh.boundaryElements.empty()) {
+        std::cout << "Boundary elements : " << mesh.boundaryElements.size() << std::endl;
+    }
 
     // Aspect ratio analysis
     calculateAspectRatios<Quad>(mesh);
@@ -45,6 +51,9 @@ inline void analyzeMesh(Mesh<Tetra>& mesh) {
     std::cout << "Vertices : " << mesh.vertices.size() << std::endl;
     std::cout << "Elements : " << mesh.elements.size() << std::endl;
     std::cout << "Unique triangles : " << countUniqueTriangles<Tetra>(mesh) << std::endl;
+    if(!mesh.boundaryElements.empty()) {
+        std::cout << "Boundary elements : " << mesh.boundaryElements.size() << std::endl;
+    }
 
     // Aspect ratio analysis
     calculateAspectRatios<Tetra>(mesh);
@@ -60,6 +69,9 @@ inline void analyzeMesh(Mesh<Hexa>& mesh) {
     std::cout << "Vertices : " << mesh.vertices.size() << std::endl;
     std::cout << "Elements : " << mesh.elements.size() << std::endl;
     std::cout << "Unique Quads : " << countUniqueQuads<Hexa>(mesh) << std::endl;
+    if(!mesh.boundaryElements.empty()) {
+        std::cout << "Boundary elements : " << mesh.boundaryElements.size() << std::endl;
+    }
 
     // Aspect ratio analysis
     calculateAspectRatios<Hexa>(mesh);
