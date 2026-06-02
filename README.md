@@ -92,6 +92,9 @@ Boundary conditions :
 
 <img width="1466" height="1132" alt="cube2_boundaries" src="https://github.com/user-attachments/assets/0356fe1c-cbf1-4d61-baf9-5a83b89eb61c" style="width:50%;" />
 
+> [!WARNING]  
+The boundary rendering conflicts with the volume rendering, causing blue flickering on some faces. These issues will be fixed soon.
+
 
 The statistics match those of Gmsh :
 
