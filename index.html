@@ -79,7 +79,7 @@ $(function() {
 Enmesh</h1>
 <p>Enmesh is a library used to create, manage, and analyze meshes. It is particularly useful for finite element solvers. Its features include:</p><ul>
 <li>Delaunay triangulation for 2D meshes</li>
-<li>Import of .msh files</li>
+<li>Import of .msh files (version 4.1), the parser was chosen based on qnzhou's <a href="https://github.com/qnzhou/MshIO.git">mshio</a> library</li>
 <li>VTK export for ParaView visualization</li>
 <li>Mesh quality analysis and edge detection The supported mesh types are triangular, quadrangular, and tetrahedral meshes</li>
 </ul>
@@ -127,24 +127,25 @@ Aspect ratio</h4>
 Boundary detection</h4>
 <p>Another function of this project is to detect the edges of the mesh if it is open. To do this, we select the edges along the boundary. An edge is considered to belong to the boundary of the region if it belongs to exactly one triangle. To evaluate the valence of the edges (the number of triangles they belong to), we create a <span class="tt">std::unordered_map</span> that stores integers as values and edges as keys. We iterate through the edges of each triangle and increment the value corresponding to the evaluated edge by 1.</p>
 <p>Here is an example of a square made up of quadrangles, the edges are displayed in red.</p>
-<p><img src="https://github.com/user-attachments/assets/129587d6-6fb7-4f0c-8159-21e6efdbde40" alt="square" width="2200" height="1140" style="width:50%;" class="inline"/></p>
+<p><img src="https://github.com/user-attachments/assets/c7b8042e-53df-4c1a-a5a6-5cc9c811d534" alt="square_loaded" width="1466" height="1132" style="width:50%;" class="inline"/></p>
 <p>The results show that all edges are detected.</p>
 <h3 class="doxsection"><a class="anchor" id="autotoc_md8"></a>
 3D version : <span class="tt">demo/demo_analyzer3D.cpp</span> :</h3>
-<p>The demo allows you to do the same thing for a tetrahedral mesh. The missing step is to highlight the edge faces in ParaView. The selected format is .msh (version 4.1), the parser was chosen based on the library <a href="https://github.com/qnzhou/MshIO.git">mshio</a> by qnzhou. Gmsh's Modern Format requires manually converting the format's tags into element indices. Here, we use the example of a sphere to calculate its statistics :</p>
-<p><img src="https://github.com/user-attachments/assets/e7895227-b506-435d-a943-edff87fcb268" alt="sphere" width="2193" height="1131" style="width:50%;" class="inline"/></p>
-<div class="fragment"><div class="line">Vertices : 211</div>
-<div class="line">Elements : 709</div>
-<div class="line">Unique triangles : 1580</div>
-<div class="line">min aspect ratio : 1.0151</div>
-<div class="line">max aspect ratio : 4.0086</div>
-<div class="line">mean aspect ratio : 1.60255</div>
-<div class="line">boundaries triangles : 324</div>
-</div><!-- fragment --><p> The aspect ratio is calculated using this formula: (<a href="https://docs.salome-platform.org/latest/gui/SMESH/aspect_ratio_3d.html">https://docs.salome-platform.org/latest/gui/SMESH/aspect_ratio_3d.html</a>)</p>
+<p>The demo allows you to do the same thing with a tetrahedral or hexahedral mesh. Here we use the example of a $9\times9\times9$ cube with a progressive mesh and a different boundary condition for each face. The aspect ratio is calculated using this <a href="https://docs.salome-platform.org/latest/gui/SMESH/aspect_ratio_3d.html">formula</a> for tetrahedra and $\frac{\max(h1, h2, h3)}{\min(h1, h2, h3)})$ for hexahedra which $h1,h2,h3$ are the distances between each center of face to its opposite.</p>
+<p><img src="https://github.com/user-attachments/assets/65b35596-eaa7-4865-95f9-9d5ab1fdd464" alt="cube2" width="1466" height="1132" style="width:50%;" class="inline"/></p>
+<p>Boundary conditions :</p>
+<p><img src="https://github.com/user-attachments/assets/0356fe1c-cbf1-4d61-baf9-5a83b89eb61c" alt="cube2_boundaries" width="1466" height="1132" style="width:50%;" class="inline"/></p>
 <p>The statistics match those of Gmsh :</p>
-<p><img src="https://github.com/user-attachments/assets/7aa8f484-0913-4807-8609-b646647547c9" alt="statistics" width="361" height="268" class="inline"/></p>
-<h2 class="doxsection"><a class="anchor" id="autotoc_md9"></a>
-Smoothing (<span class="tt">demo/demo_generateGrid.cpp</span>)</h2>
+<p><img src="https://github.com/user-attachments/assets/e1e2337e-67b5-41a3-baaf-332032b569e0" alt="gmsh_cube_stats" width="232" height="204" style="size:50%;" class="inline"/></p>
+<div class="fragment"><div class="line">Vertices : 1000</div>
+<div class="line">Elements : 729</div>
+<div class="line">Unique Quads : 2430</div>
+<div class="line">Boundary elements : 486</div>
+<div class="line">min aspect ratio : 1</div>
+<div class="line">max aspect ratio : 3.07782</div>
+<div class="line">mean aspect ratio : 2.08329</div>
+</div><!-- fragment --><h2 class="doxsection"><a class="anchor" id="autotoc_md9"></a>
+Generate a mesh (<span class="tt">demo/demo_generateGrid.cpp</span>)</h2>
 <p>Generates a grid with a tag for each boundary condition</p>
 <p><img src="https://github.com/user-attachments/assets/bcb40053-94a6-466a-a6b1-df2544924f1d" alt="grid_bound" width="2197" height="1131" style="width:50%;" class="inline"/></p>
 <h2 class="doxsection"><a class="anchor" id="autotoc_md10"></a>
@@ -182,16 +183,10 @@ Upcoming changes</h1>
 <h3 class="doxsection"><a class="anchor" id="autotoc_md15"></a>
 in the short term</h3>
 <ul>
-<li>import the physical tags from the .msh files</li>
-<li>display boundaries and phsyical tags for 3D meshes</li>
+<li>improve unit testing</li>
+<li>improve the display of 3D mesh (2 files to avoid conflict between the volume and the boundary)</li>
 </ul>
 <h3 class="doxsection"><a class="anchor" id="autotoc_md16"></a>
-in the middle term</h3>
-<ul>
-<li>adding hexahedral meshes</li>
-<li>adding unitary tests and CI</li>
-</ul>
-<h3 class="doxsection"><a class="anchor" id="autotoc_md17"></a>
 in the longer term</h3>
 <ul>
 <li><b>local mesh adjustments :</b> remove triangles from the mesh, especially if the model contains a hole or is not convex.</li>
@@ -200,7 +195,7 @@ in the longer term</h3>
 <li>implement Delaunay for tetrhedral meshes</li>
 <li><b>mesh simplification :</b> edge collapse (<a href="https://arxiv.org/pdf/2512.19959">A Comprehensive Guide to Mesh Simplification using Edge Collapse</a>) (maybe)</li>
 </ul>
-<h1 class="doxsection"><a class="anchor" id="autotoc_md18"></a>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md17"></a>
 Compilation and execution</h1>
 <p>To clone the project : </p><div class="fragment"><div class="line">git clone --recurse-submodules https://github.com/alexislaurent1321-gif/Enmesh.git</div>
 </div><!-- fragment --><p>Compilation on Windows (preferably with <b>MSVC</b>) or Linux. Use the <b>VS Code</b> interface if possible. On Windows, to run ParaView from the command line, add the ParaView bin folder (e.g., <span class="tt">C:\Program Files\ParaView 6.1.0\bin</span>) to the <span class="tt">PATH</span> environment variables.</p>
@@ -209,7 +204,7 @@ Compilation and execution</h1>
 <li><span class="tt">./scripts/run_{demo}.bat</span> on Windows</li>
 <li><span class="tt">bash scripts/run_{demo}.sh</span> or <span class="tt">wsl sh scripts/run_{demo}.sh</span> on Linux</li>
 </ul>
-<h3 class="doxsection"><a class="anchor" id="autotoc_md19"></a>
+<h3 class="doxsection"><a class="anchor" id="autotoc_md18"></a>
 Dependencies</h3>
 <ul>
 <li><a href="https://github.com/qnzhou/MshIO.git">mshio</a></li>
