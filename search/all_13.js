@@ -9,5 +9,5 @@ var searchData=
   ['triangle_6',['Triangle',['../structEnmesh_1_1Triangle.html',1,'Enmesh']]],
   ['trianglehash_7',['TriangleHash',['../structEnmesh_1_1TriangleHash.html',1,'Enmesh']]],
   ['triangulation_20demo_20demo_5ftriangulation_20cpp_8',['Delaunay triangulation (&lt;span class=&quot;tt&quot;&gt;demo/demo_triangulation.cpp&lt;/span&gt;)',['../index.html#autotoc_md10',1,'']]],
-  ['type_9',['type',['../structEnmesh_1_1Edge.html#a983910fdf7cf47155dc63849698c9ebd',1,'Enmesh::Edge::type'],['../structEnmesh_1_1Quad.html#a36bdbec8024ed7a1a73bcead6217dc5c',1,'Enmesh::Quad::type'],['../structEnmesh_1_1Tetra.html#aa601265c3d0571f2e13e0605770b7821',1,'Enmesh::Tetra::type'],['../structEnmesh_1_1Triangle.html#a1a518c2287af9493edde646525aae952',1,'Enmesh::Triangle::type']]]
+  ['type_9',['type',['../structEnmesh_1_1Edge.html#a983910fdf7cf47155dc63849698c9ebd',1,'Enmesh::Edge::type'],['../structEnmesh_1_1Hexa.html#a7483c01ab6a8892a5547b5034a181dd2',1,'Enmesh::Hexa::type'],['../structEnmesh_1_1Quad.html#a36bdbec8024ed7a1a73bcead6217dc5c',1,'Enmesh::Quad::type'],['../structEnmesh_1_1Tetra.html#aa601265c3d0571f2e13e0605770b7821',1,'Enmesh::Tetra::type'],['../structEnmesh_1_1Triangle.html#a1a518c2287af9493edde646525aae952',1,'Enmesh::Triangle::type']]]
 ];

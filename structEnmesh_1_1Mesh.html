@@ -84,15 +84,16 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 
-<p>A class representing a 3D mesh.  
+<p>A class representing a 2D/3D mesh.  
  <a href="#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="mesh_8h_source.html">mesh.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pub-types" class="groupheader"><a id="pub-types" name="pub-types"></a>
 Public Types</h2></td></tr>
-<tr class="memitem:a1ed0dcd384006e510ebb87544d5285fb" id="r_a1ed0dcd384006e510ebb87544d5285fb"><td class="memItemLeft" align="right" valign="top"><a id="a1ed0dcd384006e510ebb87544d5285fb" name="a1ed0dcd384006e510ebb87544d5285fb"></a>
-using&#160;</td><td class="memItemRight" valign="bottom"><b>BoundaryType</b> = std::conditional_t&lt;Element::dimension == 3, <a class="el" href="structEnmesh_1_1Triangle.html">Triangle</a>, <a class="el" href="structEnmesh_1_1Edge.html">Edge</a>&gt;</td></tr>
+<tr class="memitem:a22827cb92211faa91f1754a3084d4928" id="r_a22827cb92211faa91f1754a3084d4928"><td class="memItemLeft" align="right" valign="top"><a id="a22827cb92211faa91f1754a3084d4928" name="a22827cb92211faa91f1754a3084d4928"></a>
+using&#160;</td><td class="memItemRight" valign="bottom"><b>BoundaryType</b> = typename <a class="el" href="structEnmesh_1_1Boundary.html">Boundary</a>&lt;Element&gt;::type</td></tr>
+<tr class="memdesc:a22827cb92211faa91f1754a3084d4928"><td class="mdescLeft">&#160;</td><td class="mdescRight">Type of boundary element corresponding to the mesh element type. <br /></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pub-methods" class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
@@ -112,7 +113,7 @@ std::vector&lt; <a class="el" href="structEnmesh_1_1Point.html">Point</a> &gt;&#
 std::vector&lt; Element &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>elements</b></td></tr>
 <tr class="memdesc:aae43ee595047b91e095aa8fc3ec5da3b"><td class="mdescLeft">&#160;</td><td class="mdescRight">List of elements defined by vertex indices. <br /></td></tr>
 <tr class="memitem:aee777cd582b5dbb6d0011c57ac3d672b" id="r_aee777cd582b5dbb6d0011c57ac3d672b"><td class="memItemLeft" align="right" valign="top"><a id="aee777cd582b5dbb6d0011c57ac3d672b" name="aee777cd582b5dbb6d0011c57ac3d672b"></a>
-std::vector&lt; BoundaryType &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>boundaryElements</b></td></tr>
+std::vector&lt; <a class="el" href="#a22827cb92211faa91f1754a3084d4928">BoundaryType</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>boundaryElements</b></td></tr>
 <tr class="memdesc:aee777cd582b5dbb6d0011c57ac3d672b"><td class="mdescLeft">&#160;</td><td class="mdescRight">List of boundary elements for surface and boundary surfaces for volumes. <br /></td></tr>
 <tr class="memitem:ae8a4486f29b6455a5b551585fdb2aa7a" id="r_ae8a4486f29b6455a5b551585fdb2aa7a"><td class="memItemLeft" align="right" valign="top"><a id="ae8a4486f29b6455a5b551585fdb2aa7a" name="ae8a4486f29b6455a5b551585fdb2aa7a"></a>
 std::vector&lt; size_t &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>boundaryTags</b></td></tr>
@@ -123,7 +124,7 @@ std::vector&lt; float &gt;&#160;</td><td class="memItemRight" valign="bottom"><b
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
 <div class="textblock"><div class="compoundTemplParams">template&lt;typename Element&gt;<br />
-struct Enmesh::Mesh&lt; Element &gt;</div><p>A class representing a 3D mesh. </p>
+struct Enmesh::Mesh&lt; Element &gt;</div><p>A class representing a 2D/3D mesh. </p>
 </div><hr/>The documentation for this struct was generated from the following file:<ul>
 <li>include/Enmesh/mesh/<a class="el" href="mesh_8h_source.html">mesh.h</a></li>
 </ul>

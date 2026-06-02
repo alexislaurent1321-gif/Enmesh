@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['point_0',['Point',['../structEnmesh_1_1Point.html',1,'Enmesh']]]
+  ['hexa_0',['Hexa',['../structEnmesh_1_1Hexa.html',1,'Enmesh']]]
 ];
