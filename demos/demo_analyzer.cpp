@@ -12,7 +12,7 @@
 int main() {
     
     Enmesh::Mesh<Enmesh::Quad> mesh;
-    Enmesh::loadMsh(mesh, "models/grid_quad.msh");
+    Enmesh::loadMsh(mesh, "demos/models/grid_quad.msh");
     
     Enmesh::analyzeMesh(mesh);
     Enmesh::exportToVTK("output.vtk", mesh);
