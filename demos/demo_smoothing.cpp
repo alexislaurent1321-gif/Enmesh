@@ -20,8 +20,10 @@ int main() {
 
     Enmesh::triangulate(irregularMesh); // Perform Delaunay triangulation on the grid mesh
 
+    std::cout << "Number of boundary elements: " << irregularMesh.boundaryElements.size() << std::endl;
+
     // Display Boundaries (optionnal)
-    irregularMesh.boundaryElements = Enmesh::getBoundaryEdges(irregularMesh);       // Extract boundary edges for visualization
+    irregularMesh.boundaryElements = Enmesh::getBoundaries(irregularMesh);          // Extract boundary edges for visualization
     irregularMesh.boundaryTags.resize(irregularMesh.boundaryElements.size(), 1);    // Assign a boundary tag to all boundary edges for visualization
 
     Enmesh::smooth(irregularMesh, 100, 1.f); // Apply smoothing to improve triangles quality

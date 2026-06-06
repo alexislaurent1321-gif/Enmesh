@@ -9,7 +9,7 @@ void smooth(Mesh<Triangle>& mesh, int iterations, float lambda){
     std::unordered_set<size_t> boundaryVertices; // Keep track of boundary vertices to avoid moving them during smoothing
 
     // Get boundary vertices from boundary edges
-    std::vector<Edge> boundaryEdges = getBoundaryEdges(mesh);
+    std::vector<Edge> boundaryEdges = getBoundaries(mesh);
     for (const auto& edge : boundaryEdges) {
         boundaryVertices.insert(edge.v[0]);
         boundaryVertices.insert(edge.v[1]);

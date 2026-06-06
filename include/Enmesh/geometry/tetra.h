@@ -14,6 +14,7 @@
 
 #include "geometry/point.h"
 #include "geometry/edge.h"
+#include "geometry/triangle.h"
 
 
 namespace Enmesh {
@@ -47,6 +48,13 @@ struct Tetra {
      * @param v2 index of the second vertex of the edge
      */
     bool containsEdge(size_t v1, size_t v2) const;
+
+
+    /**
+     * @brief Get the 4 faces of the tetrahedron
+     * @return An array of 4 triangular faces
+     */
+    std::array<Triangle, 4> getFaces() const;
 };
 
 } // namespace Enmesh

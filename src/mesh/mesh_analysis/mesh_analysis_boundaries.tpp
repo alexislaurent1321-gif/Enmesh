@@ -6,42 +6,11 @@
 namespace Enmesh {
 
 
-// Get valence for 2D meshes
+template <>
+inline std::vector<Edge> getBoundaries(const Mesh<Triangle>& mesh) {
 
-template <typename Element>
-inline std::unordered_map<Edge, size_t, EdgeHash> getEdgeValences(const Mesh<Element>& mesh) {
-
-    if(Element::type != 2 && Element::type != 3) {
-        std::cerr << "Error: getEdgeValences only supports surface meshes" << std::endl;
-        return {};
-    }
-
-    std::unordered_map<Edge, size_t, EdgeHash> counts;     // Use an unordered_map to count occurrences of each edge
-    
-    for (const auto& element : mesh.elements) {
-        for (size_t i = 0; i < Element::numVertices; ++i) {
-            size_t v0 = element.v[i];
-            size_t v1 = element.v[(i + 1) % Element::numVertices];
-
-            Edge e = {std::min(v0, v1), std::max(v0, v1)};  // Store edges in a consistent order
-            counts[e]++;
-        }
-    }
-    
-    return counts;
-}
-
-
-template <typename Element>
-inline std::vector<Edge> getBoundaryEdges(const Mesh<Element>& mesh) {
-
-    if(Element::type != 2 && Element::type != 3) {
-        std::cerr << "Error: getBoundaryEdges only supports surface meshes" << std::endl;
-        return {};
-    }
-
-    auto edgeCounts = getEdgeValences(mesh);    // Get the valence counts for all edges
-    std::vector<Edge> boundaryEdges;            // Collect edges that belong to only one triangle (valence = 1)
+    auto edgeCounts = getElementsValences(mesh);    // Get the valence counts for all edges
+    std::vector<Edge> boundaryEdges;                // Collect edges that belong to only one triangle (valence = 1)
     
     for (auto const& [edge, count] : edgeCounts) {
         if (count == 1) boundaryEdges.push_back(edge);
@@ -51,29 +20,23 @@ inline std::vector<Edge> getBoundaryEdges(const Mesh<Element>& mesh) {
 }
 
 
+template <>
+inline std::vector<Edge> getBoundaries(const Mesh<Quad>& mesh) {
 
-// Get valence for tetrahedral meshes
-
-inline std::unordered_map<Triangle, size_t, TriangleHash> getTriangleValences(const Mesh<Tetra>& mesh) {
-    std::unordered_map<Triangle, size_t, TriangleHash> counts;     // Use an unordered_map to count occurrences of each triangle
+    auto edgeCounts = getElementsValences(mesh);    // Get the valence counts for all edges
+    std::vector<Edge> boundaryEdges;                // Collect edges that belong to only one quad (valence = 1)
     
-    for (const auto& element : mesh.elements) {
-        for (size_t i = 0; i < 4; ++i) {
-            size_t v0 = element.v[i];
-            size_t v1 = element.v[(i + 1) % 4];
-            size_t v2 = element.v[(i + 2) % 4];
-
-            Triangle triangle = {{std::min({v0, v1, v2}), std::min({std::max(v0, v1), std::max(v1, v2), std::max(v2, v0)}), std::max({v0, v1, v2})}};  // Store triangles in a consistent order
-            counts[triangle]++;
-        }
-    }  
+    for (auto const& [edge, count] : edgeCounts) {
+        if (count == 1) boundaryEdges.push_back(edge);
+    }
     
-    return counts;
+    return boundaryEdges;
 }
 
 
-inline std::vector<Triangle> getBoundaryTriangles(const Mesh<Tetra>& mesh) {
-    auto triangleCounts = getTriangleValences(mesh);    // Get the valence counts for all triangles
+inline std::vector<Triangle> getBoundaries(const Mesh<Tetra>& mesh) {
+
+    auto triangleCounts = getElementsValences(mesh);    // Get the valence counts for all triangles
     std::vector<Triangle> boundaryTriangles;            // Collect triangles that belong to only one tetrahedron (valence = 1)
     
     for (auto const& [triangle, count] : triangleCounts) {
@@ -81,6 +44,19 @@ inline std::vector<Triangle> getBoundaryTriangles(const Mesh<Tetra>& mesh) {
     }
     
     return boundaryTriangles;
+}
+
+
+inline std::vector<Quad> getBoundaries(const Mesh<Hexa>& mesh) {
+
+    auto quadCounts = getElementsValences(mesh);    // Get the valence counts for all quads
+    std::vector<Quad> boundaryQuads;                // Collect quads that belong to only one hexahedron (valence = 1)
+    
+    for (auto const& [quad, count] : quadCounts) {
+        if (count == 1) boundaryQuads.push_back(quad);
+    }
+    
+    return boundaryQuads;
 }
 
 

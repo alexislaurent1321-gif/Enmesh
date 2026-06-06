@@ -42,37 +42,42 @@ void calculateAspectRatios(Mesh<Element>& mesh);
  * 
  * @return std::unordered_map<Edge, size_t, EdgeHash> 
  */
-template <typename Element>
-std::unordered_map<Edge, size_t, EdgeHash> getEdgeValences(const Mesh<Element>& mesh);
+inline std::unordered_map<Edge, size_t, EdgeHash> getElementsValences(const Mesh<Triangle>& mesh);
+
+
+ /**
+ * @brief Get the Edge Valences object  
+ * 
+ * @return std::unordered_map<Edge, size_t, EdgeHash> 
+ */
+inline std::unordered_map<Edge, size_t, EdgeHash> getElementsValences(const Mesh<Quad>& mesh);
 
 
 /** 
  * @brief Get the triangle valences of the mesh
  * @return A map containing the valence of each triangle
  */
-inline std::unordered_map<Triangle, size_t, TriangleHash> getTriangleValences(const Mesh<Tetra>& mesh);
+inline std::unordered_map<Triangle, size_t, TriangleHash> getElementsValences(const Mesh<Tetra>& mesh);
 
+
+/** 
+ * @brief Get the triangle valences of the mesh
+ * @return A map containing the valence of each triangle
+ */
+inline std::unordered_map<Quad, size_t, QuadHash> getElementsValences(const Mesh<Hexa>& mesh);
+
+
+
+
+
+// Boundary analysis
 
  /** 
  * @brief Get the boundary edges of the mesh
  * @return A vector containing the boundary edges
  */
 template <typename Element>
-std::vector<Edge> getBoundaryEdges(const Mesh<Element>& mesh);
-
-
-/** 
- * @brief Get the boundary triangles of the mesh
- * @return A vector containing the boundary triangles
- */
-inline std::vector<Triangle> getBoundaryTriangles(const Mesh<Tetra>& mesh);
-
-/** 
- * @brief Get the boundary quads of the mesh
- * @return A vector containing the boundary quads
- */
-inline std::vector<Quad> getBoundaryQuads(const Mesh<Tetra>& mesh);
-
+std::vector<Edge> getBoundaries(const Mesh<Element>& mesh);
 
 
  /**
@@ -101,6 +106,7 @@ void analyzeMesh(Mesh<Element>& mesh);
 #include "../../src/mesh/mesh_analysis/mesh_analysis_aspectRatio.tpp"
 #include "../../src/mesh/mesh_analysis/mesh_analysis_count.tpp"
 #include "../../src/mesh/mesh_analysis/mesh_analysis_boundaries.tpp"
+#include "../../src/mesh/mesh_analysis/mesh_analysis_valences.tpp"
 
 
 #endif  

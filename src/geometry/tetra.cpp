@@ -25,4 +25,18 @@ bool Tetra::containsEdge(size_t v1, size_t v2) const {
     return false; 
 }
 
+
+/** @brief Get the 4 faces of the tetrahedron
+ * @return An array of 4 triangular faces
+ */
+std::array<Triangle, 4> Tetra::getFaces() const {
+    return {
+        Triangle{v[0], v[1], v[2]},
+        Triangle{v[0], v[1], v[3]},
+        Triangle{v[1], v[2], v[3]},
+        Triangle{v[0], v[2], v[3]}
+    };
+}
+
+
 } // namespace Enmesh
