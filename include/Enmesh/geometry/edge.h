@@ -21,6 +21,7 @@ namespace Enmesh {
 struct Edge {
 
     static constexpr size_t type = 1;           ///< Gmsh element type for edges 
+    static constexpr size_t VTKType = 3;        ///< VTK element type for edges
     static constexpr size_t numVertices = 2;    ///< Number of vertices in an edge
     static constexpr size_t dimension = 1;      ///< Dimension of the edge element
 

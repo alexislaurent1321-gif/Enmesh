@@ -25,10 +25,12 @@ namespace Enmesh {
 struct Quad {
 
     static constexpr size_t type = 3;           ///< Gmsh element type for quads 
+    static constexpr size_t VTKType = 9;        ///< VTK element type for quads
     static constexpr size_t dimension = 2;      ///< Dimension of the quad element
     static constexpr size_t numVertices = 4;    ///< Number of vertices in a quad
 
     static constexpr size_t boundaryType = 1;           ///< Gmsh element type for boundary edges
+    static constexpr size_t boundaryVTKType = 3;        ///< VTK element type for boundary edges
     static constexpr size_t boundaryDimension = 1;      ///< Dimension of the boundary element (edge)
     static constexpr size_t boundaryNumVertices = 2;    ///< Number of vertices in a boundary edge
 

@@ -21,10 +21,12 @@ namespace Enmesh {
 struct Tetra {
 
     static constexpr size_t type = 4;           ///< Gmsh element type for tetrahedra 
+    static constexpr size_t VTKType = 10;       ///< VTK element type for tetrahedra
     static constexpr size_t dimension = 3;      ///< Dimension of the tetrahedron element
     static constexpr size_t numVertices = 4;    ///< Number of vertices in a tetrahedron
 
     static constexpr size_t boundaryType = 2;           ///< Gmsh element type for boundary triangles
+    static constexpr size_t boundaryVTKType = 5;        ///< VTK element type for boundary triangles
     static constexpr size_t boundaryDimension = 2;      ///< Dimension of the boundary element (triangle)
     static constexpr size_t boundaryNumVertices = 3;    ///< Number of vertices in a boundary triangle
 
