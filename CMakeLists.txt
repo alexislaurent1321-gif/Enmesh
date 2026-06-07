@@ -16,7 +16,7 @@ add_library(Enmesh STATIC
 
     src/mesh/mesh.cpp
     src/mesh/mesh_smoothing.cpp
-    src/mesh/mesh_basic_shapes.cpp
+    src/mesh/mesh_basicShapes/mesh_generate2DGrid.tpp
     src/mesh/mesh_triangulation.cpp
 
     src/mesh/mesh_analysis/mesh_analysis_boundaries.tpp

@@ -20,4 +20,6 @@ Mesh<Element> generateGrid(int Nx, int Ny, float Lx, float Ly);
 
 } // namespace Enmesh
 
+#include "../../src/mesh/mesh_basicShapes/mesh_generate2DGrid.tpp"
+
 #endif
