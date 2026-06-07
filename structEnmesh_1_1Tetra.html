@@ -90,6 +90,8 @@ Public Member Functions</h2></td></tr>
 <tr class="memdesc:a61b0322366992a3cf6948f7b50805145"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if this tetrahedron is equal to another (same vertices, regardless of order)  <br /></td></tr>
 <tr class="memitem:addf8f9e9f1921cd51c8b3d14f84a65c2" id="r_addf8f9e9f1921cd51c8b3d14f84a65c2"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#addf8f9e9f1921cd51c8b3d14f84a65c2">containsEdge</a> (size_t v1, size_t v2) const</td></tr>
 <tr class="memdesc:addf8f9e9f1921cd51c8b3d14f84a65c2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if the tetrahedron contains a specific edge defined by two vertex indices.  <br /></td></tr>
+<tr class="memitem:a3bc19e050e7f595c9148722ac29c675b" id="r_a3bc19e050e7f595c9148722ac29c675b"><td class="memItemLeft" align="right" valign="top">std::array&lt; <a class="el" href="structEnmesh_1_1Triangle.html">Triangle</a>, 4 &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3bc19e050e7f595c9148722ac29c675b">getFaces</a> () const</td></tr>
+<tr class="memdesc:a3bc19e050e7f595c9148722ac29c675b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the 4 faces of the tetrahedron.  <br /></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pub-attribs" class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
@@ -155,6 +157,26 @@ static constexpr size_t&#160;</td><td class="memItemRight" valign="bottom"><b>bo
   </table>
   </dd>
 </dl>
+
+</div>
+</div>
+<a id="a3bc19e050e7f595c9148722ac29c675b" name="a3bc19e050e7f595c9148722ac29c675b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3bc19e050e7f595c9148722ac29c675b">&#9670;&#160;</a></span>getFaces()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::array&lt; <a class="el" href="structEnmesh_1_1Triangle.html">Triangle</a>, 4 &gt; Enmesh::Tetra::getFaces </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Get the 4 faces of the tetrahedron. </p>
+<dl class="section return"><dt>Returns</dt><dd>An array of 4 triangular faces </dd></dl>
 
 </div>
 </div>
