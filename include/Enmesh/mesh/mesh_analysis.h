@@ -38,35 +38,17 @@ void calculateAspectRatios(Mesh<Element>& mesh);
 // Topology analysis
 
  /**
- * @brief Get the Edge Valences object  
+ * @brief Get the Element Valences object  
  * 
  * @return std::unordered_map<Edge, size_t, EdgeHash> 
  */
-inline std::unordered_map<Edge, size_t, EdgeHash> getElementsValences(const Mesh<Triangle>& mesh);
+std::unordered_map<Edge, size_t, EdgeHash> getElementsValences(const Mesh<Triangle>& mesh);
 
+std::unordered_map<Edge, size_t, EdgeHash> getElementsValences(const Mesh<Quad>& mesh);
 
- /**
- * @brief Get the Edge Valences object  
- * 
- * @return std::unordered_map<Edge, size_t, EdgeHash> 
- */
-inline std::unordered_map<Edge, size_t, EdgeHash> getElementsValences(const Mesh<Quad>& mesh);
+std::unordered_map<Triangle, size_t, TriangleHash> getElementsValences(const Mesh<Tetra>& mesh);
 
-
-/** 
- * @brief Get the triangle valences of the mesh
- * @return A map containing the valence of each triangle
- */
-inline std::unordered_map<Triangle, size_t, TriangleHash> getElementsValences(const Mesh<Tetra>& mesh);
-
-
-/** 
- * @brief Get the triangle valences of the mesh
- * @return A map containing the valence of each triangle
- */
-inline std::unordered_map<Quad, size_t, QuadHash> getElementsValences(const Mesh<Hexa>& mesh);
-
-
+std::unordered_map<Quad, size_t, QuadHash> getElementsValences(const Mesh<Hexa>& mesh);
 
 
 
@@ -77,7 +59,7 @@ inline std::unordered_map<Quad, size_t, QuadHash> getElementsValences(const Mesh
  * @return A vector containing the boundary edges
  */
 template <typename Element>
-std::vector<Edge> getBoundaries(const Mesh<Element>& mesh);
+void computeBoundaries(Mesh<Element>& mesh);
 
 
  /**
