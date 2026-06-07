@@ -1,6 +1,10 @@
 #include "mesh/mesh_basic_shapes.h"
 #include "mesh/mesh_analysis.h"
 
+/** @file mesh_generate2DGrid.tpp
+ *  @brief Implementation of a function to generate a 2D grid mesh of triangles or quads.
+ */
+
 namespace Enmesh {
 
 template <>

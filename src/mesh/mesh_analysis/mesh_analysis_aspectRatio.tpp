@@ -3,6 +3,11 @@
 
 #include "mesh/mesh_analysis.h"
 
+/**
+ * @file mesh_analysis_aspectRatio.tpp
+ * @brief Implementation of aspect ratio calculation for different mesh elements
+ */
+
 namespace Enmesh {
 
 // Quality analysis

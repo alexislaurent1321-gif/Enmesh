@@ -3,6 +3,11 @@
 
 #include "mesh/mesh_analysis.h"
 
+/**
+ * @file mesh_analysis_count.tpp
+ * @brief Implementation of counting borders for different mesh elements
+ */
+
 namespace Enmesh {
 
 // Quality analysis

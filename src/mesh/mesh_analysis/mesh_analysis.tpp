@@ -6,7 +6,7 @@
 /** @file mesh_analysis.tpp
  *  @brief Implementation of mesh analysis functions : counting unique edges/triangles and calculating aspect ratios for triangles, quads and tetrahedra.
  */
-
+    
 namespace Enmesh {
 
 template <typename Element>

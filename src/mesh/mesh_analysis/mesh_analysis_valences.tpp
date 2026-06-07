@@ -3,6 +3,11 @@
 
 #include "mesh/mesh_analysis.h"
 
+/**
+ * @file mesh_analysis_valences.tpp
+ * @brief Implementation of valence counting for different mesh elements
+ */
+
 namespace Enmesh {
 
 // Get valence for triangle meshes

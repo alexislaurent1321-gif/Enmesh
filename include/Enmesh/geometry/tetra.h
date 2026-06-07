@@ -19,6 +19,7 @@
 
 namespace Enmesh {
 
+/** @brief A struct representing a tetrahedron in 3D space */
 struct Tetra {
 
     static constexpr size_t type = 4;           ///< Gmsh element type for tetrahedra 

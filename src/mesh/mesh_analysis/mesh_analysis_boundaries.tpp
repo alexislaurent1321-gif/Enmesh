@@ -3,8 +3,12 @@
 
 #include "mesh/mesh_analysis.h"
 
-namespace Enmesh {
+/**
+ * @file mesh_analysis_boundaries.tpp
+ * @brief Implementation of boundary element extraction for different mesh types
+ */
 
+namespace Enmesh {
 
 template <typename Element>
 void computeBoundaries(Mesh<Element>& mesh) {
