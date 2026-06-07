@@ -20,7 +20,11 @@ int main() {
 
     Enmesh::triangulate(irregularMesh); // Perform Delaunay triangulation on the grid mesh
 
-    Enmesh::smooth(irregularMesh, 100, 1.f); // Apply smoothing to improve triangle quality
+    // Display Boundaries (optionnal)
+    Enmesh::computeBoundaries(irregularMesh);          // Extract boundary edges for visualization
+    irregularMesh.boundaryTags.resize(irregularMesh.boundaryElements.size(), 1);    // Assign a boundary tag to all boundary edges for visualization
+
+    Enmesh::smooth(irregularMesh, 100, 1.f); // Apply smoothing to improve triangles quality
 
     Enmesh::analyzeMesh(irregularMesh);
     Enmesh::exportToVTK("output.vtk", irregularMesh);

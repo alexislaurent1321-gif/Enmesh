@@ -6,7 +6,7 @@
 Enmesh is a library used to create, manage, and analyze meshes. It is particularly useful for finite element solvers. 
 Its features include: 
 - Delaunay triangulation for 2D meshes
-- Import of .msh files
+- Import of .msh files (version 4.1), the parser was chosen based on qnzhou's [mshio](https://github.com/qnzhou/MshIO.git) library
 - VTK export for ParaView visualization
 - Mesh quality analysis and edge detection
 The supported mesh types are triangular, quadrangular, and tetrahedral meshes
@@ -76,7 +76,8 @@ To evaluate the valence of the edges (the number of triangles they belong to), w
 
 Here is an example of a square made up of quadrangles, the edges are displayed in red.
 
-<img width="2200" height="1140" alt="square" src="https://github.com/user-attachments/assets/129587d6-6fb7-4f0c-8159-21e6efdbde40" style="width:50%;" />
+<img width="1466" height="1132" alt="square_loaded" src="https://github.com/user-attachments/assets/c7b8042e-53df-4c1a-a5a6-5cc9c811d534" style="width:50%;" />
+
 
 
 
@@ -84,27 +85,35 @@ Here is an example of a square made up of quadrangles, the edges are displayed i
 The results show that all edges are detected.
 
 ### 3D version : `demo/demo_analyzer3D.cpp` : 
-The demo allows you to do the same thing for a tetrahedral mesh. The missing step is to highlight the edge faces in ParaView. The selected format is .msh (version 4.1), the parser was chosen based on the library [mshio](https://github.com/qnzhou/MshIO.git) by qnzhou. Gmsh's Modern Format requires manually converting the format's tags into element indices. Here, we use the example of a sphere to calculate its statistics :
+The demo allows you to do the same thing with a tetrahedral or hexahedral mesh. Here we use the example of a $9\times9\times9$ cube with a progressive mesh and a different boundary condition for each face. The  aspect ratio is calculated using this [formula](https://docs.salome-platform.org/latest/gui/SMESH/aspect_ratio_3d.html) for tetrahedra and $\frac{\max(h1, h2, h3)}{\min(h1, h2, h3)})$ for hexahedra which $h1,h2,h3$ are the distances between each center of face to its opposite.
 
-<img width="2193" height="1131" alt="sphere" src="https://github.com/user-attachments/assets/e7895227-b506-435d-a943-edff87fcb268" style="width:50%;" />
+<img width="1466" height="1132" alt="cube2" src="https://github.com/user-attachments/assets/65b35596-eaa7-4865-95f9-9d5ab1fdd464" style="width:50%;" />
 
-```bash
-Vertices : 211
-Elements : 709
-Unique triangles : 1580
-min aspect ratio : 1.0151
-max aspect ratio : 4.0086
-mean aspect ratio : 1.60255
-boundaries triangles : 324
-```
-The aspect ratio is calculated using this formula: (https://docs.salome-platform.org/latest/gui/SMESH/aspect_ratio_3d.html)
+Boundary conditions : 
+
+<img width="1466" height="1132" alt="cube2_boundaries" src="https://github.com/user-attachments/assets/0356fe1c-cbf1-4d61-baf9-5a83b89eb61c" style="width:50%;" />
+
+> [!WARNING]  
+The boundary rendering conflicts with the volume rendering, causing blue flickering on some faces. These issues will be fixed soon.
+
 
 The statistics match those of Gmsh :
 
 
-<img width="361" height="268" alt="statistics" src="https://github.com/user-attachments/assets/7aa8f484-0913-4807-8609-b646647547c9" />
+<img width="232" height="204" alt="gmsh_cube_stats" src="https://github.com/user-attachments/assets/e1e2337e-67b5-41a3-baaf-332032b569e0" style="size:50%;" />
 
-## Smoothing (`demo/demo_generateGrid.cpp`)
+```bash
+Vertices : 1000
+Elements : 729
+Unique Quads : 2430
+Boundary elements : 486
+min aspect ratio : 1
+max aspect ratio : 3.07782
+mean aspect ratio : 2.08329
+```
+
+
+## Generate a mesh (`demo/demo_generateGrid.cpp`)
 Generates a grid with a tag for each boundary condition
 
 <img width="2197" height="1131" alt="grid_bound" src="https://github.com/user-attachments/assets/bcb40053-94a6-466a-a6b1-df2544924f1d" style="width:50%;"/>
@@ -159,9 +168,8 @@ We observe a better average aspect ratio. However, this result can be further im
 
 # Upcoming changes
 ### in the short term
-- display boundaries and phsyical tags for 3D meshes
-- adding hexahedral meshes
-- improve the unitary tests
+- improve unit testing
+- improve the display of 3D mesh (2 files to avoid conflict between the volume and the boundary)
 
 ### in the longer term
 - **local mesh adjustments :** remove triangles from the mesh, especially if the model contains a hole or is not convex.

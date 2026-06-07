@@ -14,6 +14,7 @@
 
 #include "geometry/point.h"
 #include "geometry/edge.h"
+#include "geometry/triangle.h"
 
 
 namespace Enmesh {
@@ -21,10 +22,12 @@ namespace Enmesh {
 struct Tetra {
 
     static constexpr size_t type = 4;           ///< Gmsh element type for tetrahedra 
+    static constexpr size_t VTKType = 10;       ///< VTK element type for tetrahedra
     static constexpr size_t dimension = 3;      ///< Dimension of the tetrahedron element
     static constexpr size_t numVertices = 4;    ///< Number of vertices in a tetrahedron
 
     static constexpr size_t boundaryType = 2;           ///< Gmsh element type for boundary triangles
+    static constexpr size_t boundaryVTKType = 5;        ///< VTK element type for boundary triangles
     static constexpr size_t boundaryDimension = 2;      ///< Dimension of the boundary element (triangle)
     static constexpr size_t boundaryNumVertices = 3;    ///< Number of vertices in a boundary triangle
 
@@ -40,11 +43,18 @@ struct Tetra {
 
 
     /**
-     * @brief Check if the circumsphere of the tetrahedron contains a specific edge defined by two vertex indices
+     * @brief Check if the tetrahedron contains a specific edge defined by two vertex indices
      * @param v1 index of the first vertex of the edge
      * @param v2 index of the second vertex of the edge
      */
     bool containsEdge(size_t v1, size_t v2) const;
+
+
+    /**
+     * @brief Get the 4 faces of the tetrahedron
+     * @return An array of 4 triangular faces
+     */
+    std::array<Triangle, 4> getFaces() const;
 };
 
 } // namespace Enmesh

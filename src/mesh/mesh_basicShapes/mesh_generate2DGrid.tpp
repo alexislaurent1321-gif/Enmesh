@@ -4,7 +4,7 @@
 namespace Enmesh {
 
 template <>
-Mesh<Triangle> generateGrid(int Nx, int Ny, float Lx, float Ly){
+inline Mesh<Triangle> generateGrid(int Nx, int Ny, float Lx, float Ly) {
     Mesh<Triangle> mesh;
     float dx = Lx / (Nx - 1);
     float dy = Ly / (Ny - 1);
@@ -30,7 +30,7 @@ Mesh<Triangle> generateGrid(int Nx, int Ny, float Lx, float Ly){
     }
 
     // Boundary conditions 
-    mesh.boundaryElements = Enmesh::getBoundaryEdges(mesh);
+    Enmesh::computeBoundaries(mesh);
 
     for(auto& edge : mesh.boundaryElements) {
         if(edge.v[0] < Nx && edge.v[1] < Nx) { // Bottom boundary
@@ -49,7 +49,7 @@ Mesh<Triangle> generateGrid(int Nx, int Ny, float Lx, float Ly){
 
 
 template <>
-Mesh<Quad> generateGrid(int Nx, int Ny, float Lx, float Ly){
+inline Mesh<Quad> generateGrid(int Nx, int Ny, float Lx, float Ly) {
     Mesh<Quad> mesh;
     float dx = Lx / (Nx - 1);
     float dy = Ly / (Ny - 1);
@@ -74,7 +74,7 @@ Mesh<Quad> generateGrid(int Nx, int Ny, float Lx, float Ly){
     }
 
     // Boundary conditions 
-    mesh.boundaryElements = Enmesh::getBoundaryEdges(mesh);
+    Enmesh::computeBoundaries(mesh);
 
     for(auto& edge : mesh.boundaryElements) {
         if(edge.v[0] < Nx && edge.v[1] < Nx) { // Bottom boundary

@@ -21,7 +21,12 @@ int main() {
 
     Enmesh::triangulate(gridMesh); // Perform Delaunay triangulation on the grid mesh
 
+    // Display Boundaries (optionnal)
+    Enmesh::computeBoundaries(gridMesh);     // Extract boundary edges for visualization
+    gridMesh.boundaryTags.resize(gridMesh.boundaryElements.size(), 1);  // Assign a boundary tag to all boundary edges for visualization
+
     Enmesh::analyzeMesh(gridMesh);
+
     Enmesh::exportToVTK("output.vtk", gridMesh);
 
     return 0;

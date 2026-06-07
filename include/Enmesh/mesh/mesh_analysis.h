@@ -38,54 +38,37 @@ void calculateAspectRatios(Mesh<Element>& mesh);
 // Topology analysis
 
  /**
- * @brief Get the Edge Valences object  
+ * @brief Get the Element Valences object  
  * 
  * @return std::unordered_map<Edge, size_t, EdgeHash> 
  */
-template <typename Element>
-std::unordered_map<Edge, size_t, EdgeHash> getEdgeValences(const Mesh<Element>& mesh);
+std::unordered_map<Edge, size_t, EdgeHash> getElementsValences(const Mesh<Triangle>& mesh);
+
+std::unordered_map<Edge, size_t, EdgeHash> getElementsValences(const Mesh<Quad>& mesh);
+
+std::unordered_map<Triangle, size_t, TriangleHash> getElementsValences(const Mesh<Tetra>& mesh);
+
+std::unordered_map<Quad, size_t, QuadHash> getElementsValences(const Mesh<Hexa>& mesh);
 
 
-/** 
- * @brief Get the triangle valences of the mesh
- * @return A map containing the valence of each triangle
- */
-inline std::unordered_map<Triangle, size_t, TriangleHash> getTriangleValences(const Mesh<Tetra>& mesh);
 
+// Boundary analysis
 
  /** 
  * @brief Get the boundary edges of the mesh
  * @return A vector containing the boundary edges
  */
 template <typename Element>
-std::vector<Edge> getBoundaryEdges(const Mesh<Element>& mesh);
-
-
-/** 
- * @brief Get the boundary triangles of the mesh
- * @return A vector containing the boundary triangles
- */
-inline std::vector<Triangle> getBoundaryTriangles(const Mesh<Tetra>& mesh);
+void computeBoundaries(Mesh<Element>& mesh);
 
 
  /**
- * @brief Count the number of unique edges in the mesh by iterating through all triangles and adding their edges to an unordered_set
+ * @brief Count the number of unique edges in the 2D mesh (unique faces in the 3D mesh) by iterating through all elements and adding their borders to an unordered_set
  * 
  * @return number of unique edges in the mesh 
  */
 template <typename Element>
-size_t countUniqueEdges(const Mesh<Element>& mesh);
-
-
-/** 
- * @brief Count the number of unique triangles in the mesh by iterating through all tetrahedra and adding their triangles to an unordered_set
- * 
- * @return number of unique triangles in the mesh 
- */
-template <typename Element>
-size_t countUniqueTriangles(const Mesh<Element>& mesh);
-
-
+size_t countAllBorders(const Mesh<Element>& mesh);
 
 
 
@@ -105,6 +88,7 @@ void analyzeMesh(Mesh<Element>& mesh);
 #include "../../src/mesh/mesh_analysis/mesh_analysis_aspectRatio.tpp"
 #include "../../src/mesh/mesh_analysis/mesh_analysis_count.tpp"
 #include "../../src/mesh/mesh_analysis/mesh_analysis_boundaries.tpp"
+#include "../../src/mesh/mesh_analysis/mesh_analysis_valences.tpp"
 
 
 #endif  

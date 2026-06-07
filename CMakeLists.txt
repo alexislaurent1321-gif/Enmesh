@@ -11,17 +11,19 @@ add_library(Enmesh STATIC
     src/geometry/triangle.cpp
     src/geometry/quad.cpp
     src/geometry/tetra.cpp
+    src/geometry/hexa.cpp
     src/geometry/point.cpp
 
     src/mesh/mesh.cpp
     src/mesh/mesh_smoothing.cpp
-    src/mesh/mesh_basic_shapes.cpp
+    src/mesh/mesh_basicShapes/mesh_generate2DGrid.tpp
     src/mesh/mesh_triangulation.cpp
 
     src/mesh/mesh_analysis/mesh_analysis_boundaries.tpp
     src/mesh/mesh_analysis/mesh_analysis_aspectRatio.tpp
     src/mesh/mesh_analysis/mesh_analysis_count.tpp
     src/mesh/mesh_analysis/mesh_analysis.tpp
+    src/mesh/mesh_analysis/mesh_analysis_valences.tpp
 
     src/io/exportToVTK.tpp
     src/io/loadMsh.tpp
@@ -56,6 +58,7 @@ enable_testing()
 add_executable(tests
     tests/test_geometry/test_triangle.cpp
     tests/test_geometry/test_quad.cpp
+    tests/test_geometry/test_hexa.cpp
     tests/test_geometry/test_tetra.cpp
     tests/test_geometry/test_point.cpp
 

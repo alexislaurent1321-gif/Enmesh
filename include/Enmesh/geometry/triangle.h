@@ -25,15 +25,17 @@ namespace Enmesh {
 struct Triangle {
 
     static constexpr size_t type = 2;           ///< Gmsh element type for triangles 
+    static constexpr size_t VTKType = 5;        ///< VTK element type for triangles
     static constexpr size_t dimension = 2;      ///< Dimension of the triangle element
     static constexpr size_t numVertices = 3;    ///< Number of vertices in a triangle
 
     static constexpr size_t boundaryType = 1;           ///< Gmsh element type for boundary edges
+    static constexpr size_t boundaryVTKType = 3;        ///< VTK element type for boundary edges
     static constexpr size_t boundaryDimension = 1;      ///< Dimension of the boundary element (edge)
     static constexpr size_t boundaryNumVertices = 2;    ///< Number of vertices in a boundary edge
 
-    std::array<size_t, 3> v;   ///< Indices of the vertices that form the triangle
-    bool isBad = false;     ///< Flag used in Delaunay triangulation to mark triangles that need to be removed
+    std::array<size_t, 3> v;    ///< Indices of the vertices that form the triangle
+    bool isBad = false;         ///< Flag used in Delaunay triangulation to mark triangles that need to be removed
 
 
     /**
